@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --primary-blue: #0034a0;
+  --accent-red: #e63946;
+  --navy-dark: #071530;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Geospatial Background Grid Pattern */
+.geospatial-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 52, 160, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 52, 160, 0.04) 1px, transparent 1px);
+}
+
+.geospatial-grid-dark {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Subtle Crosshair Coordinates Marks */
+.crosshair-pattern {
+  background-image: radial-gradient(rgba(0, 52, 160, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Logo Location Pin Traveler Animation */
+/*
+  Follows the red dashed arc in the company logo smoothly back and forth between
+  the left pin position (4%, 45%) and the right pin position (78%, 45%).
+*/
+.logo-pin-traveler {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: pinArcGlide 4.5s ease-in-out infinite;
+  will-change: transform, left, top;
+}
+
+@keyframes pinArcGlide {
+  0% {
+    left: 4%;
+    top: 45%;
+    transform: scale(0.95);
+  }
+  15% {
+    transform: scale(1.05) rotate(6deg);
+  }
+  25% {
+    left: 44%;
+    top: 8%;
+    transform: scale(1.1) rotate(0deg);
+  }
+  35% {
+    transform: scale(1.05) rotate(-6deg);
+  }
+  50% {
+    left: 78%;
+    top: 45%;
+    transform: scale(0.95);
+  }
+  65% {
+    transform: scale(1.05) rotate(-6deg);
+  }
+  75% {
+    left: 44%;
+    top: 8%;
+    transform: scale(1.1) rotate(0deg);
+  }
+  85% {
+    transform: scale(1.05) rotate(6deg);
+  }
+  100% {
+    left: 4%;
+    top: 45%;
+    transform: scale(0.95);
+  }
+}
+
+/* Radar Sweep Animation */
+@keyframes radarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.radar-sweep {
+  animation: radarSweep 6s linear infinite;
+  transform-origin: center center;
+}
+
+/* Floating animation */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-gentle-float {
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }

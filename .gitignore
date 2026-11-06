@@ -31,7 +31,14 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
-.env*
+.env*.local
+
+# Office temp & large binary presentation
+~$*
+*.pptx
+*.ppt
+temp_inspect/
+*.py
 
 # vercel
 .vercel
