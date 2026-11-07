@@ -40,31 +40,31 @@ export const AnimatedButton: React.FC<AnimatedButtonProps> = ({
     lg: "px-8 py-4 text-sm gap-3 min-h-[52px]",
   }[size];
 
-  // Colors derived 1:1 from the Geospatial Works Logo (Royal Blue + Signal Red)
+  // Colors derived 1:1 from the Geospatial Works Logo (Royal Blue #0284c7 & Precision Red #ea3829)
   const variantStyles = {
     primary: {
       button:
-        "border-slate-300 bg-white text-slate-900 hover:border-[#0284c7] hover:shadow-lg hover:shadow-sky-500/25",
-      dot: "bg-[#0284c7]",
+        "border-[#0284c7] bg-[#0284c7] hover:bg-[#0369a1] text-white shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/50 hover:-translate-y-0.5",
+      dot: "bg-white",
       hoverText: "text-white",
     },
     accent: {
       button:
-        "border-slate-300 bg-white text-slate-900 hover:border-[#ea3829] hover:shadow-lg hover:shadow-rose-500/25",
-      dot: "bg-[#ea3829]",
+        "border-[#ea3829] bg-[#ea3829] hover:bg-[#dc2626] text-white shadow-lg shadow-rose-500/30 hover:shadow-xl hover:shadow-rose-500/50 hover:-translate-y-0.5",
+      dot: "bg-white",
       hoverText: "text-white",
     },
     dark: {
       button:
-        "border-slate-800 bg-slate-950 text-white hover:border-[#0284c7] hover:shadow-lg hover:shadow-sky-500/20",
+        "border-slate-800 bg-slate-950 hover:bg-slate-900 text-white hover:border-[#0284c7] hover:shadow-lg hover:shadow-sky-500/20 hover:-translate-y-0.5",
       dot: "bg-[#0284c7]",
       hoverText: "text-white",
     },
     outline: {
       button:
-        "border-slate-300 bg-white/80 text-slate-900 hover:border-slate-900 hover:shadow-md",
-      dot: "bg-slate-900",
-      hoverText: "text-white",
+        "border-slate-300 bg-white hover:bg-slate-50 text-slate-800 hover:text-[#0284c7] hover:border-[#0284c7] hover:shadow-md hover:-translate-y-0.5",
+      dot: "bg-[#0284c7]",
+      hoverText: "text-[#0284c7]",
     },
     ghost: {
       button:
@@ -74,7 +74,7 @@ export const AnimatedButton: React.FC<AnimatedButtonProps> = ({
     },
     shimmer: {
       button:
-        "border-sky-400/40 bg-[#0284c7] text-white hover:shadow-lg hover:shadow-sky-500/30",
+        "border-sky-400/40 bg-[#0284c7] hover:bg-[#0369a1] text-white shadow-lg shadow-sky-500/35 hover:-translate-y-0.5",
       dot: "bg-white",
       hoverText: "text-white",
     },
@@ -85,37 +85,31 @@ export const AnimatedButton: React.FC<AnimatedButtonProps> = ({
       {/* 21st.dev Expanding Dot Transition Layer */}
       <div
         className={cn(
-          "absolute left-4 top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-full transition-all duration-500 ease-out group-hover:scale-[110] pointer-events-none z-0",
+          "absolute left-4 top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-full transition-all duration-500 ease-out group-hover:scale-[110] pointer-events-none z-0 opacity-20",
           variantStyles.dot,
         )}
       />
 
       {/* Shimmer light beam sweep */}
-      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none z-1" />
+      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none z-1" />
 
-      {/* Initial state: Pulsing dot (if requested) + Content Label */}
-      <div className="relative z-10 flex items-center gap-2 pl-4 transition-all duration-300 ease-out group-hover:translate-x-10 group-hover:opacity-0">
+      {/* Button content */}
+      <div className="relative z-10 flex items-center gap-2 transition-transform duration-300 ease-out">
         {pulseDot && (
           <span className="relative flex h-2 w-2 mr-0.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0284c7]" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-85" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-white" />
           </span>
         )}
         <span className="font-mono text-xs uppercase font-bold tracking-wider">
           {children}
         </span>
-      </div>
-
-      {/* 21st.dev Hover state: Translated Content Label + Directional Arrow */}
-      <div
-        className={cn(
-          "absolute inset-0 z-10 flex h-full w-full translate-x-8 items-center justify-center gap-2 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100 font-mono text-xs uppercase font-bold tracking-wider",
-          variantStyles.hoverText,
+        {icon === "right" && (
+          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1.5" />
         )}
-      >
-        <span>{children}</span>
-        {icon === "right" && <ArrowRight className="w-3.5 h-3.5" />}
-        {icon === "up-right" && <ArrowUpRight className="w-3.5 h-3.5" />}
+        {icon === "up-right" && (
+          <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 text-sky-200 group-hover:text-white" />
+        )}
       </div>
     </>
   );

@@ -257,7 +257,7 @@ export const Hero: React.FC = () => {
                   icon="none"
                   className="w-full text-center"
                 >
-                  Proposal
+                  Proposal / RFQ
                 </AnimatedButton>
               </div>
 
