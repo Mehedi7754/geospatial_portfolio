@@ -78,7 +78,7 @@ const showcaseProjects: ShowcaseProject[] = [
     num: "04",
     category: "UAV Photogrammetry",
     title: "Chittagong Economic Zone 3D Mesh & Earthwork",
-    image: "/inner/drone-fields.webp", // Perfectly proportioned 3:2 aerial drone photogrammetry
+    image: "/inner/drone-fields.webp",
     client: "BEZA Industrial Authority",
     location: "Mirsarai, Chattogram",
     benchmark: "2.5cm GSD True Orthomosaic",
@@ -99,14 +99,14 @@ export const ProjectsSection: React.FC = () => {
   return (
     <section id="portfolio" className="py-20 lg:py-28 bg-white">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16 pb-6 border-b border-slate-100">
+        {/* Minimal Portfolio Header (TROMA / BuildGo Style) */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16 pb-6 border-b border-slate-100">
           <div>
             <span className="text-[11px] font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
-              PORTFOLIO SHOWCASE • 04 SELECTED CASE STUDIES
+              PORTFOLIO • RECENT CASE STUDIES
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
-              Featured Infrastructure Works
+              Check Some Of Our Recent Work
             </h2>
           </div>
 
@@ -129,7 +129,7 @@ export const ProjectsSection: React.FC = () => {
             >
               <div>
                 {/* Visual Image Block with Responsive Aspect Ratio */}
-                <div className="relative aspect-[16/10] rounded-3xl overflow-hidden bg-slate-950 shadow-lg mb-6">
+                <div className="relative aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-950 shadow-md group-hover:shadow-2xl transition-all duration-300 mb-5">
                   <Image
                     src={proj.image}
                     alt={proj.title}
@@ -144,7 +144,7 @@ export const ProjectsSection: React.FC = () => {
                     <span className="px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-[10px] font-mono tracking-wider uppercase font-bold">
                       {proj.num} • {proj.category}
                     </span>
-                    <span className="px-2.5 py-1 rounded-full bg-[#ea580c] text-[10px] font-bold">
+                    <span className="px-2.5 py-1 rounded-full bg-[#ea580c] text-[10px] font-bold shadow-md">
                       {proj.benchmark}
                     </span>
                   </div>
@@ -183,25 +183,23 @@ export const ProjectsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Big Agency Link Banner to Sub-Page */}
-        <div className="mt-16 sm:mt-20 p-8 sm:p-12 rounded-3xl bg-slate-900 text-white flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xl relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 via-transparent to-transparent pointer-events-none" />
-
+        {/* Minimal Agency Link Banner to Sub-Page (No Box Container Look) */}
+        <div className="mt-16 sm:mt-20 p-8 sm:p-12 rounded-3xl bg-slate-50 border border-slate-200/80 text-[#0f172a] flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xs relative overflow-hidden">
           <div className="relative z-10 max-w-xl">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-orange-400 block mb-1.5">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#ea580c] block mb-1.5">
               31 NATIONWIDE INFRASTRUCTURE DELIVERABLES
             </span>
-            <h3 className="text-xl sm:text-3xl font-black tracking-tight leading-tight">
+            <h3 className="text-xl sm:text-3xl font-black tracking-tight leading-tight text-[#0f172a]">
               Looking for our complete government &amp; private project catalog?
             </h3>
-            <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
               Explore our searchable directory of all 31 verified engineering surveys across all 64 districts.
             </p>
           </div>
 
           <Link
             href="/projects"
-            className="relative z-10 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold rounded-full shadow-lg shadow-orange-500/30 transition transform hover:-translate-y-0.5 self-start md:self-center flex-shrink-0"
+            className="relative z-10 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold rounded-full shadow-lg shadow-orange-500/25 transition transform hover:-translate-y-0.5 self-start md:self-center shrink-0"
           >
             <span>Browse Complete 31 Projects Directory</span>
             <ArrowRight className="w-4 h-4" />
@@ -234,81 +232,72 @@ export const ProjectsSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setActiveProject(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-slate-950/60 hover:bg-slate-950 text-white transition backdrop-blur-xs"
+                className="absolute top-4 right-4 p-2 rounded-full bg-slate-900/80 hover:bg-slate-900 text-white backdrop-blur-md transition border border-white/10"
+                aria-label="Close modal"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm text-slate-700">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100 text-xs">
+            <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 text-xs">
                 <div>
-                  <span className="text-slate-400 block font-bold uppercase text-[9.5px] mb-0.5">
-                    Client Authority
-                  </span>
-                  <span className="font-bold text-slate-900">{activeProject.client}</span>
+                  <span className="text-slate-400 block font-medium">Authority / Client</span>
+                  <span className="font-bold text-slate-900 mt-0.5 block">{activeProject.client}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block font-bold uppercase text-[9.5px] mb-0.5">
-                    Project Corridor
-                  </span>
-                  <span className="font-bold text-slate-900">{activeProject.location}</span>
+                  <span className="text-slate-400 block font-medium">Corridor / Location</span>
+                  <span className="font-bold text-slate-900 mt-0.5 block">{activeProject.location}</span>
                 </div>
-                <div>
-                  <span className="text-slate-400 block font-bold uppercase text-[9.5px] mb-0.5">
-                    Tolerance Standard
-                  </span>
-                  <span className="font-bold text-emerald-700">{activeProject.benchmark}</span>
+                <div className="col-span-2 sm:col-span-1">
+                  <span className="text-slate-400 block font-medium">Quality Benchmark</span>
+                  <span className="font-bold text-[#ea580c] mt-0.5 block">{activeProject.benchmark}</span>
                 </div>
               </div>
 
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                  Scope &amp; Technical Execution
+                  Project Background &amp; Technical Execution
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
                   {activeProject.summary}
                 </p>
               </div>
 
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                  Delivered Spatial Assets
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                  Delivered Engineering Data Assets
                 </h4>
-                <ul className="space-y-2 text-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {activeProject.deliverables.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-slate-700">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                    <div
+                      key={i}
+                      className="flex items-start gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-[#ea580c] shrink-0 mt-0.5" />
                       <span>{item}</span>
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
-            </div>
 
-            <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-              <Link
-                href="/projects"
-                onClick={() => setActiveProject(null)}
-                className="text-xs font-bold text-slate-600 hover:text-[#ea580c] transition"
-              >
-                View all 31 projects in directory →
-              </Link>
-
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
+              <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <Link
+                  href="/projects"
                   onClick={() => setActiveProject(null)}
-                  className="px-4 py-2 text-xs font-bold text-slate-700 hover:text-slate-900"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-full transition"
                 >
-                  Close
-                </button>
+                  <span>View Full 31 Project Directory</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+
                 <Link
                   href="#contact"
                   onClick={() => setActiveProject(null)}
-                  className="px-5 py-2 text-xs font-bold text-white bg-[#ea580c] hover:bg-[#c2410c] rounded-full transition"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-full shadow-md shadow-orange-500/20 transition"
                 >
-                  Inquire Project
+                  <span>Request RFQ for Similar Scope</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
