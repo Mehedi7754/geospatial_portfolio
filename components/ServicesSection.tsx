@@ -158,10 +158,7 @@ export const ServicesSection: React.FC = () => {
                 onClick={() => setModalDiscipline(item)}
                 className="group cursor-pointer flex flex-col items-start border-t border-slate-200 pt-5"
               >
-                <div className="w-full flex items-center justify-between mb-3 font-mono">
-                  <span className="text-xs font-bold text-[#ea580c]">
-                    // {item.code}
-                  </span>
+                <div className="w-full flex items-center justify-end mb-3">
                   <div className="w-9 h-9 bg-slate-100 group-hover:bg-[#ea580c] text-slate-700 group-hover:text-white transition-colors flex items-center justify-center rounded-none">
                     <Icon className="w-4 h-4" />
                   </div>
@@ -200,7 +197,7 @@ export const ServicesSection: React.FC = () => {
 
               <div className="absolute bottom-4 left-6 right-6">
                 <span className="px-2 py-0.5 bg-[#ea580c] text-[10px] font-mono font-bold text-white uppercase tracking-wider mb-2 inline-block rounded-none">
-                  [ {modalDiscipline.code} ]
+                  ENGINEERING SPECIFICATION
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
                   {modalDiscipline.title}

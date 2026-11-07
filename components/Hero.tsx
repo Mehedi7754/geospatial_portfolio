@@ -66,28 +66,10 @@ export const Hero: React.FC = () => {
   return (
     <section id="home" className="pt-28 pb-14 sm:pt-36 sm:pb-20 bg-white text-[#0f172a]">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Minimal Editorial Coordinates Header */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-4 mb-8 border-b border-slate-200 text-[11px] font-mono text-slate-500 uppercase tracking-widest">
-          <div className="flex items-center gap-2.5">
-            <span className="w-2 h-2 bg-[#ea580c]" />
-            <span className="font-bold text-slate-900">GEOSPATIAL WORKS</span>
-            <span>• 1ST CLASS GEODETIC CONSULTANCY</span>
-          </div>
-          <div className="hidden md:flex items-center gap-6">
-            <span>DHAKA [23°48&apos;N 90°24&apos;E]</span>
-            <span>SOB / PWD CERTIFIED</span>
-          </div>
-        </div>
-
         {/* Side-by-Side Hero Section: Left Minimal Typography + Right Sharp Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-12 sm:mb-16">
           {/* Left Column (6 Cols): Clean Minimal Typography (ZERO Extra Paragraphs) */}
           <div className="lg:col-span-6 flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-50 border border-orange-200 text-[#ea580c] text-[11px] font-mono font-bold uppercase tracking-wider mb-4 w-fit rounded-none">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ea580c] animate-pulse" />
-              <span>1ST CLASS GEOSPATIAL &amp; GEODETIC CONSULTANCY</span>
-            </div>
-
             <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-black text-[#0f172a] tracking-tight leading-[1.08] mb-6">
               Engineering the ground. <br />
               <span className="text-[#ea580c]">Shaping Bangladesh&apos;s future.</span>
@@ -218,8 +200,8 @@ export const Hero: React.FC = () => {
         {/* 3 Editorial Column Highlights (Zero Paragraphs, Direct Clean Links) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-slate-200">
           <Link href="/#services" className="group block">
-            <span className="text-[10px] font-mono text-[#ea580c] block mb-0.5 font-bold">
-              01 // GEODETIC POSITIONING
+            <span className="text-[10px] font-mono text-[#ea580c] block mb-0.5 font-bold uppercase tracking-wider">
+              GEODETIC POSITIONING
             </span>
             <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors flex items-center justify-between">
               <span>Sub-Centimeter RTK GNSS Baselines</span>
@@ -228,8 +210,8 @@ export const Hero: React.FC = () => {
           </Link>
 
           <Link href="/#services" className="group block">
-            <span className="text-[10px] font-mono text-[#ea580c] block mb-0.5 font-bold">
-              02 // AERIAL PHOTOGRAMMETRY
+            <span className="text-[10px] font-mono text-[#ea580c] block mb-0.5 font-bold uppercase tracking-wider">
+              AERIAL PHOTOGRAMMETRY
             </span>
             <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors flex items-center justify-between">
               <span>Sub-3cm GSD Drone Orthomosaics</span>
@@ -238,8 +220,8 @@ export const Hero: React.FC = () => {
           </Link>
 
           <Link href="/#services" className="group block">
-            <span className="text-[10px] font-mono text-[#ea580c] block mb-0.5 font-bold">
-              03 // SPATIAL INTELLIGENCE
+            <span className="text-[10px] font-mono text-[#ea580c] block mb-0.5 font-bold uppercase tracking-wider">
+              SPATIAL INTELLIGENCE
             </span>
             <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors flex items-center justify-between">
               <span>Enterprise PostGIS Spatial Databases</span>

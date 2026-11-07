@@ -94,10 +94,10 @@ export default function FleetPage() {
                   key={cat}
                   type="button"
                   onClick={() => setActiveCategory(cat)}
-                  className={`text-xs px-3.5 py-1.5 rounded-full font-semibold transition-all ${
+                  className={`text-xs px-3.5 py-1.5 rounded-none font-mono font-bold transition-all ${
                     activeCategory === cat
-                      ? "bg-[#ea580c] text-white shadow-md shadow-orange-500/20"
-                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                      ? "bg-[#ea580c] text-white"
+                      : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                   }`}
                 >
                   {cat}
@@ -123,11 +123,11 @@ export default function FleetPage() {
               return (
                 <div
                   key={idx}
-                  className="group rounded-2xl bg-white border border-slate-200/80 hover:border-orange-300 transition-all duration-300 hover:shadow-xl overflow-hidden flex flex-col justify-between"
+                  className="group rounded-none bg-white border border-slate-300 hover:border-slate-900 transition-all duration-300 shadow-xs overflow-hidden flex flex-col justify-between"
                 >
                   <div>
                     <div
-                      className={`relative aspect-[16/10] overflow-hidden ${
+                      className={`relative aspect-[16/10] overflow-hidden rounded-none ${
                         isCutout ? "bg-gradient-to-b from-slate-50 to-orange-50/20" : "bg-slate-100"
                       }`}
                     >
@@ -138,15 +138,15 @@ export default function FleetPage() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className={
                           isCutout
-                            ? "object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                            : "object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            ? "object-contain p-4 group-hover:scale-105 transition-transform duration-300 rounded-none"
+                            : "object-cover object-center group-hover:scale-105 transition-transform duration-500 rounded-none"
                         }
                       />
-                      <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-900/85 backdrop-blur-xs text-[10px] font-bold text-white uppercase tracking-wider">
+                      <div className="absolute top-3 left-3 px-2 py-0.5 rounded-none bg-slate-900/90 text-white font-mono text-[10px] font-bold uppercase tracking-wider">
                         {eq.category}
                       </div>
 
-                      <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-xs text-[11px] font-bold text-slate-900 shadow-xs border border-slate-200/80">
+                      <div className="absolute top-3 right-3 px-2 py-0.5 rounded-none bg-white font-mono text-[11px] font-bold text-slate-900 border border-slate-300">
                         {eq.quantity}
                       </div>
                     </div>
@@ -159,14 +159,14 @@ export default function FleetPage() {
                         Model: {eq.model} • Origin: {eq.origin}
                       </span>
 
-                      <p className="text-xs text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-200/60 leading-relaxed">
+                      <p className="text-xs text-slate-600 bg-slate-50 p-3 rounded-none border border-slate-200 leading-relaxed font-mono">
                         {eq.keySpecs.join(" • ")}
                       </p>
                     </div>
                   </div>
 
                   <div className="p-5 pt-0">
-                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-medium">
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-mono">
                       <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                         Ready for Field Dispatch

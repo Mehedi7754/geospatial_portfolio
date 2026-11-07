@@ -39,9 +39,6 @@ export const Navbar: React.FC = () => {
           aria-label="Geospatial Works Home"
         >
           <AnimatedLogo size="sm" priority showText={true} />
-          <span className="hidden xl:inline-flex items-center px-2 py-0.5 text-[10px] font-mono font-bold tracking-wider uppercase bg-slate-100 text-slate-800 border border-slate-300 rounded-none">
-            PORTFOLIO [2026]
-          </span>
         </Link>
 
         {/* Desktop Navigation Links */}
