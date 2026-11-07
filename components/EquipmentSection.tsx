@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { equipmentData } from "@/data/companyData";
 import {
   Radio,
@@ -27,12 +28,14 @@ export const EquipmentSection: React.FC = () => {
     "High-Performance Computing",
   ];
 
+  // Authentic project photos for the 4 national impact benchmarks
   const impactMetrics = [
     {
       stat: "208.37",
       unit: "km²",
       title: "BADC Flagship Irrigation Survey",
       desc: "High-density survey covering 23 unions & 260 mouzas with NDVI analytics.",
+      image: "/assets/showcase/badc-irrigation-gis-project.jpg",
       icon: TrendingUp,
     },
     {
@@ -40,6 +43,7 @@ export const EquipmentSection: React.FC = () => {
       unit: "km",
       title: "Precision Road & Corridor Alignments",
       desc: "Sub-centimeter road alignment & TBM benchmark setup for LGED & DTCA.",
+      image: "/assets/showcase/gulshan-badda-road-project.jpg",
       icon: Compass,
     },
     {
@@ -47,6 +51,7 @@ export const EquipmentSection: React.FC = () => {
       unit: "GCPs",
       title: "Nationwide Control in All 64 Districts",
       desc: "Certified Ground Control Points across Bangladesh for Digital Land Zoning.",
+      image: "/assets/showcase/photogrammetry-3d-terrain.png",
       icon: MapPin,
     },
     {
@@ -54,9 +59,20 @@ export const EquipmentSection: React.FC = () => {
       unit: "Poles",
       title: "BPDB Distribution Asset GIS",
       desc: "Surveyed & geodatabase-structured electrical distribution network assets.",
+      image: "/assets/showcase/spatial-data-analytics.png",
       icon: Zap,
     },
   ];
+
+  // Real verified instrumentation images matching company profile
+  const fleetImages: Record<string, string> = {
+    "CHCNAV i83 RTK GNSS Receivers": "/assets/showcase/chcnav-i83-rtk-gnss.jpg",
+    "DJI Enterprise UAV Fleet": "/assets/showcase/drone-uav-field-operation.png",
+    "Precision Total Stations": "/assets/showcase/total-station-instrument.png",
+    "Automatic Optical Levels": "/assets/showcase/optical-level-instrument.png",
+    "Hydrographic Echo Sounder": "/assets/showcase/echo-sounder-d270.png",
+    "GIS Workstations & Computing": "/assets/showcase/spatial-data-analytics.png",
+  };
 
   const filteredEquipment =
     activeCategory === "All Fleet"
@@ -80,10 +96,10 @@ export const EquipmentSection: React.FC = () => {
 
   return (
     <>
-      {/* 1. National Impact & Standards Section - Minimal & Clean */}
-      <section id="standards" className="py-20 bg-slate-50 border-b border-slate-200/80">
+      {/* 1. National Impact & Standards Section - Visual Benchmarks */}
+      <section id="standards" className="py-20 lg:py-24 bg-slate-50 border-b border-slate-200/80">
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-10">
+          <div className="max-w-2xl mb-12">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-800 text-[11px] font-bold tracking-wider uppercase mb-3">
               <Award className="w-3.5 h-3.5 text-amber-600" />
               <span>National Impact</span>
@@ -96,40 +112,49 @@ export const EquipmentSection: React.FC = () => {
             </p>
           </div>
 
-          {/* 4 Clean Metric Cards */}
+          {/* 4 Visual Metric Cards with Photos */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {impactMetrics.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <div
                   key={idx}
-                  className="p-6 rounded-2xl bg-white border border-slate-200/80 hover:border-slate-900 transition-all duration-200 flex flex-col justify-between"
+                  className="group rounded-2xl bg-white border border-slate-200/80 hover:border-slate-900 transition-all duration-300 overflow-hidden flex flex-col justify-between hover:shadow-lg"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="p-2 rounded-xl bg-slate-50 text-slate-700">
-                        <Icon className="w-4 h-4" />
+                    {/* Visual Photo Header */}
+                    <div className="relative aspect-[16/10] bg-slate-100 overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+
+                      <div className="absolute bottom-2.5 left-3 right-3 flex items-baseline gap-1 text-white">
+                        <span className="text-2xl font-black tracking-tight">
+                          {item.stat}
+                        </span>
+                        <span className="text-xs font-bold text-amber-400">
+                          {item.unit}
+                        </span>
                       </div>
-                      <span className="text-[10px] font-mono font-bold text-slate-400">
-                        #{idx + 1}
-                      </span>
+
+                      <div className="absolute top-2.5 right-2.5 p-1.5 rounded-lg bg-slate-950/80 text-amber-400 backdrop-blur-xs">
+                        <Icon className="w-3.5 h-3.5" />
+                      </div>
                     </div>
 
-                    <div className="flex items-baseline gap-1.5 mb-2">
-                      <span className="text-3xl font-black text-[#0f172a] tracking-tight">
-                        {item.stat}
-                      </span>
-                      <span className="text-sm font-bold text-amber-600">
-                        {item.unit}
-                      </span>
+                    <div className="p-4">
+                      <h3 className="text-sm font-bold text-slate-900 mb-1 leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs text-slate-500 leading-relaxed">
+                        {item.desc}
+                      </p>
                     </div>
-
-                    <h3 className="text-sm font-bold text-slate-900 mb-1 leading-snug">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-slate-500 leading-relaxed">
-                      {item.desc}
-                    </p>
                   </div>
                 </div>
               );
@@ -138,10 +163,10 @@ export const EquipmentSection: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. Calibrated Field Fleet - Minimal & Free of Clutter */}
+      {/* 2. Calibrated Field Fleet - With Authentic Instrument Photography */}
       <section id="fleet" className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-[11px] font-bold tracking-wider uppercase mb-3">
                 <Wrench className="w-3.5 h-3.5 text-amber-600" />
@@ -174,50 +199,60 @@ export const EquipmentSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Minimal Fleet Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Fleet Cards with Real Instrument Photos */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredEquipment.map((eq, idx) => {
               const Icon = getCategoryIcon(eq.category);
+              const instrumentPhoto = fleetImages[eq.name] || "/assets/showcase/chcnav-i83-rtk-gnss.jpg";
 
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl bg-slate-50/60 border border-slate-200/80 hover:border-slate-900 p-5 transition-all duration-200 hover:bg-white hover:shadow-md flex flex-col justify-between"
+                  className="group rounded-2xl bg-white border border-slate-200/80 hover:border-slate-900 transition-all duration-300 hover:shadow-lg overflow-hidden flex flex-col justify-between"
                 >
                   <div>
-                    {/* Header Row: Icon + Quantity */}
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="p-2 rounded-xl bg-white border border-slate-200 text-slate-800">
-                        <Icon className="w-4 h-4 text-amber-600" />
+                    {/* Visual Instrument Image */}
+                    <div className="relative aspect-[16/10] bg-slate-100 overflow-hidden">
+                      <Image
+                        src={instrumentPhoto}
+                        alt={eq.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-slate-900/85 backdrop-blur-xs text-[10px] font-bold text-white uppercase tracking-wider">
+                        {eq.category}
                       </div>
-                      <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-white border border-slate-200 text-slate-700">
+
+                      <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-[11px] font-bold text-slate-900 shadow-xs">
                         {eq.quantity}
-                      </span>
+                      </div>
                     </div>
 
-                    {/* Name & Model */}
-                    <h3 className="text-sm font-bold text-[#0f172a] leading-snug">
-                      {eq.name}
-                    </h3>
-                    <span className="text-[11px] font-mono text-slate-400 block mb-3">
-                      Model: {eq.model} • Origin: {eq.origin}
-                    </span>
+                    <div className="p-5">
+                      <h3 className="text-base font-bold text-[#0f172a] leading-snug mb-0.5">
+                        {eq.name}
+                      </h3>
+                      <span className="text-[11px] font-mono text-slate-400 block mb-3">
+                        Model: {eq.model} • Origin: {eq.origin}
+                      </span>
 
-                    {/* Key Spec Line (1-line highlight instead of endless bullet points) */}
-                    <p className="text-xs text-slate-600 bg-white/80 p-2.5 rounded-xl border border-slate-200/60 mb-3 leading-relaxed">
-                      {eq.keySpecs.slice(0, 2).join(" • ")}
-                    </p>
+                      <p className="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-200/60 leading-relaxed">
+                        {eq.keySpecs.slice(0, 2).join(" • ")}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Clean Status Footer */}
-                  <div className="pt-2.5 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-slate-500 font-medium">
-                    <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                      Ready for Dispatch
-                    </span>
-                    <span className="font-mono text-slate-400">
-                      SOB Datum Calibrated
-                    </span>
+                  <div className="p-4 pt-0">
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-medium">
+                      <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        Ready for Dispatch
+                      </span>
+                      <span className="font-mono text-slate-400">
+                        SOB Calibrated
+                      </span>
+                    </div>
                   </div>
                 </div>
               );
