@@ -55,7 +55,7 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-7 flex flex-col justify-center">
             <h3 className="text-2xl sm:text-4xl font-black text-[#0f172a] tracking-tight leading-[1.12] mb-4">
               Leading Geospatial Agency <br />
-              <span className="text-[#0284c7]">For Critical Infrastructure.</span>
+              <span className="text-[#0284c7]">For Critical <span className="text-[#ea3829]">Infrastructure.</span></span>
             </h3>
 
             {/* Single Concise Statement (NO Extra Paragraphs) */}
@@ -123,7 +123,7 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <div>
-            <span className="text-3xl sm:text-5xl font-black text-[#0284c7] tracking-tight block">
+            <span className="text-3xl sm:text-5xl font-black text-[#ea3829] tracking-tight block">
               100%
             </span>
             <strong className="text-xs font-bold text-slate-900 block mt-1.5 uppercase">

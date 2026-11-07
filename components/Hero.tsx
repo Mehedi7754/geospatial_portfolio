@@ -49,7 +49,7 @@ const heroShowcases: HeroShowcase[] = [
 
 export const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [viewMode, setViewMode] = useState<"3d" | "photo">("3d");
+  const [viewMode, setViewMode] = useState<"3d" | "photo">("photo");
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % heroShowcases.length);
@@ -72,14 +72,14 @@ export const Hero: React.FC = () => {
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Side-by-Side Hero Section: Left Minimal Typography + Right 3D / Photographic Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-12 sm:mb-16">
-          {/* Left Column (6 Cols): Clean Minimal Typography (Theme: Corporate Logo Blue) */}
+          {/* Left Column (6 Cols): Clean Minimal Typography (Theme: Logo Royal Blue & Precision Red) */}
           <div className="lg:col-span-6 flex flex-col justify-center">
             <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-black text-[#0f172a] tracking-tight leading-[1.08] mb-6">
               Engineering the ground. <br />
-              <span className="text-[#0284c7]">Shaping Bangladesh&apos;s future.</span>
+              <span className="text-[#0284c7]">Shaping Bangladesh&apos;s <span className="text-[#ea3829]">Future.</span></span>
             </h1>
 
-            {/* Desktop Direct Animated Action Links */}
+            {/* Desktop Direct Animated Action Links (Powered by 21st.dev Component) */}
             <div className="hidden lg:flex flex-wrap items-center gap-3 sm:gap-4 mb-6">
               <AnimatedButton
                 href="#portfolio"
@@ -103,11 +103,11 @@ export const Hero: React.FC = () => {
                 variant="outline"
                 icon="none"
               >
-                Proposal
+                Proposal / RFQ
               </AnimatedButton>
             </div>
 
-            {/* Desktop Technical Metric Tags with Logo Blue Accent */}
+            {/* Desktop Technical Metric Tags with Logo Blue & Red Accents */}
             <div className="hidden lg:flex pt-4 border-t border-slate-200 flex-wrap items-center gap-5 sm:gap-7 text-xs font-mono text-slate-700">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#0284c7]" />
@@ -118,8 +118,8 @@ export const Hero: React.FC = () => {
                 <span className="font-bold text-slate-900">All 64 Districts</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#0284c7]" />
-                <span className="font-bold text-[#0284c7]">SOB Datum Certified</span>
+                <span className="w-2 h-2 rounded-full bg-[#ea3829]" />
+                <span className="font-bold text-[#ea3829]">SOB Datum Certified</span>
               </div>
             </div>
           </div>
@@ -271,8 +271,8 @@ export const Hero: React.FC = () => {
                   <span className="font-bold text-slate-900">All 64 Districts</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#0284c7]" />
-                  <span className="font-bold text-[#0284c7]">SOB Datum Certified</span>
+                  <span className="w-2 h-2 rounded-full bg-[#ea3829]" />
+                  <span className="font-bold text-[#ea3829]">SOB Datum Certified</span>
                 </div>
               </div>
             </div>

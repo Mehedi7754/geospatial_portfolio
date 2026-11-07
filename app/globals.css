@@ -86,6 +86,19 @@ body {
   left: 100%;
 }
 
+@keyframes shimmer-slide {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+.animate-shimmer-slide {
+  animation: shimmer-slide var(--speed, 3s) ease-in-out infinite alternate;
+}
+
 .portfolio-glass-dark {
   background: rgba(15, 23, 42, 0.75);
   backdrop-filter: blur(12px);

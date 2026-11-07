@@ -269,3 +269,4 @@ export const GeospatialThreeScene: React.FC<GeospatialThreeSceneProps> = ({
     </div>
   );
 };
+

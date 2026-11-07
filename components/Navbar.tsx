@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X, Phone } from "lucide-react";
 import { AnimatedLogo } from "./AnimatedLogo";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -113,13 +114,12 @@ export const Navbar: React.FC = () => {
             </span>
           </a>
 
-          <Link
+          <InteractiveHoverButton
             href="/#contact"
-            className="btn-beam-shine flex items-center gap-2 px-5 py-2.5 bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-mono font-bold rounded-none shadow-xs hover:shadow-md hover:shadow-sky-500/25 transition-all duration-200 group"
-          >
-            <span>INQUIRE / RFQ</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-white/90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Link>
+            variant="primary"
+            text="INQUIRE / RFQ"
+            className="text-xs font-mono font-bold"
+          />
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -199,14 +199,13 @@ export const Navbar: React.FC = () => {
               <Phone className="w-4 h-4 text-[#0284c7]" />
               <span>Hotline: +880 1713 907779</span>
             </a>
-            <Link
+            <InteractiveHoverButton
               href="/#contact"
               onClick={closeMobile}
-              className="btn-beam-shine flex items-center justify-center gap-2 w-full py-3 bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-bold rounded-none shadow-xs transition"
-            >
-              <span>TRANSMIT RFQ BRIEF</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-white" />
-            </Link>
+              variant="primary"
+              text="TRANSMIT RFQ BRIEF"
+              className="w-full text-xs font-mono font-bold"
+            />
           </div>
         </div>
       )}

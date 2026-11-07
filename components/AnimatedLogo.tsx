@@ -65,8 +65,8 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
 
       {/* Corporate Logo Typography */}
       {showText && (
-        <span className={light ? "text-white" : ""}>
-          GEOSPATIAL <strong style={{ color: "#638b2d" }}>WORKS</strong>
+        <span className={`font-black tracking-tight ${light ? "text-white" : "text-[#0284c7]"}`}>
+          GEOSPATIAL <strong style={{ color: "#ea3829" }}>WORKS</strong>
         </span>
       )}
     </div>

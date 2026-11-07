@@ -3,12 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface AnimatedButtonProps {
   href?: string;
   onClick?: () => void;
   children: React.ReactNode;
-  variant?: "primary" | "dark" | "outline" | "ghost";
+  variant?: "primary" | "accent" | "dark" | "outline" | "ghost" | "shimmer";
   size?: "sm" | "md" | "lg";
   icon?: "right" | "up-right" | "none";
   className?: string;
@@ -16,6 +17,12 @@ interface AnimatedButtonProps {
   pulseDot?: boolean;
 }
 
+/**
+ * AnimatedButton - Powered by 21st.dev animated button component patterns:
+ * 1. Interactive Hover Button (Expanding circle dot flooding button + translated arrow on hover)
+ * 2. Shimmer Beam Shine & Micro-physics
+ * Colors matched 1:1 to Corporate Logo (Royal Blue #0284c7 & Precision Red #ea3829).
+ */
 export const AnimatedButton: React.FC<AnimatedButtonProps> = ({
   href,
   onClick,
@@ -27,70 +34,109 @@ export const AnimatedButton: React.FC<AnimatedButtonProps> = ({
   type = "button",
   pulseDot = false,
 }) => {
-  const baseStyles =
-    "relative inline-flex items-center justify-center font-mono font-bold tracking-wider uppercase transition-all duration-300 rounded-none cursor-pointer overflow-hidden group select-none";
-
   const sizeStyles = {
-    sm: "px-4 py-2 text-xs gap-2",
-    md: "px-6 py-3.5 text-xs sm:text-sm gap-2.5",
-    lg: "px-8 py-4 text-sm gap-3",
+    sm: "px-4 py-2 text-xs gap-2 min-h-[38px]",
+    md: "px-6 py-3.5 text-xs sm:text-sm gap-2.5 min-h-[46px]",
+    lg: "px-8 py-4 text-sm gap-3 min-h-[52px]",
   }[size];
 
+  // Colors derived 1:1 from the Geospatial Works Logo (Royal Blue + Signal Red)
   const variantStyles = {
-    primary:
-      "bg-[#0284c7] hover:bg-[#0369a1] text-white shadow-sm hover:shadow-lg hover:shadow-sky-500/25 border border-sky-400/30 hover:-translate-y-0.5 active:translate-y-0",
-    dark:
-      "bg-slate-950 hover:bg-[#0284c7] text-white border border-slate-800 hover:border-[#0284c7] shadow-sm hover:shadow-lg hover:shadow-sky-500/20 hover:-translate-y-0.5 active:translate-y-0",
-    outline:
-      "bg-white hover:bg-slate-900 text-slate-900 hover:text-white border border-slate-300 hover:border-slate-900 shadow-2xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0",
-    ghost:
-      "bg-transparent hover:bg-sky-50 text-slate-700 hover:text-[#0284c7] border-b-2 border-transparent hover:border-[#0284c7]",
+    primary: {
+      button:
+        "border-slate-300 bg-white text-slate-900 hover:border-[#0284c7] hover:shadow-lg hover:shadow-sky-500/25",
+      dot: "bg-[#0284c7]",
+      hoverText: "text-white",
+    },
+    accent: {
+      button:
+        "border-slate-300 bg-white text-slate-900 hover:border-[#ea3829] hover:shadow-lg hover:shadow-rose-500/25",
+      dot: "bg-[#ea3829]",
+      hoverText: "text-white",
+    },
+    dark: {
+      button:
+        "border-slate-800 bg-slate-950 text-white hover:border-[#0284c7] hover:shadow-lg hover:shadow-sky-500/20",
+      dot: "bg-[#0284c7]",
+      hoverText: "text-white",
+    },
+    outline: {
+      button:
+        "border-slate-300 bg-white/80 text-slate-900 hover:border-slate-900 hover:shadow-md",
+      dot: "bg-slate-900",
+      hoverText: "text-white",
+    },
+    ghost: {
+      button:
+        "border-transparent bg-transparent text-slate-700 hover:text-[#0284c7] hover:bg-sky-50",
+      dot: "bg-[#0284c7]",
+      hoverText: "text-[#0284c7]",
+    },
+    shimmer: {
+      button:
+        "border-sky-400/40 bg-[#0284c7] text-white hover:shadow-lg hover:shadow-sky-500/30",
+      dot: "bg-white",
+      hoverText: "text-white",
+    },
   }[variant];
 
   const content = (
     <>
-      {/* Light Shimmer Beam that sweeps across the button on hover */}
-      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none" />
+      {/* 21st.dev Expanding Dot Transition Layer */}
+      <div
+        className={cn(
+          "absolute left-4 top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-full transition-all duration-500 ease-out group-hover:scale-[110] pointer-events-none z-0",
+          variantStyles.dot,
+        )}
+      />
 
-      {/* Pulsing geodetic radar dot */}
-      {pulseDot && (
-        <span className="relative flex h-2 w-2 mr-1">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-300 opacity-75" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-white" />
+      {/* Shimmer light beam sweep */}
+      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none z-1" />
+
+      {/* Initial state: Pulsing dot (if requested) + Content Label */}
+      <div className="relative z-10 flex items-center gap-2 pl-4 transition-all duration-300 ease-out group-hover:translate-x-10 group-hover:opacity-0">
+        {pulseDot && (
+          <span className="relative flex h-2 w-2 mr-0.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0284c7]" />
+          </span>
+        )}
+        <span className="font-mono text-xs uppercase font-bold tracking-wider">
+          {children}
         </span>
-      )}
+      </div>
 
-      {/* Button Text */}
-      <span className="relative z-10 transition-colors duration-200">{children}</span>
-
-      {/* Animated Arrow Icon */}
-      {icon === "right" && (
-        <ArrowRight className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1.5" />
-      )}
-      {icon === "up-right" && (
-        <ArrowUpRight className="w-4 h-4 relative z-10 text-sky-300 group-hover:text-white transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-      )}
+      {/* 21st.dev Hover state: Translated Content Label + Directional Arrow */}
+      <div
+        className={cn(
+          "absolute inset-0 z-10 flex h-full w-full translate-x-8 items-center justify-center gap-2 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100 font-mono text-xs uppercase font-bold tracking-wider",
+          variantStyles.hoverText,
+        )}
+      >
+        <span>{children}</span>
+        {icon === "right" && <ArrowRight className="w-3.5 h-3.5" />}
+        {icon === "up-right" && <ArrowUpRight className="w-3.5 h-3.5" />}
+      </div>
     </>
+  );
+
+  const baseClasses = cn(
+    "group relative inline-flex items-center justify-center font-mono font-bold tracking-wider uppercase transition-all duration-300 rounded-none cursor-pointer overflow-hidden border select-none active:translate-y-px",
+    sizeStyles,
+    variantStyles.button,
+    className,
   );
 
   if (href) {
     return (
-      <Link
-        href={href}
-        onClick={onClick}
-        className={`${baseStyles} ${sizeStyles} ${variantStyles} ${className}`}
-      >
+      <Link href={href} onClick={onClick} className={baseClasses}>
         {content}
       </Link>
     );
   }
 
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      className={`${baseStyles} ${sizeStyles} ${variantStyles} ${className}`}
-    >
+    <button type={type} onClick={onClick} className={baseClasses}>
       {content}
     </button>
   );

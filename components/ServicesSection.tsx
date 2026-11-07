@@ -160,7 +160,7 @@ export const ServicesSection: React.FC = () => {
               Engineering <br />
               rigor. <br />
               <span className="text-[#0284c7]">Proven</span> <br />
-              <span className="text-[#0284c7]">precision.</span>
+              <span className="text-[#ea3829]">precision.</span>
             </h2>
 
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm mb-6 font-normal">

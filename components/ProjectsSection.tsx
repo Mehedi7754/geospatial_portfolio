@@ -150,7 +150,7 @@ export const ProjectsSection: React.FC = () => {
               Real <br />
               landscapes. <br />
               <span className="text-[#0284c7]">Real</span> <br />
-              <span className="text-[#0284c7]">impact.</span>
+              <span className="text-[#ea3829]">impact.</span>
             </h2>
 
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm mb-6 font-normal">
