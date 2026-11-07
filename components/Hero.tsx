@@ -124,7 +124,7 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column (6 Cols): Three.js Interactive 3D Canvas / Sharp Photo Showcase */}
+          {/* Right Column (6 Cols): Three.js Interactive 3D Canvas / Sharp Minimal Photo Showcase */}
           <div className="lg:col-span-6 relative w-full">
             <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/12] w-full bg-slate-950 border border-slate-300 shadow-md rounded-none overflow-hidden group">
               {/* Three.js Interactive 3D Canvas View */}
@@ -133,7 +133,7 @@ export const Hero: React.FC = () => {
                   <GeospatialThreeScene />
                 </div>
               ) : (
-                /* Field Photography Slideshow */
+                /* Field Photography Slideshow - Clean Minimal Presentation */
                 <>
                   {heroShowcases.map((slide, idx) => (
                     <div
@@ -150,46 +150,40 @@ export const Hero: React.FC = () => {
                         sizes="(max-width: 1024px) 100vw, 50vw"
                         className={`object-cover rounded-none transition-transform duration-700 group-hover:scale-102 ${slide.objectPosition}`}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+                      {/* Subtle, Minimal Bottom Gradient for Crisp Legibility */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/15 to-transparent pointer-events-none" />
 
-                      {/* Top Technical Metadata */}
-                      <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-white text-xs z-20 font-mono">
-                        <span className="px-2 py-0.5 bg-slate-900/90 text-[10px] uppercase font-bold border border-white/10 rounded-none">
+                      {/* Clean Top Category Tag (Left only - No collision with View Toggle) */}
+                      <div className="absolute top-3.5 left-3.5 z-20">
+                        <span className="px-2.5 py-1 bg-slate-950/80 backdrop-blur-xs text-white text-[10px] font-mono uppercase font-bold tracking-wider border border-white/10 rounded-none">
                           {slide.category}
-                        </span>
-                        <span className="px-2 py-0.5 bg-[#0284c7] text-[10px] font-bold rounded-none">
-                          {slide.spec}
                         </span>
                       </div>
 
-                      {/* Bottom Technical Caption */}
-                      <div className="absolute bottom-4 left-4 right-4 text-white z-20">
+                      {/* Clean Minimal Bottom Caption */}
+                      <div className="absolute bottom-3.5 left-3.5 right-20 z-20 text-white pointer-events-none">
                         <span className="text-[11px] font-mono text-sky-400 block mb-0.5">
                           {slide.client}
                         </span>
-                        <h2 className="text-base sm:text-lg font-bold tracking-tight text-white mb-1 leading-snug">
+                        <h2 className="text-sm sm:text-base font-bold tracking-tight text-white leading-snug">
                           {slide.title}
                         </h2>
-                        <div className="flex items-center justify-between pt-1.5 border-t border-white/20 text-xs text-slate-300 font-mono">
-                          <span>{slide.location}</span>
-                          <Link
-                            href="/projects"
-                            className="inline-flex items-center gap-1 text-white hover:text-sky-400 transition font-bold"
-                          >
-                            <span>DOSSIER</span>
-                            <ArrowUpRight className="w-3.5 h-3.5" />
-                          </Link>
-                        </div>
+                        <span className="text-[11px] text-slate-300 font-mono block mt-0.5">
+                          {slide.location} • <span className="text-white font-medium">{slide.spec}</span>
+                        </span>
                       </div>
                     </div>
                   ))}
 
-                  {/* Slider Controls */}
-                  <div className="absolute bottom-4 right-4 z-30 flex items-center gap-1">
+                  {/* Clean Slider Controls (Safely positioned at bottom-right with slide counter) */}
+                  <div className="absolute bottom-3.5 right-3.5 z-30 flex items-center gap-1.5 bg-slate-950/85 backdrop-blur-xs px-2 py-1 border border-white/15">
+                    <span className="font-mono text-[10px] text-slate-300 mr-1">
+                      0{currentSlide + 1} / 0{heroShowcases.length}
+                    </span>
                     <button
                       type="button"
                       onClick={prevSlide}
-                      className="p-1.5 bg-slate-900/80 hover:bg-[#0284c7] text-white transition border border-white/20 rounded-none cursor-pointer"
+                      className="p-1 text-slate-300 hover:text-white hover:bg-white/10 transition rounded-none cursor-pointer"
                       aria-label="Previous slide"
                     >
                       <ChevronLeft className="w-3.5 h-3.5" />
@@ -197,7 +191,7 @@ export const Hero: React.FC = () => {
                     <button
                       type="button"
                       onClick={nextSlide}
-                      className="p-1.5 bg-slate-900/80 hover:bg-[#0284c7] text-white transition border border-white/20 rounded-none cursor-pointer"
+                      className="p-1 text-slate-300 hover:text-white hover:bg-white/10 transition rounded-none cursor-pointer"
                       aria-label="Next slide"
                     >
                       <ChevronRight className="w-3.5 h-3.5" />
@@ -207,11 +201,11 @@ export const Hero: React.FC = () => {
               )}
 
               {/* View Mode Toggle: Interactive Three.js 3D Mesh <-> Field Photography */}
-              <div className="absolute top-4 right-4 z-30 flex items-center gap-1 font-mono text-[10px]">
+              <div className="absolute top-3.5 right-3.5 z-30 font-mono text-[10px]">
                 <button
                   type="button"
                   onClick={() => setViewMode(viewMode === "3d" ? "photo" : "3d")}
-                  className="px-2.5 py-1.5 bg-slate-900/90 hover:bg-[#0284c7] text-white border border-sky-400/40 rounded-none transition flex items-center gap-1.5 cursor-pointer shadow-sm"
+                  className="px-2.5 py-1.5 bg-slate-950/85 hover:bg-[#0284c7] backdrop-blur-xs text-white border border-white/20 rounded-none transition flex items-center gap-1.5 cursor-pointer shadow-sm"
                   title="Toggle 3D Coordinate Mesh & Field Photography"
                 >
                   {viewMode === "3d" ? (
