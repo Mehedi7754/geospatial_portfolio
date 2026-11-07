@@ -1,351 +1,432 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
-import { 
-  milestoneProjects, 
-  completedProjectsCatalog, 
-  Project 
-} from "@/data/companyData";
-import { 
-  Building2, 
-  MapPin, 
-  Search, 
-  ExternalLink, 
-  Filter, 
-  Layers, 
-  Calendar, 
-  Compass, 
-  CheckCircle2, 
+import { completedProjectsCatalog } from "@/data/companyData";
+import {
+  ArrowRight,
   ArrowUpRight,
-  TrendingUp
+  Search,
+  CheckCircle2,
+  X,
+  MapPin,
+  Building2,
+  ShieldCheck,
+  ChevronDown,
+  Layers,
+  Filter,
 } from "lucide-react";
 
+interface FeaturedProject {
+  id: string;
+  category: string;
+  title: string;
+  image: string;
+  client: string;
+  location: string;
+  metric: string;
+  summary: string;
+  deliverables: string[];
+}
+
+const featuredProjects: FeaturedProject[] = [
+  {
+    id: "expressway",
+    category: "Infrastructure",
+    title: "Dhaka–Ashulia Elevated Expressway Alignment",
+    image: "/inner/bridge-aerial.webp",
+    client: "Bangladesh Bridge Authority (BBA)",
+    location: "Dhaka-Ashulia Corridor",
+    metric: "Millimeter Pier Control",
+    summary:
+      "Millimeter-level corridor control establishment, elevated pier centerline setting-out, and right-of-way topographic modeling for Bangladesh Bridge Authority.",
+    deliverables: [
+      "Sub-mm pier centerline coordinates & geodetic control",
+      "High-density topographic corridor profile & cross-sections",
+      "Right-of-Way (RoW) acquisition alignment drawings",
+      "As-built pier displacement & structural settlement logs",
+    ],
+  },
+  {
+    id: "chittagong-ez",
+    category: "Aerial Survey",
+    title: "Chittagong Economic Zone 3D Mapping",
+    image: "/inner/drone-fields.webp",
+    client: "Bangladesh Economic Zones Authority (BEZA)",
+    location: "Mirsarai, Chattogram",
+    metric: "2.5cm GSD Orthomosaic",
+    summary:
+      "UAV photogrammetric aerial survey producing 2.5cm GSD true orthomosaics and volumetric cut/fill earthwork computations for industrial zones.",
+    deliverables: [
+      "2.5cm Ground Sampling Distance (GSD) true orthomosaic",
+      "Dense 3D point cloud and Digital Elevation Model (DEM)",
+      "Volumetric cut and fill earthwork grading reports",
+      "High-precision plot demarcation and infrastructure masterplan",
+    ],
+  },
+  {
+    id: "sylhet-flood",
+    category: "GIS & Mapping",
+    title: "Sylhet Riverbank & Floodplain Modeling",
+    image: "/inner/river-aerial.webp",
+    client: "Bangladesh Water Development Board (BWDB)",
+    location: "Surma-Kushiyara Basin, Sylhet",
+    metric: "Acoustic Bathymetry",
+    summary:
+      "Multi-temporal satellite remote sensing, riverbed morphology analysis, and hydrodynamic cross-section surveys for regional flood mitigation.",
+    deliverables: [
+      "Riverbed bathymetric depth contours & acoustic soundings",
+      "HEC-RAS 1D/2D hydraulic hydrodynamic model inputs",
+      "Multi-temporal satellite flood inundation mapping",
+      "Embankment scour vulnerability assessment sheets",
+    ],
+  },
+];
+
 export const ProjectsSection: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [activeMilestoneTab, setActiveMilestoneTab] = useState<number>(0);
+  const [activeCategory, setActiveCategory] = useState("All (31)");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [expandedProjectId, setExpandedProjectId] = useState<number | null>(null);
+  const [modalProject, setModalProject] = useState<(typeof completedProjectsCatalog)[0] | FeaturedProject | null>(null);
 
   const categories = [
-    "All",
-    "Survey & GNSS",
-    "GIS & Remote Sensing",
-    "Engineering & Infrastructure",
-    "Hydrographic & Bathymetry",
-    "Urban & Modernization",
+    { label: "All (31)", value: "All (31)" },
+    { label: "Engineering & Infrastructure", value: "Engineering & Infrastructure" },
+    { label: "Survey & GNSS", value: "Survey & GNSS" },
+    { label: "GIS & Remote Sensing", value: "GIS & Remote Sensing" },
+    { label: "Urban & Modernization", value: "Urban & Modernization" },
   ];
 
-  const filteredProjects = completedProjectsCatalog.filter((project) => {
-    const matchesCategory =
-      selectedCategory === "All" || project.category === selectedCategory;
-    const matchesSearch =
-      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.client.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (project.location && project.location.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesCategory && matchesSearch;
-  });
+  const filteredProjects = useMemo(() => {
+    return completedProjectsCatalog.filter((proj) => {
+      const matchesFilter =
+        activeCategory === "All (31)" || proj.category === activeCategory;
+      const matchesSearch =
+        !searchQuery.trim() ||
+        proj.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        proj.client.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (proj.location ?? "").toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesFilter && matchesSearch;
+    });
+  }, [activeCategory, searchQuery]);
 
-  const featuredEngineeringProjects = [
-    {
-      title: "Gabtoli Inter-District Bus Terminal Modernization",
-      client: "Dhaka North City Corporation (DNCC)",
-      scope: "Digital Survey, 3D Architectural Model, Ticket Counters, Waiting Lounges & Drainage",
-      image: "/assets/showcase/gabtoli-terminal-3d-model.jpg",
-      area: "71.64 Acres (0.28 km²)",
-      tag: "Urban Infrastructure",
-      slide: "Slide 16–17",
-    },
-    {
-      title: "Gulshan-1 to Progati Sarani Link Road (Gulshan-Badda)",
-      client: "Dhaka North City Corporation (DNCC)",
-      scope: "Topographic Survey, RCC Median, Waiting Shelters, Road 130/134 Improvements",
-      image: "/assets/showcase/gulshan-badda-road-project.jpg",
-      area: "58.52 Acres (0.236 km²)",
-      tag: "Corridor Engineering",
-      slide: "Slide 18–19",
-    },
-    {
-      title: "Mohakhali Inter-District Bus Terminal Modernization",
-      client: "Dhaka North City Corporation (DNCC)",
-      scope: "AC Waiting Rooms, Counter Restructuring, Passenger Flow & Integrated Storm Drainage",
-      image: "/assets/showcase/mohakhali-terminal-project.jpg",
-      area: "Modern Passenger Complex",
-      tag: "Transportation Terminal",
-      slide: "Slide 20–21",
-    },
-    {
-      title: "Abdulpur Railway Bypass & Pahartoli Workshop Survey",
-      client: "Bangladesh Railway / Oriental Consultants Global (OCG Japan)",
-      scope: "RTK & UAV Survey, Digital Surface Model (DSM), DTM, Track Alignment & 3D Mesh",
-      image: "/assets/showcase/abdulpur-railway-bypass-dsm.jpg",
-      area: "RCIPF Subproject 2",
-      tag: "Railway Geodetics",
-      slide: "Slide 29–32",
-    },
-    {
-      title: "Pilot Irrigation & Web-Based Agri Information System (WEB-AIS)",
-      client: "Bangladesh Agricultural Development Corporation (BADC)",
-      scope: "208.37 km² Survey, 23 Unions, 260 Mouzas, Canal Mapping, Water Gauges & NDVI",
-      image: "/assets/showcase/badc-irrigation-gis-project.jpg",
-      area: "208.37 km² Regional Scale",
-      tag: "GIS & Remote Sensing",
-      slide: "Slide 25–28",
-    },
-    {
-      title: "Hydrographic Bathymetry for Major River Bridges",
-      client: "Local Government Engineering Department (LGED) / EQMS",
-      scope: "Brahmaputra River (Islampur), Khoksha, Doara Bazar, Rangabali & Silicon City",
-      image: "/assets/showcase/river-bathymetry-sounding.jpg",
-      area: "Multi-River Soundings",
-      tag: "Hydrographic Surveys",
-      slide: "Slide 37–38",
-    },
-  ];
+  const toggleExpand = (id: number) => {
+    setExpandedProjectId((prev) => (prev === id ? null : id));
+  };
 
   return (
-    <section id="projects" className="py-24 bg-slate-50 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-[#0034a0] text-xs font-bold uppercase tracking-wider mb-3">
-            <TrendingUp className="w-3.5 h-3.5" />
-            <span>Proven Track Record (Slides 16–40)</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Flagship Engineering Deliverables & <br />
-            <span className="text-[#0034a0]">Milestone Project Portfolio</span>
-          </h2>
-          <p className="mt-4 text-base text-slate-600 leading-relaxed">
-            Authentic documentation of major national infrastructure projects completed for government ministries, city corporations, and international development agencies.
-          </p>
-        </div>
-
-        {/* Milestone Projects Strip (Slides 33–35) */}
-        <div className="mb-20">
-          <div className="flex items-center justify-between mb-6">
+    <>
+      {/* 1. Featured Portfolio Projects (3 Box-Sized Cards in 1 Row) */}
+      <section id="projects" className="py-20 lg:py-24 bg-[#f8fafc] border-b border-slate-200/80">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
-                Key Milestone Projects by Year
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500">
-                Sourced from official milestone records (Slides 33, 34, 35)
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-[11px] font-bold tracking-wider uppercase mb-3">
+                <Layers className="w-3.5 h-3.5 text-amber-600" />
+                <span>Featured Works</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0f172a] tracking-tight leading-tight">
+                Real landscapes. Real impact.
+              </h2>
+              <p className="mt-2 text-slate-500 text-sm max-w-xl">
+                A selection of our verified work across geodetic surveying, drone mapping, and spatial analysis.
               </p>
             </div>
+
+            <a
+              href="#directory"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 hover:border-slate-900 text-slate-800 text-xs font-bold rounded-xl shadow-2xs transition self-start md:self-end"
+            >
+              <span>View All 31 Projects</span>
+              <ArrowRight className="w-3.5 h-3.5 text-amber-500" />
+            </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {milestoneProjects.map((m, idx) => (
+          {/* 3 Landscape Project Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {featuredProjects.map((proj) => (
               <div
-                key={m.title}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/90 hover:shadow-md transition-all flex flex-col justify-between"
+                key={proj.id}
+                onClick={() => setModalProject(proj)}
+                className="group relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-end min-h-[360px]"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="px-2.5 py-1 rounded-md bg-blue-50 text-[#0034a0] text-xs font-bold">
-                      Year {m.year}
-                    </span>
-                    <span className="text-lg font-black text-[#e63946]">
-                      {m.stat}
-                    </span>
-                  </div>
+                <Image
+                  src={proj.image}
+                  alt={proj.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
-                  <h4 className="font-bold text-slate-900 text-base leading-snug mb-1">
-                    {m.title}
-                  </h4>
-
-                  <div className="text-xs font-semibold text-blue-700 mb-3">
-                    {m.client}
-                  </div>
-
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {m.description}
-                  </p>
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+                  <span className="px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-white/95 text-slate-900 tracking-wider uppercase">
+                    {proj.category}
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-amber-500 text-slate-950">
+                    {proj.metric}
+                  </span>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] text-slate-400">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>Verified Corporate Deliverable</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Featured Engineering Case Studies with Real PPTX Deliverable Imagery (Slides 16–32) */}
-        <div className="mb-20">
-          <div className="mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
-              Featured Case Studies & Engineering Visuals
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-500">
-              Photogrammetric models, corridor plans, and 3D architectural deliverables (Slides 16–32)
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredEngineeringProjects.map((fp) => (
-              <div
-                key={fp.title}
-                className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-lg transition-all group flex flex-col justify-between"
-              >
-                <div>
-                  {/* Real Deliverable Image */}
-                  <div className="relative h-56 w-full bg-slate-950 overflow-hidden">
-                    <Image
-                      src={fp.image}
-                      alt={fp.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 400px"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-bold border border-slate-700">
-                      {fp.tag}
-                    </div>
-                    <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-blue-600 text-white text-[11px] font-bold">
-                      {fp.area}
-                    </div>
-                  </div>
-
-                  {/* Body Details */}
-                  <div className="p-6 space-y-3">
-                    <span className="text-[11px] font-mono font-semibold text-slate-400">
-                      {fp.slide}
-                    </span>
-                    <h4 className="font-bold text-slate-900 text-lg leading-tight group-hover:text-[#0034a0] transition-colors">
-                      {fp.title}
-                    </h4>
-                    <div className="text-xs font-semibold text-[#0034a0]">
-                      Client: {fp.client}
-                    </div>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      {fp.scope}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="p-6 pt-0">
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                    <span className="flex items-center gap-1 font-medium text-slate-700">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                      Delivered & Approved
-                    </span>
-                    <a href="#contact" className="text-[#0034a0] hover:underline font-bold flex items-center gap-1">
-                      <span>Inquire</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
+                <div className="relative z-10 p-5">
+                  <span className="text-[11px] font-semibold text-amber-400 block mb-1">
+                    {proj.client}
+                  </span>
+                  <h3 className="text-base font-bold text-white tracking-tight leading-snug mb-3">
+                    {proj.title}
+                  </h3>
+                  <div className="flex items-center justify-between pt-2.5 border-t border-white/10 text-xs text-slate-300 group-hover:text-amber-300 transition-colors font-semibold">
+                    <span>Inspect Dossier</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-amber-400" />
                   </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Complete 35+ Project Catalog with Interactive Search & Filter (Slides 36–40) */}
-        <div className="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-sm">
-          <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-slate-200 gap-4">
-            <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0034a0] uppercase tracking-wider">
-                <Layers className="w-3.5 h-3.5" />
-                <span>Complete Official Tasks Ledger (Slides 36–40)</span>
+      {/* 2. Official Project Archive Directory (31 Projects) - Ultra Professional Institutional Architecture */}
+      <section id="directory" className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Executive Archive Container */}
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xs">
+            {/* Top Bar: Title & Search Bar */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 pb-6 border-b border-slate-100">
+              <div>
+                <span className="text-[10.5px] font-bold uppercase tracking-wider text-[#347b3d] block mb-1">
+                  OFFICIAL GOVERNMENT &amp; ENTERPRISE PROJECT ARCHIVE
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black text-[#0f172a] tracking-tight">
+                  Completed &amp; Ongoing Project Directory (31 Projects)
+                </h3>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-slate-900 mt-1">
-                Completed & Ongoing Project Directory ({completedProjectsCatalog.length} Major Works)
-              </h3>
+
+              {/* Minimal Search Bar matching reference image */}
+              <div className="relative min-w-[260px] sm:min-w-[320px]">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Search by project name or client..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-full text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#347b3d] focus:bg-white transition"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
+              </div>
             </div>
 
-            {/* Search Box */}
-            <div className="relative w-full md:w-72">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                placeholder="Search projects, clients, or locations..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-[#0034a0] bg-slate-50"
-              />
-            </div>
-          </div>
-
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2 py-4 border-b border-slate-100">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                  selectedCategory === cat
-                    ? "bg-[#0034a0] text-white shadow-xs"
-                    : "bg-slate-100 hover:bg-slate-200 text-slate-600"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* Projects Table / List */}
-          <div className="mt-4 divide-y divide-slate-100 max-h-[600px] overflow-y-auto pr-1">
-            {filteredProjects.length === 0 ? (
-              <div className="py-12 text-center text-slate-400 text-sm">
-                No projects found matching &ldquo;{searchQuery}&rdquo;.
-              </div>
-            ) : (
-              filteredProjects.map((p) => (
-                <div
-                  key={p.id}
-                  className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50/80 px-3 rounded-lg transition-colors"
+            {/* Filter Tabs matching reference style */}
+            <div className="py-4 border-b border-slate-100 flex flex-wrap items-center gap-1.5">
+              <span className="text-xs text-slate-400 mr-2 font-medium">Filter:</span>
+              {categories.map((cat) => (
+                <button
+                  key={cat.value}
+                  type="button"
+                  onClick={() => setActiveCategory(cat.value)}
+                  className={`text-xs px-3 py-1 rounded-full font-medium transition-all ${
+                    activeCategory === cat.value
+                      ? "bg-[#102d2e] text-white shadow-2xs"
+                      : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
+                  }`}
                 >
-                  <div className="space-y-1 max-w-3xl">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-mono text-xs font-bold text-slate-400">
-                        #{p.id < 10 ? `0${p.id}` : p.id}
-                      </span>
-                      <h4 className="font-bold text-sm sm:text-base text-slate-900">
-                        {p.title}
-                      </h4>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-[#0034a0]">
-                        {p.category}
-                      </span>
-                      {p.metrics && (
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700">
-                          {p.metrics}
+                  {cat.label}
+                </button>
+              ))}
+              <span className="text-xs text-slate-400 ml-auto font-mono hidden sm:inline">
+                {filteredProjects.length} records
+              </span>
+            </div>
+
+            {/* Clean Professional Project Rows (Matching Image 3 & Image 8) */}
+            <div className="max-h-[560px] overflow-y-auto divide-y divide-slate-100 pr-1">
+              {filteredProjects.map((proj) => {
+                const isExpanded = expandedProjectId === proj.id;
+
+                return (
+                  <div
+                    key={proj.id}
+                    className="py-3 px-2 sm:px-3 hover:bg-[#f8fbf6] rounded-xl transition-colors cursor-pointer group"
+                    onClick={() => toggleExpand(proj.id)}
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                      {/* Left: #ID + Title + Category Badge */}
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2.5 flex-wrap">
+                          <span className="text-xs font-mono font-bold text-slate-400 w-7 flex-shrink-0">
+                            #{proj.id.toString().padStart(2, "0")}
+                          </span>
+                          <h4 className="text-sm font-bold text-[#0f172a] group-hover:text-[#347b3d] transition-colors leading-snug">
+                            {proj.title}
+                          </h4>
+                          <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-[#eef7ee] text-[#2b6d34] border border-[#d2ebd3]">
+                            {proj.category}
+                          </span>
+                        </div>
+
+                        {/* Client & Location line */}
+                        <div className="pl-9 text-xs text-slate-500 mt-0.5 flex items-center gap-2 truncate">
+                          <span>
+                            Client: <strong className="text-slate-700 font-semibold">{proj.client}</strong>
+                          </span>
+                          {proj.location && (
+                            <>
+                              <span>•</span>
+                              <span>{proj.location}</span>
+                            </>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Right: Verified Deliverable pill button */}
+                      <div className="flex items-center gap-2 flex-shrink-0 self-start sm:self-center pl-9 sm:pl-0">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#eef7ee] text-[#2b6d34] border border-[#cbe6cc] group-hover:bg-[#e1f2e2] transition-colors">
+                          <CheckCircle2 className="w-3 h-3 text-[#2b6d34]" />
+                          <span>Verified Deliverable</span>
                         </span>
-                      )}
+                        <ChevronDown
+                          className={`w-4 h-4 text-slate-400 group-hover:text-[#347b3d] transition-transform duration-200 ${
+                            isExpanded ? "rotate-180" : ""
+                          }`}
+                        />
+                      </div>
                     </div>
 
-                    <p className="text-xs text-slate-600">
-                      {p.description}
-                    </p>
-
-                    <div className="flex items-center gap-4 text-xs text-slate-500 font-medium">
-                      <span>Client: <strong className="text-slate-800">{p.client}</strong></span>
-                      {p.location && (
-                        <span className="flex items-center gap-1">
-                          <MapPin className="w-3 h-3 text-red-500" />
-                          {p.location}
-                        </span>
-                      )}
-                    </div>
+                    {/* Inline Accordion Details (Expanded on Click) */}
+                    {isExpanded && (
+                      <div
+                        onClick={(e) => e.stopPropagation()}
+                        className="mt-3 ml-0 sm:ml-9 p-4 rounded-xl bg-white border border-slate-200 animate-in fade-in duration-150"
+                      >
+                        <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                          {proj.description}
+                        </p>
+                        <div className="flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-slate-100">
+                          <span className="text-[11px] text-slate-500">
+                            Geodetic survey data calibrated to SOB &amp; PWD reference datum.
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => setModalProject(proj)}
+                            className="inline-flex items-center gap-1 text-xs font-bold text-[#347b3d] hover:text-[#205526]"
+                          >
+                            <span>Inspect Full Technical Dossier</span>
+                            <ArrowUpRight className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
-
-                  <div className="self-end sm:self-center flex-shrink-0">
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100">
-                      <CheckCircle2 className="w-3 h-3" />
-                      Verified
-                    </span>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-400 text-center">
-            Showing {filteredProjects.length} of {completedProjectsCatalog.length} verified project engagements from the official presentation brochure.
+                );
+              })}
+            </div>
           </div>
         </div>
+      </section>
 
-      </div>
-    </section>
+      {/* 3. Technical Project Dossier Modal */}
+      {modalProject && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs animate-in fade-in duration-200">
+          <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden max-h-[90vh] flex flex-col">
+            <div className="p-6 bg-[#102d2e] text-white flex items-start justify-between gap-4">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 block mb-1">
+                  {"category" in modalProject ? modalProject.category : "Official Project Archive"}
+                </span>
+                <h3 className="text-xl font-bold tracking-tight">
+                  {modalProject.title}
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setModalProject(null)}
+                className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition flex-shrink-0"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="p-6 overflow-y-auto space-y-5 text-sm text-slate-700">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs">
+                <div>
+                  <span className="text-slate-400 block font-bold uppercase text-[9.5px] mb-0.5">
+                    Client Organization
+                  </span>
+                  <span className="font-bold text-slate-900">
+                    {modalProject.client}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block font-bold uppercase text-[9.5px] mb-0.5">
+                    Corridor / Location
+                  </span>
+                  <span className="font-bold text-slate-900">
+                    {modalProject.location || "Bangladesh"}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block font-bold uppercase text-[9.5px] mb-0.5">
+                    Benchmark Standard
+                  </span>
+                  <span className="font-bold text-emerald-700">
+                    SOB / PWD Datum Verified
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
+                  Scope of Work &amp; Deliverables
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {"summary" in modalProject ? modalProject.summary : modalProject.description}
+                </p>
+              </div>
+
+              {"deliverables" in modalProject && modalProject.deliverables && (
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
+                    Verified Deliverables Checklist
+                  </h4>
+                  <ul className="space-y-1.5 text-xs">
+                    {modalProject.deliverables.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-slate-700">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => setModalProject(null)}
+                className="px-4 py-2 text-xs font-bold text-slate-700 hover:text-slate-900"
+              >
+                Close
+              </button>
+              <a
+                href="#contact"
+                onClick={() => setModalProject(null)}
+                className="px-4 py-2 bg-[#102d2e] hover:bg-[#1a4042] text-white text-xs font-bold rounded-xl shadow-xs transition"
+              >
+                Inquire About Similar Project
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };

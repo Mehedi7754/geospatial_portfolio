@@ -4,99 +4,70 @@ import React from "react";
 import Image from "next/image";
 
 interface AnimatedLogoProps {
-  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  size?: "xs" | "sm" | "md" | "lg";
   className?: string;
   showText?: boolean;
+  light?: boolean;
   priority?: boolean;
 }
 
 export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
-  size = "md",
+  size = "sm",
   className = "",
   showText = true,
+  light = false,
   priority = false,
 }) => {
-  // Dimensions for different size variants
   const sizeMap = {
-    xs: { box: 36, img: 36, text: "text-sm", sub: "text-[9px]" },
-    sm: { box: 48, img: 48, text: "text-base", sub: "text-[10px]" },
-    md: { box: 64, img: 64, text: "text-lg", sub: "text-xs" },
-    lg: { box: 96, img: 96, text: "text-2xl", sub: "text-sm" },
-    xl: { box: 140, img: 140, text: "text-3xl", sub: "text-base" },
+    xs: { box: 34, img: 34, text: "text-sm" },
+    sm: { box: 44, img: 44, text: "text-[16px]" },
+    md: { box: 52, img: 52, text: "text-lg" },
+    lg: { box: 64, img: 64, text: "text-2xl" },
   };
 
   const currentSize = sizeMap[size];
 
   return (
-    <div className={`inline-flex items-center gap-3 select-none group ${className}`}>
-      {/* Logo container with animated location pin */}
+    <div
+      className={`corporate-logo ${
+        light ? "corporate-logo-light" : ""
+      } select-none inline-flex items-center gap-2.5 ${className}`}
+    >
+      {/* Logo container with the animated location pin */}
       <div
-        className="relative flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
+        className="relative flex-shrink-0"
         style={{ width: `${currentSize.box}px`, height: `${currentSize.box}px` }}
       >
-        {/* Base Logo Image (Crisp, proportional, stable) */}
+        {/* Base Logo Layer (Stable blue globe and structures from assets/images/logo.png) */}
         <div className="absolute inset-0">
           <Image
-            src="/assets/images/logo.png"
-            alt="Geospatial Works Logo"
+            src="/logo-base.png"
+            alt="Geospatial Works"
             width={currentSize.img}
             height={currentSize.img}
             priority={priority}
-            className="w-full h-full object-contain filter drop-shadow-sm"
+            className="w-full h-full object-contain"
           />
         </div>
 
-        {/* Animated Location Pin Overlay */}
-        {/*
-          The original logo has location pins at the left and right linked by a curved dashed arc.
-          This overlay smoothly glides a precision glowing pin symbol back and forth across the arc
-          between the left and right sides without disturbing the logo's baseline geometry.
-        */}
-        <div className="absolute inset-0 pointer-events-none overflow-visible">
-          <div className="w-full h-full relative">
-            <div className="logo-pin-traveler absolute">
-              {/* Mini glowing pin marker */}
-              <div className="relative flex flex-col items-center">
-                <svg
-                  viewBox="0 0 24 32"
-                  className="w-[18%] h-auto filter drop-shadow-[0_2px_4px_rgba(230,57,70,0.5)] transition-all"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  {/* Pin body */}
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12C0 21 12 32 12 32C12 32 24 21 24 12C24 5.37 18.63 0 12 0Z"
-                    className="fill-blue-700"
-                  />
-                  {/* Center hole */}
-                  <circle cx="12" cy="12" r="5" className="fill-white" />
-                  {/* Pin pulse ring */}
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="4"
-                    className="fill-red-500 animate-ping opacity-60"
-                  />
-                </svg>
-                {/* Red shadow indicator */}
-                <div className="w-[12%] h-[3px] bg-red-600 rounded-full mt-[1px] opacity-80" />
-              </div>
-            </div>
-          </div>
+        {/* Animated Location Pin Layer (Subtle, smooth back-and-forth movement) */}
+        <div className="absolute inset-0 pointer-events-none logo-pin-animated">
+          <Image
+            src="/logo-pin.png"
+            alt=""
+            width={currentSize.img}
+            height={currentSize.img}
+            priority={priority}
+            className="w-full h-full object-contain"
+          />
         </div>
       </div>
 
-      {/* Typography side */}
+      {/* Corporate Logo Typography */}
       {showText && (
-        <div className="flex flex-col leading-tight">
-          <div className={`font-black tracking-tight ${currentSize.text} flex items-center gap-1.5`}>
-            <span className="text-[#0034a0]">GEOSPATIAL</span>
-            <span className="text-[#e63946]">WORKS</span>
-          </div>
-          <span className={`text-slate-500 dark:text-slate-400 font-medium tracking-wider uppercase ${currentSize.sub}`}>
-            Where Engineering Meets Precision
-          </span>
-        </div>
+        <span className={light ? "text-white" : ""}>
+          GEOSPATIAL <strong style={{ color: "#638b2d" }}>WORKS</strong>
+        </span>
       )}
     </div>
   );

@@ -1,112 +1,130 @@
 "use client";
 
 import React from "react";
-import { multidisciplinaryExperts } from "@/data/companyData";
-import { 
-  Users, 
-  FileText, 
-  CheckCircle2, 
-  Send, 
-  Briefcase, 
-  Globe2, 
-  ShieldCheck,
-  ArrowRight
+import Link from "next/link";
+import {
+  Route,
+  Train,
+  Waves,
+  Building,
+  Sprout,
+  Trash2,
+  ArrowUpRight,
+  Users,
 } from "lucide-react";
 
 export const ExpertNetworkSection: React.FC = () => {
+  const expertDomains = [
+    {
+      id: "roads",
+      title: "Roads & Highways Engineering",
+      icon: Route,
+      scope: "Geometric corridor alignment, pavement condition surveys, and highway drainage layouts.",
+      highlight: "Traverse cross-sections & curve geometry setting",
+      leadTime: "Fast-Track Mobilization",
+    },
+    {
+      id: "rail",
+      title: "Railway Infrastructure & Track Design",
+      icon: Train,
+      scope: "Bypass corridor alignments, station yards, and workshop facility track centerlines.",
+      highlight: "UAV photogrammetric DSM & leveling",
+      leadTime: "Technical Consultant",
+    },
+    {
+      id: "hydro",
+      title: "River Hydraulics & Water Resources",
+      icon: Waves,
+      scope: "Bathymetric profiling, riverbed morphology, scour depth analysis, and acoustic echo sounding.",
+      highlight: "HEC-RAS 1D/2D hydraulic cross-sections",
+      leadTime: "Hydro Vessel Deployment",
+    },
+    {
+      id: "urban",
+      title: "Architectural & Urban Planning",
+      icon: Building,
+      scope: "Inter-district bus terminals, commercial developments, civic masterplans, and 3D architectural models.",
+      highlight: "3D BIM models & vehicular circulation",
+      leadTime: "Urban Planning Team",
+    },
+    {
+      id: "agri",
+      title: "Agricultural GIS & Irrigation Networks",
+      icon: Sprout,
+      scope: "Primary & secondary canal digitizing, multi-temporal NDVI vegetation health, and irrigation systems.",
+      highlight: "High-density rural mapping & WEB-AIS",
+      leadTime: "GIS Specialist Team",
+    },
+    {
+      id: "waste",
+      title: "Solid Waste & Sanitary Landfills",
+      icon: Trash2,
+      scope: "Municipal solid waste sanitary landfill site selection, environmental feasibility, and engineering design.",
+      highlight: "Leachate drainage & multi-criteria GIS",
+      leadTime: "Environmental Team",
+    },
+  ];
+
   return (
-    <section id="experts" className="py-24 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Main Card with Gradient Border */}
-        <div className="relative rounded-3xl bg-gradient-to-br from-slate-900 via-[#071530] to-slate-900 text-white p-8 sm:p-12 lg:p-16 shadow-2xl border border-slate-700 overflow-hidden">
-          
-          {/* Subtle Ambient Radar / Orb effect */}
-          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-blue-600/15 blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-red-600/10 blur-3xl pointer-events-none" />
-
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Left Column: Description & Multidisciplinary Capabilities */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-bold uppercase tracking-wider">
-                <Users className="w-3.5 h-3.5" />
-                <span>Human Resources & Expert Engagement Network (Slide 41)</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
-                Multidisciplinary Engineering & <br />
-                <span className="text-blue-400">Subject-Matter Specialists</span>
-              </h2>
-
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                Geospatial Works combines its core technical capabilities with an extensive network of nationally and internationally experienced engineers, consultants, researchers, and subject-matter specialists. Through project-based and assignment-specific engagement arrangements, we identify and mobilize qualified professionals according to project scope, technical requirements, budget, and availability.
-              </p>
-
-              {/* Expertise Tags */}
-              <div className="pt-2">
-                <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
-                  Disciplines Mobilized Across Sectors:
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {multidisciplinaryExperts.map((exp) => (
-                    <span
-                      key={exp}
-                      className="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-medium text-slate-200 flex items-center gap-1.5 hover:border-blue-500 transition-colors"
-                    >
-                      <CheckCircle2 className="w-3 h-3 text-blue-400 flex-shrink-0" />
-                      <span>{exp}</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: CTA Card - Share your ToR (Exact PPTX wording) */}
-            <div className="lg:col-span-5">
-              <div className="bg-slate-800/90 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-slate-700 shadow-xl space-y-6">
-                <div className="space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#e63946]">
-                    Immediate Project Mobilization
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-black text-white">
-                    Have a Project Requirement?
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    &ldquo;Share your ToR or scope of work. We will connect you with suitable experts and propose a tailored technical team to meet your project objectives.&rdquo;
-                  </p>
-                </div>
-
-                <div className="space-y-3 pt-2">
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700 text-xs text-slate-300">
-                    <Briefcase className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                    <span>Tailored technical team structuring per budget & scope</span>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700 text-xs text-slate-300">
-                    <Globe2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                    <span>National & international consulting track records</span>
-                  </div>
-                </div>
-
-                <a
-                  href="#contact"
-                  className="w-full inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#0034a0] to-blue-600 hover:from-blue-700 hover:to-blue-500 text-white py-3.5 px-6 rounded-xl font-bold text-sm shadow-lg shadow-blue-900/40 transition-all hover:scale-[1.02] active:scale-100"
-                >
-                  <FileText className="w-4 h-4" />
-                  <span>Submit Terms of Reference (ToR)</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-
-                <div className="text-[11px] text-center text-slate-400">
-                  Response within 24 business hours • Confidential review
-                </div>
-              </div>
-            </div>
-
+    <section id="team" className="py-20 lg:py-24 bg-[#f8fafc] border-b border-slate-200/80">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Minimal Section Header */}
+        <div className="max-w-2xl mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-800 text-[11px] font-bold tracking-wider uppercase mb-3">
+            <Users className="w-3.5 h-3.5 text-amber-600" />
+            <span>Specialists Network</span>
           </div>
-
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0f172a] tracking-tight leading-tight">
+            Engineering specialists &amp; subject-matter experts.
+          </h2>
+          <p className="mt-2 text-slate-500 text-sm leading-relaxed">
+            Multidisciplinary team of transport planners, licensed UAV pilots, hydrologists, and GIS database developers.
+          </p>
         </div>
 
+        {/* 6 Minimal Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {expertDomains.map((domain) => {
+            const Icon = domain.icon;
+
+            return (
+              <div
+                key={domain.id}
+                className="rounded-2xl bg-white border border-slate-200/80 hover:border-slate-900 p-5 transition-all duration-200 hover:shadow-md flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="p-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-800">
+                      <Icon className="w-4 h-4 text-emerald-700" />
+                    </div>
+                    <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                      {domain.leadTime}
+                    </span>
+                  </div>
+
+                  <h3 className="text-sm sm:text-base font-bold text-[#0f172a] mb-1.5 leading-snug">
+                    {domain.title}
+                  </h3>
+                  <p className="text-xs text-slate-500 leading-relaxed mb-3">
+                    {domain.scope}
+                  </p>
+
+                  <div className="text-[11px] font-medium text-slate-600 bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-100 mb-3">
+                    Focus: <span className="font-semibold text-slate-800">{domain.highlight}</span>
+                  </div>
+                </div>
+
+                <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-700 hover:text-amber-600 transition-colors">
+                  <span className="text-[11px] text-slate-400 font-normal">Mobilization Ready</span>
+                  <Link href="#contact" className="inline-flex items-center gap-1">
+                    <span>Inquire</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

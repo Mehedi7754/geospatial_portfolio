@@ -1,149 +1,132 @@
 @import "tailwindcss";
+@import "./corporate.css";
 
-:root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --primary-blue: #0034a0;
-  --accent-red: #e63946;
-  --navy-dark: #071530;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #0f172a;
+  background-color: #f8fafc;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar with Construction Gold Accent */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
   background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
-  border-radius: 5px;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #f59e0b;
 }
 
-/* Geospatial Background Grid Pattern */
-.geospatial-grid {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(0, 52, 160, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 52, 160, 0.04) 1px, transparent 1px);
+/* Logo Location Pin Animation */
+.logo-pin-animated {
+  animation: logoPinSway 3s ease-in-out infinite;
+  transform-origin: center bottom;
+  will-change: transform;
 }
 
-.geospatial-grid-dark {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-}
-
-/* Subtle Crosshair Coordinates Marks */
-.crosshair-pattern {
-  background-image: radial-gradient(rgba(0, 52, 160, 0.15) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* Logo Location Pin Traveler Animation */
-/*
-  Follows the red dashed arc in the company logo smoothly back and forth between
-  the left pin position (4%, 45%) and the right pin position (78%, 45%).
-*/
-.logo-pin-traveler {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  animation: pinArcGlide 4.5s ease-in-out infinite;
-  will-change: transform, left, top;
-}
-
-@keyframes pinArcGlide {
+@keyframes logoPinSway {
   0% {
-    left: 4%;
-    top: 45%;
-    transform: scale(0.95);
-  }
-  15% {
-    transform: scale(1.05) rotate(6deg);
-  }
-  25% {
-    left: 44%;
-    top: 8%;
-    transform: scale(1.1) rotate(0deg);
-  }
-  35% {
-    transform: scale(1.05) rotate(-6deg);
+    transform: translateX(-3.5px) rotate(-1.5deg);
   }
   50% {
-    left: 78%;
-    top: 45%;
-    transform: scale(0.95);
-  }
-  65% {
-    transform: scale(1.05) rotate(-6deg);
-  }
-  75% {
-    left: 44%;
-    top: 8%;
-    transform: scale(1.1) rotate(0deg);
-  }
-  85% {
-    transform: scale(1.05) rotate(6deg);
+    transform: translateX(3.5px) rotate(1.5deg);
   }
   100% {
-    left: 4%;
-    top: 45%;
-    transform: scale(0.95);
+    transform: translateX(-3.5px) rotate(-1.5deg);
   }
 }
 
-/* Radar Sweep Animation */
-@keyframes radarSweep {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Modern Business Portfolio Card & Glass Utilities */
+.portfolio-card-glow {
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.radar-sweep {
-  animation: radarSweep 6s linear infinite;
-  transform-origin: center center;
+.portfolio-card-glow:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(245, 158, 11, 0.3);
 }
 
-/* Floating animation */
-@keyframes gentleFloat {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+.portfolio-glass-dark {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.animate-gentle-float {
-  animation: gentleFloat 4s ease-in-out infinite;
-}
-
-/* Glassmorphism utility */
-.glass-panel {
+.portfolio-glass-light {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-.glass-panel-dark {
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Interactive Card & Dropdown Utilities */
+.hover-reveal-panel {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease-in-out;
+}
+
+.group:hover .hover-reveal-panel,
+.group:focus-within .hover-reveal-panel,
+.is-expanded .hover-reveal-panel {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* Decoupled Isolated Grid & Card Hover */
+.isolated-hover-grid {
+  display: grid;
+  align-items: start !important;
+}
+
+.isolated-hover-card {
+  align-self: start !important;
+  height: auto !important;
+}
+
+/* Infinite Marquee for Trusted Partners */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-33.333333%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Subtle grid background pattern */
+.bg-construction-grid {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-construction-grid-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
 }

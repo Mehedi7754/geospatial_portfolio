@@ -1,188 +1,230 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-import { equipmentData, Equipment } from "@/data/companyData";
-import { 
-  Radio, 
-  Plane, 
-  Crosshair, 
-  Compass, 
-  Cpu, 
-  Waves, 
-  CheckCircle, 
-  ShieldCheck, 
-  HardDrive,
-  CpuIcon
+import { equipmentData } from "@/data/companyData";
+import {
+  Radio,
+  Plane,
+  Compass,
+  Waves,
+  Cpu,
+  TrendingUp,
+  MapPin,
+  Zap,
+  Wrench,
+  Award,
 } from "lucide-react";
 
 export const EquipmentSection: React.FC = () => {
-  const [filter, setFilter] = useState<string>("All");
+  const [activeCategory, setActiveCategory] = useState<string>("All Fleet");
 
   const categories = [
-    "All",
+    "All Fleet",
     "GNSS & Positioning",
     "UAV & Drones",
     "Optical & Survey",
     "Hydrography",
-    "High-Performance Computing"
+    "High-Performance Computing",
   ];
 
-  const filteredEquipment = filter === "All"
-    ? equipmentData
-    : equipmentData.filter((e) => e.category === filter);
+  const impactMetrics = [
+    {
+      stat: "208.37",
+      unit: "km²",
+      title: "BADC Flagship Irrigation Survey",
+      desc: "High-density survey covering 23 unions & 260 mouzas with NDVI analytics.",
+      icon: TrendingUp,
+    },
+    {
+      stat: "800+",
+      unit: "km",
+      title: "Precision Road & Corridor Alignments",
+      desc: "Sub-centimeter road alignment & TBM benchmark setup for LGED & DTCA.",
+      icon: Compass,
+    },
+    {
+      stat: "10,000+",
+      unit: "GCPs",
+      title: "Nationwide Control in All 64 Districts",
+      desc: "Certified Ground Control Points across Bangladesh for Digital Land Zoning.",
+      icon: MapPin,
+    },
+    {
+      stat: "100,000+",
+      unit: "Poles",
+      title: "BPDB Distribution Asset GIS",
+      desc: "Surveyed & geodatabase-structured electrical distribution network assets.",
+      icon: Zap,
+    },
+  ];
+
+  const filteredEquipment =
+    activeCategory === "All Fleet"
+      ? equipmentData
+      : equipmentData.filter((e) => e.category === activeCategory);
+
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case "GNSS & Positioning":
+        return Radio;
+      case "UAV & Drones":
+        return Plane;
+      case "Optical & Survey":
+        return Compass;
+      case "Hydrography":
+        return Waves;
+      default:
+        return Cpu;
+    }
+  };
 
   return (
-    <section id="equipment" className="py-24 bg-slate-900 text-white relative overflow-hidden">
-      {/* Background Geospatial Grid */}
-      <div className="absolute inset-0 geospatial-grid-dark opacity-30 pointer-events-none" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-300 text-xs font-bold uppercase tracking-wider mb-3">
-            <Radio className="w-3.5 h-3.5 text-blue-400" />
-            <span>Physical Resources & Technological Arsenal (Slides 42–44)</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-            Advanced Surveying Fleet & <br />
-            <span className="text-blue-400">High-Performance Infrastructure</span>
-          </h2>
-          <p className="mt-4 text-base text-slate-300 leading-relaxed">
-            Geospatial Works owns and operates cutting-edge geodetic GNSS receivers, enterprise UAV platforms, optical leveling instruments, and computing clusters to guarantee sub-centimeter accuracy.
-          </p>
-
-          {/* Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  filter === cat
-                    ? "bg-[#0034a0] text-white shadow-md shadow-blue-900/50"
-                    : "bg-slate-800/80 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-700"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Equipment Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredEquipment.map((eq) => (
-            <div
-              key={eq.name}
-              className="bg-slate-800/80 rounded-2xl border border-slate-700/80 overflow-hidden shadow-lg flex flex-col justify-between hover:border-blue-500/60 transition-all group"
-            >
-              <div>
-                {/* Image Viewport */}
-                <div className="relative h-56 w-full bg-slate-950 overflow-hidden border-b border-slate-700">
-                  <Image
-                    src={eq.image}
-                    alt={eq.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 400px"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-slate-900/90 backdrop-blur-sm border border-slate-700 text-[11px] font-bold text-blue-300">
-                    {eq.category}
-                  </div>
-                  <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-emerald-600/90 text-white text-[11px] font-bold">
-                    {eq.quantity}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 space-y-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
-                      {eq.name}
-                    </h3>
-                    <div className="text-xs text-slate-400 font-mono mt-1">
-                      {eq.model} • {eq.origin}
-                    </div>
-                  </div>
-
-                  <ul className="space-y-2 text-xs text-slate-300 border-t border-slate-700/60 pt-3">
-                    {eq.keySpecs.map((spec, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle className="w-3.5 h-3.5 text-blue-400 flex-shrink-0 mt-0.5" />
-                        <span>{spec}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Footer status */}
-              <div className="px-6 py-3 bg-slate-900/60 border-t border-slate-700/50 flex items-center justify-between text-[11px] text-slate-400">
-                <span className="flex items-center gap-1.5 text-emerald-400 font-medium">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                  Calibrated & Deployed
-                </span>
-                <span>Slide 42–44 Record</span>
-              </div>
+    <>
+      {/* 1. National Impact & Standards Section - Minimal & Clean */}
+      <section id="standards" className="py-20 bg-slate-50 border-b border-slate-200/80">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-800 text-[11px] font-bold tracking-wider uppercase mb-3">
+              <Award className="w-3.5 h-3.5 text-amber-600" />
+              <span>National Impact</span>
             </div>
-          ))}
-        </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0f172a] tracking-tight leading-tight">
+              National impact. Precision standards.
+            </h2>
+            <p className="mt-2 text-slate-500 text-sm leading-relaxed">
+              Verified spatial benchmarks and certified accuracy across Bangladesh&apos;s strategic sectors.
+            </p>
+          </div>
 
-        {/* Workstation Specification Highlight (Slide 44) */}
-        <div className="mt-16 bg-slate-800/90 rounded-2xl border border-slate-700 p-6 sm:p-8">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-slate-700">
+          {/* 4 Clean Metric Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {impactMetrics.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={idx}
+                  className="p-6 rounded-2xl bg-white border border-slate-200/80 hover:border-slate-900 transition-all duration-200 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 rounded-xl bg-slate-50 text-slate-700">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold text-slate-400">
+                        #{idx + 1}
+                      </span>
+                    </div>
+
+                    <div className="flex items-baseline gap-1.5 mb-2">
+                      <span className="text-3xl font-black text-[#0f172a] tracking-tight">
+                        {item.stat}
+                      </span>
+                      <span className="text-sm font-bold text-amber-600">
+                        {item.unit}
+                      </span>
+                    </div>
+
+                    <h3 className="text-sm font-bold text-slate-900 mb-1 leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Calibrated Field Fleet - Minimal & Free of Clutter */}
+      <section id="fleet" className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
             <div>
-              <div className="inline-flex items-center gap-2 text-xs font-bold text-blue-400 uppercase tracking-wider">
-                <Cpu className="w-4 h-4" />
-                <span>Computing Facilities & Photogrammetry Engine</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-[11px] font-bold tracking-wider uppercase mb-3">
+                <Wrench className="w-3.5 h-3.5 text-amber-600" />
+                <span>Instrumentation Fleet</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-white mt-1">
-                High-Performance Digital Processing Cluster
-              </h3>
-              <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-2xl">
-                Equipped with Intel Core i9 14th Gen, Core Ultra 7 K-series CPUs, 64GB DDR5 memory, NVIDIA RTX graphics, and 40TB centralized NAS for processing massive drone point clouds and satellite datasets.
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0f172a] tracking-tight leading-tight">
+                Calibrated field fleet &amp; computing workstations.
+              </h2>
+              <p className="mt-2 text-slate-500 text-sm max-w-xl">
+                Certified high-precision GNSS receivers, 1-second total stations, and mapping UAVs ready for deployment.
               </p>
             </div>
 
-            <div className="flex items-center gap-4 bg-slate-900/80 px-4 py-3 rounded-xl border border-slate-700 text-xs">
-              <HardDrive className="w-6 h-6 text-red-400" />
-              <div>
-                <div className="font-bold text-white">40 TB Central NAS</div>
-                <div className="text-slate-400">Enterprise High-Speed Archive</div>
-              </div>
+            {/* Minimal Filter Tabs */}
+            <div className="flex flex-wrap gap-1.5 self-start lg:self-end">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setActiveCategory(cat)}
+                  className={`text-xs px-3 py-1 rounded-full font-semibold transition-all duration-200 ${
+                    activeCategory === cat
+                      ? "bg-[#0f172a] text-white shadow-xs"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-            <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-700/80 text-xs space-y-1">
-              <div className="font-bold text-blue-400">Workstation 01</div>
-              <div className="text-white font-medium">Intel Core i9 14th Gen K-Series</div>
-              <div className="text-slate-400">64 GB DDR5 • NVIDIA RTX 4060 Ti</div>
-            </div>
+          {/* Minimal Fleet Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredEquipment.map((eq, idx) => {
+              const Icon = getCategoryIcon(eq.category);
 
-            <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-700/80 text-xs space-y-1">
-              <div className="font-bold text-blue-400">Workstation 02</div>
-              <div className="text-white font-medium">Intel Core i9 14th Gen K-Series</div>
-              <div className="text-slate-400">64 GB DDR5 • NVIDIA RTX 4060 Ti</div>
-            </div>
+              return (
+                <div
+                  key={idx}
+                  className="rounded-2xl bg-slate-50/60 border border-slate-200/80 hover:border-slate-900 p-5 transition-all duration-200 hover:bg-white hover:shadow-md flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Header Row: Icon + Quantity */}
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="p-2 rounded-xl bg-white border border-slate-200 text-slate-800">
+                        <Icon className="w-4 h-4 text-amber-600" />
+                      </div>
+                      <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-white border border-slate-200 text-slate-700">
+                        {eq.quantity}
+                      </span>
+                    </div>
 
-            <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-700/80 text-xs space-y-1">
-              <div className="font-bold text-blue-400">Workstation 03</div>
-              <div className="text-white font-medium">Intel Core Ultra 7 K-Series</div>
-              <div className="text-slate-400">64 GB DDR5 • NVIDIA RTX 5060 Ti</div>
-            </div>
+                    {/* Name & Model */}
+                    <h3 className="text-sm font-bold text-[#0f172a] leading-snug">
+                      {eq.name}
+                    </h3>
+                    <span className="text-[11px] font-mono text-slate-400 block mb-3">
+                      Model: {eq.model} • Origin: {eq.origin}
+                    </span>
 
-            <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-700/80 text-xs space-y-1">
-              <div className="font-bold text-blue-400">Workstation 04</div>
-              <div className="text-white font-medium">Intel Core i7 14th Gen K-Series</div>
-              <div className="text-slate-400">32 GB DDR5 • 40TB NAS Integration</div>
-            </div>
+                    {/* Key Spec Line (1-line highlight instead of endless bullet points) */}
+                    <p className="text-xs text-slate-600 bg-white/80 p-2.5 rounded-xl border border-slate-200/60 mb-3 leading-relaxed">
+                      {eq.keySpecs.slice(0, 2).join(" • ")}
+                    </p>
+                  </div>
+
+                  {/* Clean Status Footer */}
+                  <div className="pt-2.5 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-slate-500 font-medium">
+                    <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      Ready for Dispatch
+                    </span>
+                    <span className="font-mono text-slate-400">
+                      SOB Datum Calibrated
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
-
-      </div>
-    </section>
+      </section>
+    </>
   );
 };

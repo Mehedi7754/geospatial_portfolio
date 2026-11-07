@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.geospatialworks.com.bd"),
-  title: "Geospatial Works | Where Engineering Meets Precision • Consultancy & Surveying",
-  description: "Geospatial Works is an engineering, geospatial, and precision surveying consultancy delivering integrated technical solutions for infrastructure development, RTK GNSS, UAV drone surveys, hydrography, GIS, and spatial planning.",
+  title: "Geospatial Works | Surveying, Mapping & GIS",
+  description:
+    "Geospatial surveying, drone mapping, GIS and remote sensing for a clearer, safer and more resilient Bangladesh.",
   keywords: [
     "Geospatial Works",
     "RTK GNSS Survey Bangladesh",
@@ -23,24 +24,24 @@ export const metadata: Metadata = {
     "Hydrographic Bathymetry",
     "GIS Spatial Analysis",
     "Engineering Consultancy Dhaka",
-    "1st Class Contractor Survey",
-    "Topographic Mapping"
+    "Topographic Mapping",
   ],
   authors: [{ name: "Geospatial Works" }],
   icons: {
-    icon: "/assets/images/logo.png",
+    icon: "/logo.webp",
   },
   openGraph: {
-    title: "Geospatial Works | Where Engineering Meets Precision",
-    description: "Integrated technical solutions for infrastructure development, precision surveying, and sustainable spatial planning.",
+    title: "Geospatial Works | Surveying, Mapping & GIS",
+    description:
+      "Geospatial surveying, drone mapping, GIS and remote sensing for a clearer, safer and more resilient Bangladesh.",
     url: "https://www.geospatialworks.com.bd",
     siteName: "Geospatial Works",
     images: [
       {
-        url: "/assets/images/logo.png",
-        width: 1200,
-        height: 1200,
-        alt: "Geospatial Works Corporate Logo",
+        url: "/logo.webp",
+        width: 1254,
+        height: 1254,
+        alt: "Geospatial Works Logo",
       },
     ],
     locale: "en_US",
@@ -64,7 +65,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900 overflow-x-hidden">
+      <body className="min-h-screen bg-white text-[#112c3a] overflow-x-hidden">
         {children}
       </body>
     </html>
