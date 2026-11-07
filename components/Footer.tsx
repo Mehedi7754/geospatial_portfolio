@@ -7,7 +7,7 @@ import { AnimatedLogo } from "./AnimatedLogo";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-950 text-slate-400 text-xs border-t border-slate-900 pt-16 pb-12">
+    <footer className="bg-slate-950 text-slate-400 text-xs border-t border-slate-900 pt-16 pb-12 font-mono">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-900">
           {/* Brand Info (4 Cols) */}
@@ -15,24 +15,24 @@ export const Footer: React.FC = () => {
             <Link href="/" className="inline-block">
               <AnimatedLogo size="sm" light priority showText={true} />
             </Link>
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
+            <p className="text-slate-400 text-xs leading-relaxed max-w-sm font-sans font-normal">
               Accredited 1st Class geospatial and engineering consultancy delivering millimeter geodetic
               surveys, drone photogrammetry, hydrography, and enterprise GIS databases across Bangladesh.
             </p>
             <div className="flex items-center gap-2 pt-2">
-              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-orange-500/10 text-orange-400 border border-orange-500/20">
-                SOB / PWD Datum Calibrated
+              <span className="px-2 py-0.5 text-[10px] font-bold bg-slate-900 text-orange-400 border border-orange-500/30 rounded-none">
+                SOB / PWD DATUM CALIBRATED
               </span>
-              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                31+ Verified Deliverables
+              <span className="px-2 py-0.5 text-[10px] font-bold bg-slate-900 text-emerald-400 border border-emerald-500/30 rounded-none">
+                31 VERIFIED WORKS
               </span>
             </div>
           </div>
 
           {/* Quick Links (2 Cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-white font-bold text-sm tracking-tight">Navigation</h4>
-            <ul className="space-y-2">
+            <h4 className="text-white font-bold text-xs uppercase tracking-wider">Navigation</h4>
+            <ul className="space-y-2 text-slate-400 text-xs font-sans">
               <li>
                 <Link href="/" className="hover:text-[#ea580c] transition">
                   Home
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link href="/#portfolio" className="hover:text-[#ea580c] transition">
-                  Featured Work
+                  Selected Works
                 </Link>
               </li>
               <li>
@@ -55,12 +55,12 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link href="/#about" className="hover:text-[#ea580c] transition">
-                  About Agency
+                  Statement of Practice
                 </Link>
               </li>
               <li>
                 <Link href="/#contact" className="hover:text-[#ea580c] transition">
-                  Get In Touch
+                  Contact &amp; RFQ
                 </Link>
               </li>
             </ul>
@@ -68,8 +68,8 @@ export const Footer: React.FC = () => {
 
           {/* Core Services (3 Cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-white font-bold text-sm tracking-tight">Disciplines</h4>
-            <ul className="space-y-2 text-slate-400">
+            <h4 className="text-white font-bold text-xs uppercase tracking-wider">Disciplines</h4>
+            <ul className="space-y-2 text-slate-400 text-xs font-sans">
               <li>
                 <Link href="/#services" className="hover:text-[#ea580c] transition">
                   Topographic &amp; Geodetic Survey
@@ -92,49 +92,28 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link href="/#services" className="hover:text-[#ea580c] transition">
-                  GIS Databases &amp; Web Portals
+                  Enterprise GIS &amp; PostGIS Databases
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Office Contact (3 Cols) */}
+          {/* Studio Coordinates (3 Cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-white font-bold text-sm tracking-tight">Dhaka Headquarters</h4>
-            <div className="space-y-2.5">
-              <a
-                href="tel:+8801713907779"
-                className="flex items-center gap-2 text-slate-300 hover:text-[#ea580c] transition font-bold"
-              >
-                <Phone className="w-4 h-4 text-[#ea580c]" />
-                <span>+880 1713 90 777 9</span>
-              </a>
-
-              <a
-                href="mailto:md.geospatialworks@gmail.com"
-                className="flex items-center gap-2 text-slate-300 hover:text-[#ea580c] transition"
-              >
-                <Mail className="w-4 h-4 text-[#ea580c]" />
-                <span>md.geospatialworks@gmail.com</span>
-              </a>
-
-              <p className="flex items-start gap-2 text-slate-400 leading-snug">
-                <MapPin className="w-4 h-4 text-[#ea580c] flex-shrink-0 mt-0.5" />
-                <span>Plot 14, Road 02, Aram Housing, 40ft, Bosila, Mohammadpur, Dhaka-1207</span>
-              </p>
+            <h4 className="text-white font-bold text-xs uppercase tracking-wider">Studio Headquarters</h4>
+            <div className="space-y-2.5 text-slate-400 text-xs font-sans">
+              <p>House 14, Road 7, Sector 3, Uttara, Dhaka-1230, Bangladesh</p>
+              <p className="font-mono text-white pt-1">+880 1713 90 777 9</p>
+              <p className="font-mono text-orange-400">md.geospatialworks@gmail.com</p>
             </div>
           </div>
         </div>
 
-        {/* Bottom Strip */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
-          <div>
-            © 2026 Geospatial Works Bangladesh. All rights reserved.
-          </div>
-          <div className="flex items-center gap-4">
-            <span>Where Engineering Meets Precision</span>
-            <span>•</span>
-            <span>1st Class Contractor &amp; Geospatial Consultancy</span>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+          <p>© 2026 Geospatial Works. All rights reserved. 1st Class Geodetic Practice.</p>
+          <div className="flex items-center gap-6">
+            <span>SOB DATUM SPECIFICATION</span>
+            <span>STANDARDS COMPLIANT</span>
           </div>
         </div>
       </div>

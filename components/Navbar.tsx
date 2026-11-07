@@ -26,12 +26,12 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "py-3 bg-white/95 backdrop-blur-md shadow-xs border-b border-slate-100"
-          : "py-4 bg-white/90 backdrop-blur-sm"
+          ? "py-3 bg-white/95 backdrop-blur-md border-b border-slate-200"
+          : "py-4 bg-white/90 backdrop-blur-sm border-b border-slate-100"
       }`}
     >
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-        {/* Brand Logo with Orange Accent (BuildGo Style) */}
+        {/* Brand Logo with Editorial Monograph Styling */}
         <Link
           href="/"
           onClick={closeMobile}
@@ -39,8 +39,8 @@ export const Navbar: React.FC = () => {
           aria-label="Geospatial Works Home"
         >
           <AnimatedLogo size="sm" priority showText={true} />
-          <span className="hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-orange-50 text-[#ea580c] border border-orange-200/70">
-            Portfolio
+          <span className="hidden xl:inline-flex items-center px-2 py-0.5 text-[10px] font-mono font-bold tracking-wider uppercase bg-slate-100 text-slate-800 border border-slate-300 rounded-none">
+            PORTFOLIO [2026]
           </span>
         </Link>
 
@@ -51,76 +51,76 @@ export const Navbar: React.FC = () => {
         >
           <Link
             href="/#home"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors"
+            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors rounded-none"
           >
             Home
           </Link>
 
           <Link
             href="/#portfolio"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors"
+            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors rounded-none"
           >
-            Landmark Projects
+            Works
           </Link>
 
           <Link
             href="/projects"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors flex items-center gap-1.5"
+            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors flex items-center gap-1.5 rounded-none"
           >
-            <span>All Projects</span>
-            <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-100 text-[#ea580c]">
+            <span>Directory</span>
+            <span className="px-1.5 py-0.2 text-[10px] font-mono font-bold bg-orange-100 text-[#ea580c] rounded-none">
               31
             </span>
           </Link>
 
           <Link
-            href="/#services"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors"
+            href="/#about"
+            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors rounded-none"
           >
-            Capabilities
+            Practice
           </Link>
 
           <Link
-            href="/#about"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors"
+            href="/#services"
+            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors rounded-none"
           >
-            Why Choose Us
+            Disciplines
           </Link>
 
           <Link
             href="/fleet"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors"
+            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors rounded-none"
           >
             Fleet
           </Link>
 
           <Link
             href="/#contact"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors"
+            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors rounded-none"
           >
             Contact
           </Link>
         </nav>
 
-        {/* Action Buttons: Phone Hotline & Coral Pill CTA (BuildGo Style) */}
+        {/* Action Buttons: Phone Hotline & Sharp Editorial Button */}
         <div className="hidden sm:flex items-center gap-4">
           <a
             href="tel:+8801713907779"
-            className="hidden xl:flex flex-col text-right group"
+            className="hidden xl:flex flex-col text-right font-mono"
           >
             <span className="text-[10px] font-bold uppercase text-slate-400">
-              Call Us Any Time
+              DISPATCH HOTLINE
             </span>
-            <span className="text-xs font-bold text-slate-900 group-hover:text-[#ea580c] transition">
+            <span className="text-xs font-bold text-slate-900 hover:text-[#ea580c] transition">
               +880 1713 90 777 9
             </span>
           </a>
 
           <Link
             href="/#contact"
-            className="flex items-center gap-2 px-6 py-2.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-full shadow-md shadow-orange-500/25 transition-all duration-200 group transform hover:-translate-y-0.5"
+            className="flex items-center gap-2 px-5 py-2.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-none shadow-xs transition-all duration-200 group"
           >
-            <span>Get In Touch</span>
+            <span>INQUIRE / RFQ</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-white/90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
@@ -129,7 +129,7 @@ export const Navbar: React.FC = () => {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition"
+          className="lg:hidden p-2 text-slate-700 hover:bg-slate-100 transition rounded-none"
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -138,76 +138,76 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-6 py-6 space-y-4 shadow-xl animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden bg-white border-b border-slate-200 px-6 py-6 space-y-4 shadow-xl animate-in slide-in-from-top-2 duration-200 rounded-none">
           <div className="flex flex-col space-y-2 text-sm font-semibold text-slate-700">
             <Link
               href="/#home"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] rounded-none"
             >
               Home
             </Link>
             <Link
               href="/#portfolio"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] rounded-none"
             >
-              Landmark Projects
+              Landmark Works
             </Link>
             <Link
               href="/projects"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c] flex items-center justify-between"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] flex items-center justify-between rounded-none"
             >
-              <span>31 Projects Archive</span>
-              <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-[#ea580c]">
+              <span>31 Projects Directory</span>
+              <span className="px-2 py-0.5 font-mono text-xs font-bold bg-orange-100 text-[#ea580c] rounded-none">
                 31
               </span>
             </Link>
             <Link
-              href="/#services"
-              onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
-            >
-              Capabilities
-            </Link>
-            <Link
               href="/#about"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] rounded-none"
             >
-              Why Choose Us
+              Statement of Practice
+            </Link>
+            <Link
+              href="/#services"
+              onClick={closeMobile}
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] rounded-none"
+            >
+              Technical Disciplines
             </Link>
             <Link
               href="/fleet"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] rounded-none"
             >
               Calibrated Fleet
             </Link>
             <Link
               href="/#contact"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] rounded-none"
             >
               Contact &amp; Proposal RFQ
             </Link>
           </div>
 
-          <div className="pt-4 border-t border-slate-100 flex flex-col gap-3">
+          <div className="pt-4 border-t border-slate-100 flex flex-col gap-3 font-mono">
             <a
               href="tel:+8801713907779"
               className="flex items-center gap-2 text-xs font-semibold text-slate-600"
             >
               <Phone className="w-4 h-4 text-[#ea580c]" />
-              <span>Direct Desk: +880 1713 907779</span>
+              <span>Hotline: +880 1713 907779</span>
             </a>
             <Link
               href="/#contact"
               onClick={closeMobile}
-              className="flex items-center justify-center gap-2 w-full py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-full shadow-md shadow-orange-500/25 transition"
+              className="flex items-center justify-center gap-2 w-full py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-none shadow-xs transition"
             >
-              <span>Request Formal Proposal</span>
+              <span>TRANSMIT RFQ BRIEF</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-white" />
             </Link>
           </div>

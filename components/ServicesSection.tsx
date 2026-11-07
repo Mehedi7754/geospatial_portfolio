@@ -20,6 +20,7 @@ interface Discipline {
   id: string;
   icon: React.ComponentType<{ className?: string }>;
   num: string;
+  code: string;
   title: string;
   subtitle: string;
   description: string;
@@ -33,7 +34,8 @@ const disciplines: Discipline[] = [
     id: "topographic",
     icon: Compass,
     num: "01",
-    title: "Topographic & Geodetic Baseline",
+    code: "GEO-01",
+    title: "Topographic & Geodetic Baseline Survey",
     subtitle:
       "Sub-centimeter contour mapping, DEM/DSM elevation models, and TBM baselines tied to Survey of Bangladesh datum.",
     description:
@@ -51,7 +53,8 @@ const disciplines: Discipline[] = [
     id: "uav-mapping",
     icon: Plane,
     num: "02",
-    title: "UAV Aerial Photogrammetry",
+    code: "UAV-02",
+    title: "UAV Aerial Photogrammetry & 3D Modeling",
     subtitle:
       "Sub-3cm GSD true orthomosaics, dense 3D point clouds, and volumetric cut/fill earthwork computations.",
     description:
@@ -69,7 +72,8 @@ const disciplines: Discipline[] = [
     id: "site-layout",
     icon: Layers,
     num: "03",
-    title: "Construction Site Setting-Out",
+    code: "STK-03",
+    title: "Construction Site Setting-Out & Alignment",
     subtitle:
       "Sub-millimeter pier centerline staking, elevated viaduct geometry, and expressway corridor right-of-way.",
     description:
@@ -87,7 +91,8 @@ const disciplines: Discipline[] = [
     id: "bathymetry",
     icon: Waves,
     num: "04",
-    title: "Bathymetric Hydro Sounding",
+    code: "HYD-04",
+    title: "Bathymetric Riverbed Sounding & Hydrography",
     subtitle:
       "Dual-frequency acoustic depth sounding, underwater riverbed morphology, and HEC-RAS hydraulic models.",
     description:
@@ -105,7 +110,8 @@ const disciplines: Discipline[] = [
     id: "gis-mapping",
     icon: Database,
     num: "05",
-    title: "Enterprise GIS & Databases",
+    code: "GIS-05",
+    title: "Enterprise GIS & Geodatabase Architecture",
     subtitle:
       "Relational PostgreSQL/PostGIS spatial databases, interactive web portals, and digitized utility networks.",
     description:
@@ -123,7 +129,8 @@ const disciplines: Discipline[] = [
     id: "remote-sensing",
     icon: Activity,
     num: "06",
-    title: "Satellite Remote Sensing",
+    code: "RS-06",
+    title: "Satellite Remote Sensing & Regional NDVI",
     subtitle:
       "Multi-temporal NDVI vegetation health, flood inundation tracking, and regional land cover classification.",
     description:
@@ -143,22 +150,24 @@ export const ServicesSection: React.FC = () => {
   const [modalDiscipline, setModalDiscipline] = useState<Discipline | null>(null);
 
   return (
-    <section id="services" className="py-20 lg:py-28 bg-white overflow-hidden">
+    <section id="services" className="py-20 lg:py-28 bg-white border-t border-slate-200">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* TROMA Style Minimal Centered Section Header (NO Box Container) */}
-        <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
-            Our Services
+        {/* Section Header: Sharp Monograph Style */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 mb-12 border-b border-slate-200">
+          <div>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
+              [ TECHNICAL DISCIPLINES &amp; METHODOLOGY ]
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
+              Engineering &amp; Survey Disciplines
+            </h2>
+          </div>
+          <span className="text-xs font-mono text-slate-400 self-start sm:self-end">
+            CALIBRATED TO SURVEY OF BANGLADESH DATUM
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight leading-tight mb-3">
-            Precision Engineering Capabilities
-          </h2>
-          <p className="text-sm sm:text-base text-slate-500 leading-relaxed max-w-xl mx-auto">
-            High-precision geodetic instrumentation and enterprise spatial intelligence calibrated to Survey of Bangladesh datum.
-          </p>
         </div>
 
-        {/* TROMA 6-Item Minimalist Service Grid (Pure Typography & Icons, ZERO Box Containers) */}
+        {/* 6-Item Architectural Grid (Sharp 90-degree corners, ZERO Box Containers) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 sm:gap-y-16">
           {disciplines.map((item) => {
             const Icon = item.icon;
@@ -166,26 +175,31 @@ export const ServicesSection: React.FC = () => {
               <div
                 key={item.id}
                 onClick={() => setModalDiscipline(item)}
-                className="group cursor-pointer flex flex-col items-start"
+                className="group cursor-pointer flex flex-col items-start border-t border-slate-200 pt-6"
               >
-                {/* Coral Soft Icon (Exactly like TROMA's square icons) */}
-                <div className="w-14 h-14 rounded-2xl bg-orange-50 text-[#ea580c] group-hover:bg-[#ea580c] group-hover:text-white transition-all duration-300 flex items-center justify-center mb-5 shadow-xs">
-                  <Icon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
+                {/* Header row with code and icon */}
+                <div className="w-full flex items-center justify-between mb-4">
+                  <span className="text-xs font-mono font-bold text-[#ea580c]">
+                    // {item.code}
+                  </span>
+                  <div className="w-10 h-10 bg-slate-100 group-hover:bg-[#ea580c] text-slate-700 group-hover:text-white transition-colors flex items-center justify-center rounded-none">
+                    <Icon className="w-5 h-5" />
+                  </div>
                 </div>
 
                 {/* Service Title */}
-                <h3 className="text-lg sm:text-xl font-black text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-2">
+                <h3 className="text-lg font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-2">
                   {item.title}
                 </h3>
 
                 {/* Service Subtitle */}
-                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-4">
+                <p className="text-xs text-slate-500 font-normal leading-relaxed mb-4">
                   {item.subtitle}
                 </p>
 
-                {/* Minimal Text Link (No Button Box) */}
-                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors mt-auto">
-                  <span>Explore Deliverables</span>
+                {/* Minimal Text Link */}
+                <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-slate-900 group-hover:text-[#ea580c] transition-colors mt-auto uppercase">
+                  <span>Deliverables &amp; Specs</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </div>
@@ -194,22 +208,22 @@ export const ServicesSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Technical Discipline Modal */}
+      {/* Technical Discipline Modal with Sharp Corners */}
       {modalDiscipline && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden max-h-[90vh] flex flex-col">
-            <div className="relative h-48 sm:h-56 bg-slate-900">
+          <div className="relative w-full max-w-2xl bg-white rounded-none shadow-2xl border border-slate-900 overflow-hidden max-h-[90vh] flex flex-col">
+            <div className="relative h-48 sm:h-56 bg-slate-900 border-b border-slate-200 rounded-none">
               <Image
                 src={modalDiscipline.image}
                 alt={modalDiscipline.title}
                 fill
-                className="object-cover"
+                className="object-cover rounded-none"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
 
               <div className="absolute bottom-4 left-6 right-6">
-                <span className="px-2.5 py-1 rounded-full bg-[#ea580c] text-[10px] font-bold text-white uppercase tracking-wider mb-2 inline-block">
-                  Discipline {modalDiscipline.num}
+                <span className="px-2 py-0.5 bg-[#ea580c] text-[10px] font-mono font-bold text-white uppercase tracking-wider mb-2 inline-block rounded-none">
+                  [ {modalDiscipline.code} ]
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
                   {modalDiscipline.title}
@@ -219,7 +233,7 @@ export const ServicesSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setModalDiscipline(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-slate-900/80 hover:bg-slate-900 text-white backdrop-blur-md transition border border-white/10"
+                className="absolute top-4 right-4 p-2 bg-slate-900 text-white transition border border-white/20 rounded-none cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="w-4 h-4" />
@@ -228,7 +242,7 @@ export const ServicesSection: React.FC = () => {
 
             <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-2">
                   Technical Scope &amp; Methodology
                 </h4>
                 <p className="text-sm text-slate-600 leading-relaxed font-normal">
@@ -237,14 +251,14 @@ export const ServicesSection: React.FC = () => {
               </div>
 
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-3">
                   Verified Engineering Deliverables
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {modalDiscipline.deliverables.map((item, i) => (
                     <div
                       key={i}
-                      className="flex items-start gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700"
+                      className="flex items-start gap-2 p-2.5 bg-slate-50 border border-slate-200 text-xs text-slate-700 rounded-none"
                     >
                       <CheckCircle2 className="w-4 h-4 text-[#ea580c] shrink-0 mt-0.5" />
                       <span>{item}</span>
@@ -254,14 +268,14 @@ export const ServicesSection: React.FC = () => {
               </div>
 
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
+                <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-2.5">
                   Calibrated Instrumentation &amp; Software
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {modalDiscipline.techStack.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 rounded-full text-xs font-medium bg-orange-50 text-[#ea580c] border border-orange-200/60"
+                      className="px-2.5 py-1 text-xs font-mono font-medium bg-slate-100 text-slate-800 border border-slate-200 rounded-none"
                     >
                       {tech}
                     </span>
@@ -269,22 +283,22 @@ export const ServicesSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <Link
                   href="/projects"
                   onClick={() => setModalDiscipline(null)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-full transition"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition rounded-none font-mono"
                 >
-                  <span>View Related Projects (31)</span>
+                  <span>RELATED WORKS (31)</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
 
                 <Link
                   href="#contact"
                   onClick={() => setModalDiscipline(null)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-full shadow-md shadow-orange-500/20 transition"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold transition rounded-none font-mono"
                 >
-                  <span>Request RFQ for this Discipline</span>
+                  <span>REQUEST RFQ FOR DISCIPLINE</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
