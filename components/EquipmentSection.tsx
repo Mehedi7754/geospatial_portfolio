@@ -51,7 +51,7 @@ export const EquipmentSection: React.FC = () => {
       unit: "GCPs",
       title: "Nationwide Control in All 64 Districts",
       desc: "Certified Ground Control Points across Bangladesh for Digital Land Zoning.",
-      image: "/assets/showcase/photogrammetry-3d-terrain.png",
+      image: "/assets/showcase/national-gcp-network.jpg",
       icon: MapPin,
     },
     {
@@ -59,7 +59,7 @@ export const EquipmentSection: React.FC = () => {
       unit: "Poles",
       title: "BPDB Distribution Asset GIS",
       desc: "Surveyed & geodatabase-structured electrical distribution network assets.",
-      image: "/assets/showcase/spatial-data-analytics.png",
+      image: "/assets/showcase/bpdb-distribution-network.jpg",
       icon: Zap,
     },
   ];

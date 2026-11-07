@@ -102,42 +102,45 @@ export const Hero: React.FC = () => {
               solutions for Bangladesh’s critical bridges, mega expressways, and river floodplains.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 sm:mb-8">
-              <Link
-                href="#projects"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs sm:text-sm font-bold rounded-xl shadow-md transition group text-center"
-              >
-                <span>Explore Portfolio (31)</span>
-                <ArrowRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
-              </Link>
+            {/* Desktop CTAs & Trust Highlights (Hidden on mobile, shown under showcase on mobile) */}
+            <div className="hidden lg:block">
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 sm:mb-8">
+                <Link
+                  href="#projects"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs sm:text-sm font-bold rounded-xl shadow-md transition group text-center"
+                >
+                  <span>Explore Portfolio (31)</span>
+                  <ArrowRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
+                </Link>
 
-              <Link
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold rounded-xl transition text-center"
-              >
-                <span>Request Proposal</span>
-                <ArrowUpRight className="w-4 h-4 text-slate-500" />
-              </Link>
-            </div>
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold rounded-xl transition text-center"
+                >
+                  <span>Request Proposal</span>
+                  <ArrowUpRight className="w-4 h-4 text-slate-500" />
+                </Link>
+              </div>
 
-            {/* Trust Highlights */}
-            <div className="pt-5 border-t border-slate-200/80 grid grid-cols-2 gap-3 text-xs">
-              <div className="flex items-center gap-2 text-slate-700">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                <span className="font-semibold text-[11px] sm:text-xs">Sub-Centimeter RTK</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-700">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                <span className="font-semibold text-[11px] sm:text-xs">31 Verified Projects</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-700">
-                <MapPin className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                <span className="font-semibold text-[11px] sm:text-xs">All 64 Districts</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-700">
-                <Layers className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                <span className="font-semibold text-[11px] sm:text-xs">UAV Photogrammetry</span>
+              {/* Trust Highlights */}
+              <div className="pt-5 border-t border-slate-200/80 grid grid-cols-2 gap-3 text-xs">
+                <div className="flex items-center gap-2 text-slate-700">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span className="font-semibold text-[11px] sm:text-xs">Sub-Centimeter RTK</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-700">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span className="font-semibold text-[11px] sm:text-xs">31 Verified Projects</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-700">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span className="font-semibold text-[11px] sm:text-xs">All 64 Districts</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-700">
+                  <Layers className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span className="font-semibold text-[11px] sm:text-xs">UAV Photogrammetry</span>
+                </div>
               </div>
             </div>
           </div>
@@ -226,6 +229,48 @@ export const Hero: React.FC = () => {
                     aria-label={`Go to slide ${idx + 1}`}
                   />
                 ))}
+              </div>
+            </div>
+
+            {/* Mobile Explore Section (Positioned directly under hero showcase box on mobile) */}
+            <div className="block lg:hidden mt-6">
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6">
+                <Link
+                  href="#projects"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs sm:text-sm font-bold rounded-xl shadow-md transition group text-center"
+                >
+                  <span>Explore Portfolio (31)</span>
+                  <ArrowRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold rounded-xl transition text-center"
+                >
+                  <span>Request Proposal</span>
+                  <ArrowUpRight className="w-4 h-4 text-slate-500" />
+                </Link>
+              </div>
+
+              {/* Trust Highlights */}
+              <div className="pt-4 border-t border-slate-200/80 grid grid-cols-2 gap-3 text-xs">
+                <div className="flex items-center gap-2 text-slate-700">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span className="font-semibold text-[11px] sm:text-xs">Sub-Centimeter RTK</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-700">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span className="font-semibold text-[11px] sm:text-xs">31 Verified Projects</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-700">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span className="font-semibold text-[11px] sm:text-xs">All 64 Districts</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-700">
+                  <Layers className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span className="font-semibold text-[11px] sm:text-xs">UAV Photogrammetry</span>
+                </div>
               </div>
             </div>
           </div>
