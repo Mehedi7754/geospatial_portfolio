@@ -61,8 +61,8 @@ export const EquipmentSection: React.FC = () => {
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/70 text-[#ea580c] text-[11px] font-bold tracking-wider uppercase mb-3">
-              <Wrench className="w-3.5 h-3.5 text-[#ea580c]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200/70 text-[#0284c7] text-[11px] font-bold tracking-wider uppercase mb-3">
+              <Wrench className="w-3.5 h-3.5 text-[#0284c7]" />
               <span>Calibrated Fleet</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black text-[#0f172a] tracking-tight leading-tight">
@@ -82,7 +82,7 @@ export const EquipmentSection: React.FC = () => {
                 onClick={() => setActiveCategory(cat)}
                 className={`text-xs px-3.5 py-1.5 rounded-full font-semibold transition-all duration-200 ${
                   activeCategory === cat
-                    ? "bg-[#ea580c] text-white shadow-md shadow-orange-500/20"
+                    ? "bg-[#0284c7] text-white shadow-md shadow-sky-500/20"
                     : "bg-white text-slate-600 border border-slate-200/80 hover:bg-slate-50"
                 }`}
               >
@@ -107,14 +107,14 @@ export const EquipmentSection: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="group rounded-2xl bg-white border border-slate-200/80 hover:border-orange-300 transition-all duration-300 hover:shadow-xl overflow-hidden flex flex-col justify-between"
+                className="group rounded-2xl bg-white border border-slate-200/80 hover:border-sky-300 transition-all duration-300 hover:shadow-xl overflow-hidden flex flex-col justify-between"
               >
                 <div>
                   {/* Visual Instrument Image Container */}
                   <div
                     className={`relative aspect-[16/10] overflow-hidden ${
                       isCutoutInstrument
-                        ? "bg-gradient-to-b from-slate-50 to-orange-50/20"
+                        ? "bg-gradient-to-b from-slate-50 to-sky-50/20"
                         : "bg-slate-100"
                     }`}
                   >
@@ -139,7 +139,7 @@ export const EquipmentSection: React.FC = () => {
                   </div>
 
                   <div className="p-5">
-                    <h3 className="text-sm sm:text-base font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-1">
+                    <h3 className="text-sm sm:text-base font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors leading-snug mb-1">
                       {eq.name}
                     </h3>
                     <span className="text-[11px] font-mono text-slate-400 block mb-3">
@@ -158,7 +158,7 @@ export const EquipmentSection: React.FC = () => {
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                       Ready for Field Dispatch
                     </span>
-                    <span className="font-semibold text-[#ea580c]">
+                    <span className="font-semibold text-[#0284c7]">
                       SOB Datum Certified
                     </span>
                   </div>

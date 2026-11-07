@@ -88,7 +88,7 @@ export default function ProjectsArchivePage() {
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 mb-12">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-[#ea580c] transition mb-6"
+            className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-[#0284c7] transition mb-6"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Main Portfolio</span>
@@ -96,7 +96,7 @@ export default function ProjectsArchivePage() {
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-slate-100">
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#0284c7] block mb-2">
                 OFFICIAL RECORD ARCHIVE • 31 DELIVERABLES
               </span>
               <h1 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
@@ -115,7 +115,7 @@ export default function ProjectsArchivePage() {
                 placeholder="Search project, agency, district..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-9 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#ea580c] focus:bg-white transition"
+                className="w-full pl-10 pr-9 py-2.5 bg-slate-50 border border-slate-200 rounded-none text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#0284c7] focus:bg-white transition"
               />
               {searchQuery && (
                 <button
@@ -137,7 +137,7 @@ export default function ProjectsArchivePage() {
                 onClick={() => setActiveCategory(cat.value)}
                 className={`text-xs px-4 py-2 rounded-none font-mono font-bold transition-all ${
                   activeCategory === cat.value
-                    ? "bg-[#ea580c] text-white"
+                    ? "bg-[#0284c7] text-white"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                 }`}
               >
@@ -182,16 +182,16 @@ export default function ProjectsArchivePage() {
                         <span className="truncate max-w-[200px] text-slate-300">
                           {proj.location || "Bangladesh"}
                         </span>
-                        <span className="px-2 py-0.5 rounded-none bg-[#ea580c] text-white text-[10px] font-bold">
+                        <span className="px-2 py-0.5 rounded-none bg-[#0284c7] text-white text-[10px] font-bold">
                           Verified
                         </span>
                       </div>
                     </div>
 
-                    <span className="text-[11px] font-mono font-bold text-[#ea580c] block mb-1 uppercase">
+                    <span className="text-[11px] font-mono font-bold text-[#0284c7] block mb-1 uppercase">
                       {proj.client}
                     </span>
-                    <h3 className="text-base font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-2 line-clamp-2">
+                    <h3 className="text-base font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors leading-snug mb-2 line-clamp-2">
                       {proj.title}
                     </h3>
                     <p className="text-xs text-slate-500 leading-relaxed line-clamp-2 mb-3">
@@ -199,9 +199,9 @@ export default function ProjectsArchivePage() {
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-700 group-hover:text-[#ea580c] transition-colors">
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-700 group-hover:text-[#0284c7] transition-colors">
                     <span>Inspect Full Dossier</span>
-                    <ArrowUpRight className="w-4 h-4 text-[#ea580c] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <ArrowUpRight className="w-4 h-4 text-[#0284c7] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </div>
                 </div>
               );
@@ -290,7 +290,7 @@ export default function ProjectsArchivePage() {
               <Link
                 href="/#contact"
                 onClick={() => setSelectedProject(null)}
-                className="px-5 py-2 text-xs font-bold text-white bg-[#ea580c] hover:bg-[#c2410c] rounded-none transition"
+                className="px-5 py-2 text-xs font-bold text-white bg-[#0284c7] hover:bg-[#0369a1] rounded-none transition"
               >
                 Inquire Similar Project
               </Link>

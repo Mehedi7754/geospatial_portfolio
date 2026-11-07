@@ -48,58 +48,58 @@ export const Navbar: React.FC = () => {
         >
           <Link
             href="/#home"
-            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors rounded-none"
+            className="px-3.5 py-1.5 hover:text-[#0284c7] transition-colors rounded-none"
           >
             Home
           </Link>
 
           <Link
             href="/#portfolio"
-            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors rounded-none"
+            className="px-3.5 py-1.5 hover:text-[#0284c7] transition-colors rounded-none"
           >
             Works
           </Link>
 
           <Link
             href="/projects"
-            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors flex items-center gap-1.5 rounded-none"
+            className="px-3.5 py-1.5 hover:text-[#0284c7] transition-colors flex items-center gap-1.5 rounded-none"
           >
             <span>Directory</span>
-            <span className="px-1.5 py-0.2 text-[10px] font-mono font-bold bg-orange-100 text-[#ea580c] rounded-none">
+            <span className="px-1.5 py-0.2 text-[10px] font-mono font-bold bg-sky-100 text-[#0284c7] rounded-none">
               31
             </span>
           </Link>
 
           <Link
             href="/#about"
-            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors rounded-none"
+            className="px-3.5 py-1.5 hover:text-[#0284c7] transition-colors rounded-none"
           >
             Practice
           </Link>
 
           <Link
             href="/#services"
-            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors rounded-none"
+            className="px-3.5 py-1.5 hover:text-[#0284c7] transition-colors rounded-none"
           >
             Disciplines
           </Link>
 
           <Link
             href="/fleet"
-            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors rounded-none"
+            className="px-3.5 py-1.5 hover:text-[#0284c7] transition-colors rounded-none"
           >
             Fleet
           </Link>
 
           <Link
             href="/#contact"
-            className="px-3.5 py-1.5 hover:text-[#ea580c] transition-colors rounded-none"
+            className="px-3.5 py-1.5 hover:text-[#0284c7] transition-colors rounded-none"
           >
             Contact
           </Link>
         </nav>
 
-        {/* Action Buttons: Phone Hotline & Sharp Editorial Button */}
+        {/* Action Buttons: Phone Hotline & Animated Button */}
         <div className="hidden sm:flex items-center gap-4">
           <a
             href="tel:+8801713907779"
@@ -108,14 +108,14 @@ export const Navbar: React.FC = () => {
             <span className="text-[10px] font-bold uppercase text-slate-400">
               DISPATCH HOTLINE
             </span>
-            <span className="text-xs font-bold text-slate-900 hover:text-[#ea580c] transition">
+            <span className="text-xs font-bold text-slate-900 hover:text-[#0284c7] transition">
               +880 1713 90 777 9
             </span>
           </a>
 
           <Link
             href="/#contact"
-            className="flex items-center gap-2 px-5 py-2.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-none shadow-xs transition-all duration-200 group"
+            className="btn-beam-shine flex items-center gap-2 px-5 py-2.5 bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-mono font-bold rounded-none shadow-xs hover:shadow-md hover:shadow-sky-500/25 transition-all duration-200 group"
           >
             <span>INQUIRE / RFQ</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-white/90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -140,52 +140,52 @@ export const Navbar: React.FC = () => {
             <Link
               href="/#home"
               onClick={closeMobile}
-              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] rounded-none"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#0284c7] rounded-none"
             >
               Home
             </Link>
             <Link
               href="/#portfolio"
               onClick={closeMobile}
-              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] rounded-none"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#0284c7] rounded-none"
             >
               Landmark Works
             </Link>
             <Link
               href="/projects"
               onClick={closeMobile}
-              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] flex items-center justify-between rounded-none"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#0284c7] flex items-center justify-between rounded-none"
             >
               <span>31 Projects Directory</span>
-              <span className="px-2 py-0.5 font-mono text-xs font-bold bg-orange-100 text-[#ea580c] rounded-none">
+              <span className="px-2 py-0.5 font-mono text-xs font-bold bg-sky-100 text-[#0284c7] rounded-none">
                 31
               </span>
             </Link>
             <Link
               href="/#about"
               onClick={closeMobile}
-              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] rounded-none"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#0284c7] rounded-none"
             >
               Statement of Practice
             </Link>
             <Link
               href="/#services"
               onClick={closeMobile}
-              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] rounded-none"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#0284c7] rounded-none"
             >
               Technical Disciplines
             </Link>
             <Link
               href="/fleet"
               onClick={closeMobile}
-              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] rounded-none"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#0284c7] rounded-none"
             >
               Calibrated Fleet
             </Link>
             <Link
               href="/#contact"
               onClick={closeMobile}
-              className="px-3 py-2 hover:bg-slate-50 hover:text-[#ea580c] rounded-none"
+              className="px-3 py-2 hover:bg-slate-50 hover:text-[#0284c7] rounded-none"
             >
               Contact &amp; Proposal RFQ
             </Link>
@@ -196,13 +196,13 @@ export const Navbar: React.FC = () => {
               href="tel:+8801713907779"
               className="flex items-center gap-2 text-xs font-semibold text-slate-600"
             >
-              <Phone className="w-4 h-4 text-[#ea580c]" />
+              <Phone className="w-4 h-4 text-[#0284c7]" />
               <span>Hotline: +880 1713 907779</span>
             </a>
             <Link
               href="/#contact"
               onClick={closeMobile}
-              className="flex items-center justify-center gap-2 w-full py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-none shadow-xs transition"
+              className="btn-beam-shine flex items-center justify-center gap-2 w-full py-3 bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-bold rounded-none shadow-xs transition"
             >
               <span>TRANSMIT RFQ BRIEF</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-white" />

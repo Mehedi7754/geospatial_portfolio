@@ -27,7 +27,7 @@ export const ExpertNetworkSection: React.FC = () => {
         {/* Section Header: Minimal Monograph Style (Zero Extra Paragraphs) */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 mb-10 border-b border-slate-200">
           <div>
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#ea580c] block mb-1">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0284c7] block mb-1">
               • Endorsements
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
@@ -54,7 +54,7 @@ export const ExpertNetworkSection: React.FC = () => {
           </div>
 
           <div className="md:col-span-8 flex flex-col justify-center">
-            <Quote className="w-10 h-10 text-[#ea580c] mb-4 opacity-80" />
+            <Quote className="w-10 h-10 text-[#0284c7] mb-4 opacity-80" />
             <blockquote className="text-base sm:text-2xl text-slate-900 font-bold leading-relaxed mb-6 font-serif">
               &ldquo;Geospatial Works delivered exceptional sub-centimeter RTK baselines and high-density GCP grids across all 64 districts. Strict adherence to Survey of Bangladesh datum calibration and rapid field mobilization makes them an invaluable technical partner.&rdquo;
             </blockquote>
@@ -64,7 +64,7 @@ export const ExpertNetworkSection: React.FC = () => {
                 <h3 className="text-sm font-bold text-slate-900 uppercase">
                   Md. Mahfuzur Rahman
                 </h3>
-                <span className="text-xs text-[#ea580c] font-semibold block mt-0.5">
+                <span className="text-xs text-[#0284c7] font-semibold block mt-0.5">
                   Chief Geodetic Consultant &amp; Survey Director
                 </span>
               </div>

@@ -15,6 +15,7 @@ import {
   CheckCircle2,
   X,
 } from "lucide-react";
+import { AnimatedButton } from "@/components/AnimatedButton";
 
 interface Discipline {
   id: string;
@@ -150,7 +151,7 @@ export const ServicesSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Left Column (4 Cols): Bold Headline, Note & Button (Matching Reference Image) */}
           <div className="lg:col-span-4 lg:sticky lg:top-28">
-            <div className="flex items-center gap-3 text-xs font-mono font-bold tracking-widest text-[#ea580c] uppercase mb-5">
+            <div className="flex items-center gap-3 text-xs font-mono font-bold tracking-widest text-[#0284c7] uppercase mb-5">
               <span>/ DISCIPLINES</span>
               <span className="w-12 h-[1px] bg-slate-300" />
             </div>
@@ -158,8 +159,8 @@ export const ServicesSection: React.FC = () => {
             <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-black text-[#0f172a] tracking-tight leading-[1.05] mb-5">
               Engineering <br />
               rigor. <br />
-              <span className="text-[#ea580c]">Proven</span> <br />
-              <span className="text-[#ea580c]">precision.</span>
+              <span className="text-[#0284c7]">Proven</span> <br />
+              <span className="text-[#0284c7]">precision.</span>
             </h2>
 
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm mb-6 font-normal">
@@ -167,13 +168,13 @@ export const ServicesSection: React.FC = () => {
             </p>
 
             <div className="mb-8">
-              <Link
+              <AnimatedButton
                 href="#contact"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 border border-slate-900 bg-white hover:bg-slate-900 text-slate-900 hover:text-white text-xs font-mono font-bold transition rounded-none uppercase tracking-wider group shadow-xs"
+                variant="primary"
+                className="text-xs font-mono uppercase tracking-wider"
               >
-                <span>Inquire Disciplines</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+                Inquire Disciplines
+              </AnimatedButton>
             </div>
 
             {/* Category Filter Switcher */}
@@ -189,7 +190,7 @@ export const ServicesSection: React.FC = () => {
                     onClick={() => setActiveFilter(tab.id)}
                     className={`px-3 py-1.5 text-[11px] font-bold uppercase transition rounded-none cursor-pointer ${
                       activeFilter === tab.id
-                        ? "bg-[#ea580c] text-white"
+                        ? "bg-[#0284c7] text-white shadow-xs"
                         : "bg-white text-slate-700 border border-slate-200 hover:border-slate-900"
                     }`}
                   >
@@ -231,7 +232,7 @@ export const ServicesSection: React.FC = () => {
                       <h3 className="text-sm sm:text-base font-bold text-white tracking-tight leading-snug">
                         {item.title}
                       </h3>
-                      <span className="shrink-0 text-white group-hover:text-[#ea580c] group-hover:translate-x-1 transition-all mb-0.5">
+                      <span className="shrink-0 text-white group-hover:text-[#0284c7] group-hover:translate-x-1 transition-all mb-0.5">
                         <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
@@ -331,7 +332,7 @@ export const ServicesSection: React.FC = () => {
                 <Link
                   href="#contact"
                   onClick={() => setModalDiscipline(null)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold transition rounded-none"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-bold transition rounded-none shadow-xs"
                 >
                   <span>INQUIRE THIS DISCIPLINE</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />

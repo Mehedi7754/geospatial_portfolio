@@ -3,7 +3,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Globe, Image as ImageIcon } from "lucide-react";
+import { GeospatialThreeScene } from "./GeospatialThreeScene";
+import { AnimatedButton } from "./AnimatedButton";
 
 interface HeroShowcase {
   image: string;
@@ -47,6 +49,7 @@ const heroShowcases: HeroShowcase[] = [
 
 export const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [viewMode, setViewMode] = useState<"3d" | "photo">("3d");
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % heroShowcases.length);
@@ -57,218 +60,254 @@ export const Hero: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    if (viewMode !== "photo") return;
     const timer = setInterval(() => {
       nextSlide();
     }, 6500);
     return () => clearInterval(timer);
-  }, [nextSlide]);
+  }, [nextSlide, viewMode]);
 
   return (
     <section id="home" className="pt-28 pb-14 sm:pt-36 sm:pb-20 bg-white text-[#0f172a]">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Side-by-Side Hero Section: Left Minimal Typography + Right Sharp Showcase */}
+        {/* Side-by-Side Hero Section: Left Minimal Typography + Right 3D / Photographic Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-12 sm:mb-16">
-          {/* Left Column (6 Cols): Clean Minimal Typography (ZERO Extra Paragraphs) */}
+          {/* Left Column (6 Cols): Clean Minimal Typography (Theme: Corporate Logo Blue) */}
           <div className="lg:col-span-6 flex flex-col justify-center">
             <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-black text-[#0f172a] tracking-tight leading-[1.08] mb-6">
               Engineering the ground. <br />
-              <span className="text-[#ea580c]">Shaping Bangladesh&apos;s future.</span>
+              <span className="text-[#0284c7]">Shaping Bangladesh&apos;s future.</span>
             </h1>
 
-            {/* Desktop Direct Action Links (Hidden on mobile, shown below image on mobile) */}
+            {/* Desktop Direct Animated Action Links */}
             <div className="hidden lg:flex flex-wrap items-center gap-3 sm:gap-4 mb-6">
-              <Link
+              <AnimatedButton
                 href="#portfolio"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold transition rounded-none shadow-xs"
+                variant="primary"
+                icon="right"
+                pulseDot
               >
-                <span>Explore Selected Works</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+                Explore Selected Works
+              </AnimatedButton>
 
-              <Link
+              <AnimatedButton
                 href="/projects"
-                className="inline-flex items-center gap-2 px-5 py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold transition rounded-none"
+                variant="dark"
+                icon="up-right"
               >
-                <span>All 31 Projects Archive</span>
-                <ArrowUpRight className="w-4 h-4 text-orange-400" />
-              </Link>
+                All 31 Projects Archive
+              </AnimatedButton>
 
-              <Link
+              <AnimatedButton
                 href="#contact"
-                className="inline-flex items-center gap-1.5 px-5 py-3.5 border border-slate-300 hover:border-slate-900 text-slate-800 text-xs sm:text-sm font-bold transition rounded-none"
+                variant="outline"
+                icon="none"
               >
-                <span>Proposal</span>
-              </Link>
+                Proposal
+              </AnimatedButton>
             </div>
 
-            {/* Desktop Technical Metric Tags */}
+            {/* Desktop Technical Metric Tags with Logo Blue Accent */}
             <div className="hidden lg:flex pt-4 border-t border-slate-200 flex-wrap items-center gap-5 sm:gap-7 text-xs font-mono text-slate-700">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#ea580c]" />
+                <span className="w-2 h-2 rounded-full bg-[#0284c7]" />
                 <span className="font-bold text-slate-900">31 Mega Projects</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#ea580c]" />
+                <span className="w-2 h-2 rounded-full bg-[#0284c7]" />
                 <span className="font-bold text-slate-900">All 64 Districts</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#ea580c]" />
-                <span className="font-bold text-[#ea580c]">SOB Datum Certified</span>
+                <span className="w-2 h-2 rounded-full bg-[#0284c7]" />
+                <span className="font-bold text-[#0284c7]">SOB Datum Certified</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column (6 Cols): Sharp Image with ZERO Border Radius */}
+          {/* Right Column (6 Cols): Three.js Interactive 3D Canvas / Sharp Photo Showcase */}
           <div className="lg:col-span-6 relative w-full">
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/12] w-full bg-slate-950 border border-slate-300 shadow-sm rounded-none overflow-hidden group">
-              {heroShowcases.map((slide, idx) => (
-                <div
-                  key={idx}
-                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                    idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                  }`}
-                >
-                  <Image
-                    src={slide.image}
-                    alt={slide.title}
-                    fill
-                    priority={idx === 0}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className={`object-cover rounded-none transition-transform duration-700 group-hover:scale-102 ${slide.objectPosition}`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
-
-                  {/* Top Technical Metadata */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-white text-xs z-20 font-mono">
-                    <span className="px-2 py-0.5 bg-slate-900/90 text-[10px] uppercase font-bold border border-white/10 rounded-none">
-                      {slide.category}
-                    </span>
-                    <span className="px-2 py-0.5 bg-[#ea580c] text-[10px] font-bold rounded-none">
-                      {slide.spec}
-                    </span>
-                  </div>
-
-                  {/* Bottom Technical Caption */}
-                  <div className="absolute bottom-4 left-4 right-4 text-white z-20">
-                    <span className="text-[11px] font-mono text-orange-400 block mb-0.5">
-                      {slide.client}
-                    </span>
-                    <h2 className="text-base sm:text-lg font-bold tracking-tight text-white mb-1 leading-snug">
-                      {slide.title}
-                    </h2>
-                    <div className="flex items-center justify-between pt-1.5 border-t border-white/20 text-xs text-slate-300 font-mono">
-                      <span>{slide.location}</span>
-                      <Link
-                        href="/projects"
-                        className="inline-flex items-center gap-1 text-white hover:text-orange-400 transition font-bold"
-                      >
-                        <span>DOSSIER</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </Link>
-                    </div>
-                  </div>
+            <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/12] w-full bg-slate-950 border border-slate-300 shadow-md rounded-none overflow-hidden group">
+              {/* Three.js Interactive 3D Canvas View */}
+              {viewMode === "3d" ? (
+                <div className="absolute inset-0">
+                  <GeospatialThreeScene />
                 </div>
-              ))}
+              ) : (
+                /* Field Photography Slideshow */
+                <>
+                  {heroShowcases.map((slide, idx) => (
+                    <div
+                      key={idx}
+                      className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                        idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                      }`}
+                    >
+                      <Image
+                        src={slide.image}
+                        alt={slide.title}
+                        fill
+                        priority={idx === 0}
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className={`object-cover rounded-none transition-transform duration-700 group-hover:scale-102 ${slide.objectPosition}`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
 
-              {/* Slider Controls */}
-              <div className="absolute top-4 right-4 z-30 flex items-center gap-1">
+                      {/* Top Technical Metadata */}
+                      <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-white text-xs z-20 font-mono">
+                        <span className="px-2 py-0.5 bg-slate-900/90 text-[10px] uppercase font-bold border border-white/10 rounded-none">
+                          {slide.category}
+                        </span>
+                        <span className="px-2 py-0.5 bg-[#0284c7] text-[10px] font-bold rounded-none">
+                          {slide.spec}
+                        </span>
+                      </div>
+
+                      {/* Bottom Technical Caption */}
+                      <div className="absolute bottom-4 left-4 right-4 text-white z-20">
+                        <span className="text-[11px] font-mono text-sky-400 block mb-0.5">
+                          {slide.client}
+                        </span>
+                        <h2 className="text-base sm:text-lg font-bold tracking-tight text-white mb-1 leading-snug">
+                          {slide.title}
+                        </h2>
+                        <div className="flex items-center justify-between pt-1.5 border-t border-white/20 text-xs text-slate-300 font-mono">
+                          <span>{slide.location}</span>
+                          <Link
+                            href="/projects"
+                            className="inline-flex items-center gap-1 text-white hover:text-sky-400 transition font-bold"
+                          >
+                            <span>DOSSIER</span>
+                            <ArrowUpRight className="w-3.5 h-3.5" />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Slider Controls */}
+                  <div className="absolute bottom-4 right-4 z-30 flex items-center gap-1">
+                    <button
+                      type="button"
+                      onClick={prevSlide}
+                      className="p-1.5 bg-slate-900/80 hover:bg-[#0284c7] text-white transition border border-white/20 rounded-none cursor-pointer"
+                      aria-label="Previous slide"
+                    >
+                      <ChevronLeft className="w-3.5 h-3.5" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={nextSlide}
+                      className="p-1.5 bg-slate-900/80 hover:bg-[#0284c7] text-white transition border border-white/20 rounded-none cursor-pointer"
+                      aria-label="Next slide"
+                    >
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {/* View Mode Toggle: Interactive Three.js 3D Mesh <-> Field Photography */}
+              <div className="absolute top-4 right-4 z-30 flex items-center gap-1 font-mono text-[10px]">
                 <button
                   type="button"
-                  onClick={prevSlide}
-                  className="p-1.5 bg-slate-900/80 hover:bg-slate-900 text-white transition border border-white/20 rounded-none cursor-pointer"
-                  aria-label="Previous slide"
+                  onClick={() => setViewMode(viewMode === "3d" ? "photo" : "3d")}
+                  className="px-2.5 py-1.5 bg-slate-900/90 hover:bg-[#0284c7] text-white border border-sky-400/40 rounded-none transition flex items-center gap-1.5 cursor-pointer shadow-sm"
+                  title="Toggle 3D Coordinate Mesh & Field Photography"
                 >
-                  <ChevronLeft className="w-3.5 h-3.5" />
+                  {viewMode === "3d" ? (
+                    <>
+                      <ImageIcon className="w-3.5 h-3.5 text-sky-300" />
+                      <span>VIEW FIELD PHOTOS</span>
+                    </>
+                  ) : (
+                    <>
+                      <Globe className="w-3.5 h-3.5 text-sky-400 animate-spin" style={{ animationDuration: "10s" }} />
+                      <span>VIEW 3D THREE.JS MESH</span>
+                    </>
+                  )}
                 </button>
-                <button
-                  type="button"
-                  onClick={nextSlide}
-                  className="p-1.5 bg-slate-900/80 hover:bg-slate-900 text-white transition border border-white/20 rounded-none cursor-pointer"
-                  aria-label="Next slide"
-                >
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-
-              <div className="absolute bottom-2 right-4 z-20 text-[10px] font-mono text-white/70">
-                PLATE {currentSlide + 1} / {heroShowcases.length}
               </div>
             </div>
 
             {/* Mobile View: Explore Work Section Placed DIRECTLY Below Hero Image */}
             <div className="lg:hidden mt-6 flex flex-col gap-5">
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <Link
+                <AnimatedButton
                   href="#portfolio"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold transition rounded-none shadow-xs text-center"
+                  variant="primary"
+                  icon="right"
+                  className="w-full text-center"
+                  pulseDot
                 >
-                  <span>Explore Selected Works</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                  Explore Selected Works
+                </AnimatedButton>
 
-                <Link
+                <AnimatedButton
                   href="/projects"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold transition rounded-none text-center"
+                  variant="dark"
+                  icon="up-right"
+                  className="w-full text-center"
                 >
-                  <span>All 31 Projects Archive</span>
-                  <ArrowUpRight className="w-4 h-4 text-orange-400" />
-                </Link>
+                  All 31 Projects Archive
+                </AnimatedButton>
 
-                <Link
+                <AnimatedButton
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-1.5 px-5 py-3.5 border border-slate-300 hover:border-slate-900 text-slate-800 text-xs sm:text-sm font-bold transition rounded-none text-center"
+                  variant="outline"
+                  icon="none"
+                  className="w-full text-center"
                 >
-                  <span>Proposal</span>
-                </Link>
+                  Proposal
+                </AnimatedButton>
               </div>
 
               <div className="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-slate-700">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#ea580c]" />
+                  <span className="w-2 h-2 rounded-full bg-[#0284c7]" />
                   <span className="font-bold text-slate-900">31 Mega Projects</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#ea580c]" />
+                  <span className="w-2 h-2 rounded-full bg-[#0284c7]" />
                   <span className="font-bold text-slate-900">All 64 Districts</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#ea580c]" />
-                  <span className="font-bold text-[#ea580c]">SOB Datum Certified</span>
+                  <span className="w-2 h-2 rounded-full bg-[#0284c7]" />
+                  <span className="font-bold text-[#0284c7]">SOB Datum Certified</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* 3 Editorial Column Highlights (Zero Paragraphs, Direct Clean Links) */}
+        {/* 3 Editorial Column Highlights (Theme: Corporate Logo Blue) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-slate-200">
           <Link href="/#services" className="group block">
-            <span className="text-[10px] font-mono text-[#ea580c] block mb-0.5 font-bold uppercase tracking-wider">
+            <span className="text-[10px] font-mono text-[#0284c7] block mb-0.5 font-bold uppercase tracking-wider">
               GEODETIC POSITIONING
             </span>
-            <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors flex items-center justify-between">
+            <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors flex items-center justify-between">
               <span>Sub-Centimeter RTK GNSS Baselines</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
             </h3>
           </Link>
 
           <Link href="/#services" className="group block">
-            <span className="text-[10px] font-mono text-[#ea580c] block mb-0.5 font-bold uppercase tracking-wider">
+            <span className="text-[10px] font-mono text-[#0284c7] block mb-0.5 font-bold uppercase tracking-wider">
               AERIAL PHOTOGRAMMETRY
             </span>
-            <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors flex items-center justify-between">
+            <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors flex items-center justify-between">
               <span>Sub-3cm GSD Drone Orthomosaics</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
             </h3>
           </Link>
 
           <Link href="/#services" className="group block">
-            <span className="text-[10px] font-mono text-[#ea580c] block mb-0.5 font-bold uppercase tracking-wider">
+            <span className="text-[10px] font-mono text-[#0284c7] block mb-0.5 font-bold uppercase tracking-wider">
               SPATIAL INTELLIGENCE
             </span>
-            <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors flex items-center justify-between">
+            <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors flex items-center justify-between">
               <span>Enterprise PostGIS Spatial Databases</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
             </h3>
           </Link>
         </div>

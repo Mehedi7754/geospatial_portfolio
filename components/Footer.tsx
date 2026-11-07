@@ -13,19 +13,19 @@ export const Footer: React.FC = () => {
         </Link>
 
         <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
-          <Link href="/#home" className="hover:text-[#ea580c] transition">
+          <Link href="/#home" className="hover:text-[#0284c7] transition">
             Home
           </Link>
-          <Link href="/#portfolio" className="hover:text-[#ea580c] transition">
+          <Link href="/#portfolio" className="hover:text-[#0284c7] transition">
             Works
           </Link>
-          <Link href="/projects" className="hover:text-[#ea580c] transition">
+          <Link href="/projects" className="hover:text-[#0284c7] transition">
             Projects (31)
           </Link>
-          <Link href="/fleet" className="hover:text-[#ea580c] transition">
+          <Link href="/fleet" className="hover:text-[#0284c7] transition">
             Fleet
           </Link>
-          <Link href="/#contact" className="hover:text-[#ea580c] transition">
+          <Link href="/#contact" className="hover:text-[#0284c7] transition">
             Contact
           </Link>
         </div>

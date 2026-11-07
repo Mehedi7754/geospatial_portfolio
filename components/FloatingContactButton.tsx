@@ -41,7 +41,7 @@ export const FloatingContactButton: React.FC = () => {
               className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 text-slate-900 hover:bg-slate-100 transition-colors font-bold border border-slate-200"
             >
               <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-amber-600" />
+                <Phone className="w-3.5 h-3.5 text-[#0284c7]" />
                 <span>Call +880 1713 907779</span>
               </div>
               <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
@@ -52,7 +52,7 @@ export const FloatingContactButton: React.FC = () => {
               className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 text-slate-900 hover:bg-slate-100 transition-colors font-bold border border-slate-200"
             >
               <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-amber-600" />
+                <Mail className="w-3.5 h-3.5 text-[#0284c7]" />
                 <span>Email Official Desk</span>
               </div>
               <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
@@ -64,13 +64,13 @@ export const FloatingContactButton: React.FC = () => {
       {/* Primary Floating Action Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="w-12 h-12 rounded-full bg-[#0f172a] text-amber-400 flex items-center justify-center shadow-lg hover:shadow-2xl hover:bg-[#1e293b] transition-all transform hover:scale-105 border border-slate-800"
+        className="w-12 h-12 rounded-full bg-slate-900 text-sky-400 flex items-center justify-center shadow-lg hover:shadow-2xl hover:bg-[#0284c7] hover:text-white transition-all transform hover:scale-105 border border-sky-500/30"
         aria-label="Direct consultation desk"
       >
         {open ? (
           <X className="w-5 h-5 text-white" />
         ) : (
-          <MessageSquare className="w-5 h-5 text-amber-400" />
+          <MessageSquare className="w-5 h-5" />
         )}
       </button>
     </div>

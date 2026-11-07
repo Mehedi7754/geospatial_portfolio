@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Phone, Mail, MapPin, ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { Phone, Mail, MapPin, CheckCircle2, ShieldCheck } from "lucide-react";
+import { AnimatedButton } from "@/components/AnimatedButton";
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ export const ContactSection: React.FC = () => {
         {/* Editorial Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 mb-12 border-b border-slate-200">
           <div>
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0284c7] block mb-2">
               [ INQUIRIES &amp; RAPID MOBILIZATION DESK ]
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
@@ -53,16 +54,16 @@ export const ContactSection: React.FC = () => {
             <div className="space-y-4 pt-2 font-mono text-xs">
               <a
                 href="tel:+8801713907779"
-                className="flex items-center gap-4 p-4 border border-slate-200 hover:border-slate-900 transition rounded-none group"
+                className="flex items-center gap-4 p-4 border border-slate-200 hover:border-[#0284c7] transition rounded-none group"
               >
-                <div className="w-10 h-10 bg-slate-100 group-hover:bg-[#ea580c] text-slate-700 group-hover:text-white transition-colors flex items-center justify-center shrink-0 rounded-none">
+                <div className="w-10 h-10 bg-slate-100 group-hover:bg-[#0284c7] text-slate-700 group-hover:text-white transition-colors flex items-center justify-center shrink-0 rounded-none">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
                   <span className="text-[10px] uppercase text-slate-400 block font-bold">
                     DIRECT DESK HOTLINE (24/7)
                   </span>
-                  <span className="font-bold text-slate-900 group-hover:text-[#ea580c] transition text-sm">
+                  <span className="font-bold text-slate-900 group-hover:text-[#0284c7] transition text-sm">
                     +880 1713 90 777 9
                   </span>
                 </div>
@@ -70,16 +71,16 @@ export const ContactSection: React.FC = () => {
 
               <a
                 href="mailto:md.geospatialworks@gmail.com"
-                className="flex items-center gap-4 p-4 border border-slate-200 hover:border-slate-900 transition rounded-none group"
+                className="flex items-center gap-4 p-4 border border-slate-200 hover:border-[#0284c7] transition rounded-none group"
               >
-                <div className="w-10 h-10 bg-slate-100 group-hover:bg-[#ea580c] text-slate-700 group-hover:text-white transition-colors flex items-center justify-center shrink-0 rounded-none">
+                <div className="w-10 h-10 bg-slate-100 group-hover:bg-[#0284c7] text-slate-700 group-hover:text-white transition-colors flex items-center justify-center shrink-0 rounded-none">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
                   <span className="text-[10px] uppercase text-slate-400 block font-bold">
                     OFFICIAL RFP &amp; TENDER INQUIRIES
                   </span>
-                  <span className="font-bold text-slate-900 group-hover:text-[#ea580c] transition text-xs break-all">
+                  <span className="font-bold text-slate-900 group-hover:text-[#0284c7] transition text-xs break-all">
                     md.geospatialworks@gmail.com
                   </span>
                 </div>
@@ -120,7 +121,7 @@ export const ContactSection: React.FC = () => {
                     setSubmitted(false);
                     setFormData({ name: "", contact: "", message: "" });
                   }}
-                  className="px-6 py-2.5 bg-slate-900 text-white text-xs font-mono font-bold hover:bg-slate-800 transition rounded-none uppercase cursor-pointer"
+                  className="px-6 py-2.5 bg-slate-900 text-white text-xs font-mono font-bold hover:bg-[#0284c7] transition rounded-none uppercase cursor-pointer"
                 >
                   Send Another Inquiry
                 </button>
@@ -137,7 +138,7 @@ export const ContactSection: React.FC = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Engr. Tanvir Ahmed (BBA Project Office)"
-                    className="w-full px-4 py-3 bg-white border border-slate-300 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:border-[#ea580c] transition rounded-none"
+                    className="w-full px-4 py-3 bg-white border border-slate-300 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:border-[#0284c7] transition rounded-none"
                   />
                 </div>
 
@@ -151,7 +152,7 @@ export const ContactSection: React.FC = () => {
                     value={formData.contact}
                     onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
                     placeholder="e.g. tanvir@authority.gov.bd or +880 1700 000000"
-                    className="w-full px-4 py-3 bg-white border border-slate-300 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:border-[#ea580c] transition rounded-none"
+                    className="w-full px-4 py-3 bg-white border border-slate-300 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:border-[#0284c7] transition rounded-none"
                   />
                 </div>
 
@@ -165,24 +166,24 @@ export const ContactSection: React.FC = () => {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Describe survey corridor length, district/mouza, required deliverables (e.g. RTK staking, drone orthomosaic, bathymetry, GIS)..."
-                    className="w-full px-4 py-3 bg-white border border-slate-300 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:border-[#ea580c] transition rounded-none resize-none"
+                    className="w-full px-4 py-3 bg-white border border-slate-300 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:border-[#0284c7] transition rounded-none resize-none"
                   />
                 </div>
 
                 <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
                   <div className="flex items-center gap-2 text-slate-500">
-                    <ShieldCheck className="w-4 h-4 text-[#ea580c]" />
+                    <ShieldCheck className="w-4 h-4 text-[#0284c7]" />
                     <span>SOB DATUM CALIBRATION • NDA PROTECTED</span>
                   </div>
 
-                  <button
+                  <AnimatedButton
                     type="submit"
-                    disabled={loading}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold transition rounded-none uppercase cursor-pointer disabled:opacity-50"
+                    variant="primary"
+                    pulseDot={true}
+                    className="w-full sm:w-auto text-xs"
                   >
-                    <span>{loading ? "TRANSMITTING..." : "TRANSMIT BRIEF"}</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                    {loading ? "TRANSMITTING..." : "TRANSMIT BRIEF"}
+                  </AnimatedButton>
                 </div>
               </form>
             )}

@@ -68,7 +68,7 @@ export default function FleetPage() {
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 mb-12">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-[#ea580c] transition mb-6"
+            className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-[#0284c7] transition mb-6"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Main Portfolio</span>
@@ -76,7 +76,7 @@ export default function FleetPage() {
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-slate-100">
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#0284c7] block mb-2">
                 CALIBRATED FIELD HARDWARE • SOB BENCHMARKS
               </span>
               <h1 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
@@ -96,7 +96,7 @@ export default function FleetPage() {
                   onClick={() => setActiveCategory(cat)}
                   className={`text-xs px-3.5 py-1.5 rounded-none font-mono font-bold transition-all ${
                     activeCategory === cat
-                      ? "bg-[#ea580c] text-white"
+                      ? "bg-[#0284c7] text-white"
                       : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                   }`}
                 >
@@ -128,7 +128,7 @@ export default function FleetPage() {
                   <div>
                     <div
                       className={`relative aspect-[16/10] overflow-hidden rounded-none ${
-                        isCutout ? "bg-gradient-to-b from-slate-50 to-orange-50/20" : "bg-slate-100"
+                        isCutout ? "bg-gradient-to-b from-slate-50 to-sky-50/30" : "bg-slate-100"
                       }`}
                     >
                       <Image
@@ -152,7 +152,7 @@ export default function FleetPage() {
                     </div>
 
                     <div className="p-5">
-                      <h3 className="text-base font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-1">
+                      <h3 className="text-base font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors leading-snug mb-1">
                         {eq.name}
                       </h3>
                       <span className="text-[11px] font-mono text-slate-400 block mb-3">
@@ -171,7 +171,7 @@ export default function FleetPage() {
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                         Ready for Field Dispatch
                       </span>
-                      <span className="font-semibold text-[#ea580c]">
+                      <span className="font-semibold text-[#0284c7]">
                         SOB Calibrated
                       </span>
                     </div>

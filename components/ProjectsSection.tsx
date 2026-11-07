@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, CheckCircle2, X } from "lucide-react";
+import { AnimatedButton } from "./AnimatedButton";
 
 interface LandmarkProject {
   id: string;
@@ -138,9 +139,9 @@ export const ProjectsSection: React.FC = () => {
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Custom Image-Type Layout: Left Editorial Typography + Right 3 Photographic Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          {/* Left Column (4 Cols): / PROJECTS Heading, Note & Button (Matching Reference Image) */}
+          {/* Left Column (4 Cols): / PROJECTS Heading, Note & Button (Theme: Corporate Logo Blue) */}
           <div className="lg:col-span-4 lg:sticky lg:top-28">
-            <div className="flex items-center gap-3 text-xs font-mono font-bold tracking-widest text-[#ea580c] uppercase mb-5">
+            <div className="flex items-center gap-3 text-xs font-mono font-bold tracking-widest text-[#0284c7] uppercase mb-5">
               <span>/ PROJECTS</span>
               <span className="w-12 h-[1px] bg-slate-300" />
             </div>
@@ -148,8 +149,8 @@ export const ProjectsSection: React.FC = () => {
             <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-black text-[#0f172a] tracking-tight leading-[1.05] mb-5">
               Real <br />
               landscapes. <br />
-              <span className="text-[#ea580c]">Real</span> <br />
-              <span className="text-[#ea580c]">impact.</span>
+              <span className="text-[#0284c7]">Real</span> <br />
+              <span className="text-[#0284c7]">impact.</span>
             </h2>
 
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm mb-6 font-normal">
@@ -157,13 +158,13 @@ export const ProjectsSection: React.FC = () => {
             </p>
 
             <div className="mb-8">
-              <Link
+              <AnimatedButton
                 href="/projects"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 border border-slate-900 bg-white hover:bg-slate-900 text-slate-900 hover:text-white text-xs font-mono font-bold transition rounded-none uppercase tracking-wider group shadow-xs"
+                variant="dark"
+                icon="right"
               >
-                <span>View all projects</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+                View all projects
+              </AnimatedButton>
             </div>
 
             {/* Category Filter Switcher */}
@@ -179,7 +180,7 @@ export const ProjectsSection: React.FC = () => {
                     onClick={() => setSelectedCategory(tab.id)}
                     className={`px-3 py-1.5 text-[11px] font-bold uppercase transition rounded-none cursor-pointer ${
                       selectedCategory === tab.id
-                        ? "bg-[#ea580c] text-white"
+                        ? "bg-[#0284c7] text-white shadow-xs"
                         : "bg-white text-slate-700 border border-slate-200 hover:border-slate-900"
                     }`}
                   >
@@ -221,7 +222,7 @@ export const ProjectsSection: React.FC = () => {
                       <h3 className="text-sm sm:text-base font-bold text-white tracking-tight leading-snug">
                         {proj.title}
                       </h3>
-                      <span className="shrink-0 text-white group-hover:text-[#ea580c] group-hover:translate-x-1 transition-all mb-0.5">
+                      <span className="shrink-0 text-white group-hover:text-[#0284c7] group-hover:translate-x-1 transition-all mb-0.5">
                         <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
@@ -258,7 +259,7 @@ export const ProjectsSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setActiveProject(null)}
-                className="absolute top-4 right-4 p-2 bg-slate-900 text-white transition border border-white/20 rounded-none cursor-pointer"
+                className="absolute top-4 right-4 p-2 bg-slate-900 text-white transition border border-white/20 rounded-none cursor-pointer hover:bg-[#0284c7]"
                 aria-label="Close modal"
               >
                 <X className="w-4 h-4" />
@@ -283,7 +284,7 @@ export const ProjectsSection: React.FC = () => {
                   <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">
                     CALIBRATION STANDARD
                   </span>
-                  <span className="text-[#ea580c] font-bold block">
+                  <span className="text-[#0284c7] font-bold block">
                     {activeProject.benchmark}
                   </span>
                 </div>
@@ -299,7 +300,7 @@ export const ProjectsSection: React.FC = () => {
                       key={idx}
                       className="p-3 bg-slate-50 border border-slate-200 text-xs font-medium text-slate-800 flex items-start gap-2 rounded-none"
                     >
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-sky-600 mt-0.5 shrink-0" />
                       <span>{item}</span>
                     </div>
                   ))}
@@ -310,7 +311,7 @@ export const ProjectsSection: React.FC = () => {
                 <Link
                   href="/projects"
                   onClick={() => setActiveProject(null)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition rounded-none"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 hover:bg-[#0284c7] text-white text-xs font-bold transition rounded-none"
                 >
                   <span>ALL 31 DELIVERABLES</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -319,7 +320,7 @@ export const ProjectsSection: React.FC = () => {
                 <Link
                   href="#contact"
                   onClick={() => setActiveProject(null)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold transition rounded-none"
+                  className="btn-beam-shine w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-bold transition rounded-none shadow-md shadow-sky-500/20"
                 >
                   <span>REQUEST FORMAL RFQ</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />

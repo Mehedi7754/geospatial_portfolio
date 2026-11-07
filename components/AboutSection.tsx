@@ -12,7 +12,7 @@ export const AboutSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 mb-10 border-b border-slate-200">
           <div>
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#ea580c] block mb-1">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0284c7] block mb-1">
               • Why Choose Us
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
@@ -40,7 +40,7 @@ export const AboutSection: React.FC = () => {
 
               {/* Bottom Credential Bar */}
               <div className="absolute bottom-4 left-4 right-4 p-3 bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 flex items-center gap-3 rounded-none">
-                <div className="p-2 bg-[#ea580c] text-white shrink-0 rounded-none">
+                <div className="p-2 bg-[#0284c7] text-white shrink-0 rounded-none">
                   <Compass className="w-4 h-4" />
                 </div>
                 <div className="font-mono text-xs">
@@ -55,7 +55,7 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-7 flex flex-col justify-center">
             <h3 className="text-2xl sm:text-4xl font-black text-[#0f172a] tracking-tight leading-[1.12] mb-4">
               Leading Geospatial Agency <br />
-              <span className="text-[#ea580c]">For Critical Infrastructure.</span>
+              <span className="text-[#0284c7]">For Critical Infrastructure.</span>
             </h3>
 
             {/* Single Concise Statement (NO Extra Paragraphs) */}
@@ -64,7 +64,7 @@ export const AboutSection: React.FC = () => {
             </p>
 
             {/* Quote Block (As in TROMA Image 2) */}
-            <div className="p-4 border-l-2 border-[#ea580c] bg-slate-50 mb-6 font-sans">
+            <div className="p-4 border-l-2 border-[#0284c7] bg-slate-50 mb-6 font-sans">
               <p className="text-xs sm:text-sm text-slate-800 italic leading-relaxed">
                 &ldquo;Strict adherence to Survey of Bangladesh datum calibration and rapid mobilization across all 64 districts.&rdquo;
               </p>
@@ -76,7 +76,7 @@ export const AboutSection: React.FC = () => {
             <div className="flex flex-wrap items-center gap-6 font-mono text-xs uppercase font-bold">
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 text-[#ea580c] hover:text-[#c2410c] transition group"
+                className="inline-flex items-center gap-2 text-[#0284c7] hover:text-[#0369a1] transition group"
               >
                 <span>View Complete Archive (31)</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -84,7 +84,7 @@ export const AboutSection: React.FC = () => {
 
               <Link
                 href="/fleet"
-                className="inline-flex items-center gap-2 text-slate-700 hover:text-[#ea580c] transition group"
+                className="inline-flex items-center gap-2 text-slate-700 hover:text-[#0284c7] transition group"
               >
                 <span>Inspect Calibrated Fleet</span>
                 <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform" />
@@ -96,7 +96,7 @@ export const AboutSection: React.FC = () => {
         {/* 4 Technical Statistics: Separated by 1px rules, ZERO Box Containers */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-8 border-y border-slate-200 font-mono">
           <div>
-            <span className="text-3xl sm:text-5xl font-black text-[#ea580c] tracking-tight block">
+            <span className="text-3xl sm:text-5xl font-black text-[#0284c7] tracking-tight block">
               12+
             </span>
             <strong className="text-xs font-bold text-slate-900 block mt-1.5 uppercase">
@@ -105,7 +105,7 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <div>
-            <span className="text-3xl sm:text-5xl font-black text-[#ea580c] tracking-tight block">
+            <span className="text-3xl sm:text-5xl font-black text-[#0284c7] tracking-tight block">
               31
             </span>
             <strong className="text-xs font-bold text-slate-900 block mt-1.5 uppercase">
@@ -114,7 +114,7 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <div>
-            <span className="text-3xl sm:text-5xl font-black text-[#ea580c] tracking-tight block">
+            <span className="text-3xl sm:text-5xl font-black text-[#0284c7] tracking-tight block">
               64
             </span>
             <strong className="text-xs font-bold text-slate-900 block mt-1.5 uppercase">
@@ -123,7 +123,7 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <div>
-            <span className="text-3xl sm:text-5xl font-black text-[#ea580c] tracking-tight block">
+            <span className="text-3xl sm:text-5xl font-black text-[#0284c7] tracking-tight block">
               100%
             </span>
             <strong className="text-xs font-bold text-slate-900 block mt-1.5 uppercase">
