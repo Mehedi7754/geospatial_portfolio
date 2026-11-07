@@ -26,12 +26,12 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "py-3 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100"
+          ? "py-3 bg-white/95 backdrop-blur-md shadow-xs border-b border-slate-100"
           : "py-4 bg-white/90 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-        {/* Brand Logo with Animated Pin */}
+        {/* Brand Logo with Orange Accent (BuildGo Style) */}
         <Link
           href="/"
           onClick={closeMobile}
@@ -51,21 +51,21 @@ export const Navbar: React.FC = () => {
         >
           <Link
             href="/#home"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors"
           >
             Home
           </Link>
 
           <Link
             href="/#portfolio"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors"
           >
-            Featured Work
+            Landmark Projects
           </Link>
 
           <Link
             href="/projects"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors flex items-center gap-1.5"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors flex items-center gap-1.5"
           >
             <span>All Projects</span>
             <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-100 text-[#ea580c]">
@@ -75,48 +75,52 @@ export const Navbar: React.FC = () => {
 
           <Link
             href="/#services"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors"
           >
-            Disciplines
+            Capabilities
           </Link>
 
           <Link
             href="/#about"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors"
           >
-            About
+            Why Choose Us
           </Link>
 
           <Link
             href="/fleet"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors"
           >
             Fleet
           </Link>
 
           <Link
             href="/#contact"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] transition-colors"
           >
             Contact
           </Link>
         </nav>
 
-        {/* Action Buttons: Phone Hotline & Coral Pill CTA */}
-        <div className="hidden sm:flex items-center gap-3">
+        {/* Action Buttons: Phone Hotline & Coral Pill CTA (BuildGo Style) */}
+        <div className="hidden sm:flex items-center gap-4">
           <a
             href="tel:+8801713907779"
-            className="hidden xl:flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-[#ea580c] transition"
+            className="hidden xl:flex flex-col text-right group"
           >
-            <Phone className="w-3.5 h-3.5 text-[#ea580c]" />
-            <span>+880 1713-907779</span>
+            <span className="text-[10px] font-bold uppercase text-slate-400">
+              Call Us Any Time
+            </span>
+            <span className="text-xs font-bold text-slate-900 group-hover:text-[#ea580c] transition">
+              +880 1713 90 777 9
+            </span>
           </a>
 
           <Link
             href="/#contact"
             className="flex items-center gap-2 px-6 py-2.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-full shadow-md shadow-orange-500/25 transition-all duration-200 group transform hover:-translate-y-0.5"
           >
-            <span>Request Proposal</span>
+            <span>Get In Touch</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-white/90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
@@ -148,7 +152,7 @@ export const Navbar: React.FC = () => {
               onClick={closeMobile}
               className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
-              Featured Work
+              Landmark Projects
             </Link>
             <Link
               href="/projects"
@@ -165,14 +169,14 @@ export const Navbar: React.FC = () => {
               onClick={closeMobile}
               className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
-              Disciplines
+              Capabilities
             </Link>
             <Link
               href="/#about"
               onClick={closeMobile}
               className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
-              About Agency
+              Why Choose Us
             </Link>
             <Link
               href="/fleet"

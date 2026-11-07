@@ -3,13 +3,23 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Compass, Award } from "lucide-react";
+import { ArrowRight, Compass } from "lucide-react";
 
 export const AboutSection: React.FC = () => {
   return (
     <section id="about" className="py-20 lg:py-28 bg-white overflow-hidden">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* TROMA Editorial 2-Column Split (Image + Typography, ZERO Box Containers) */}
+        {/* BuildGo 1:1 Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
+            • Why Choose Us
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
+            Why We&apos;re The Right Choice
+          </h2>
+        </div>
+
+        {/* 2-Column Split: Collaborative Photo on Left + Credentials on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16 sm:mb-20">
           {/* Left Column (5 Cols): Clean Photo directly on canvas */}
           <div className="lg:col-span-5 relative">
@@ -42,13 +52,13 @@ export const AboutSection: React.FC = () => {
           {/* Right Column (7 Cols): Typography directly on canvas */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             <span className="text-xs font-bold uppercase tracking-widest text-[#ea580c] block mb-3">
-              1st Class Accredited Consultancy
+              1st Class Accredited Geospatial Consultancy
             </span>
 
-            <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight leading-[1.12] mb-6">
-              Leading Geospatial Agency For{" "}
-              <span className="text-[#ea580c]">Your Infrastructure Solutions.</span>
-            </h2>
+            <h3 className="text-2xl sm:text-4xl font-black text-[#0f172a] tracking-tight leading-[1.12] mb-6">
+              Precision Engineering For{" "}
+              <span className="text-[#ea580c]">National Infrastructure.</span>
+            </h3>
 
             <p className="text-base text-slate-600 leading-relaxed mb-5">
               Geospatial Works is an accredited 1st Class engineering consultancy headquartered in Dhaka.
@@ -82,7 +92,7 @@ export const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        {/* 4 Floating Stats (TROMA Style - Sitting Directly on White Canvas, NO Box Container) */}
+        {/* 4 Floating Stats (BuildGo & TROMA Style - Directly on White Canvas, ZERO Box Containers) */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-10 border-y border-slate-100">
           <div>
             <span className="text-3xl sm:text-5xl font-black text-[#ea580c] tracking-tight block">

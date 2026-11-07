@@ -5,11 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, CheckCircle2, X } from "lucide-react";
 
-interface ShowcaseProject {
+interface LandmarkProject {
   id: string;
-  num: string;
   category: string;
+  categoryTag: string;
   title: string;
+  subtitle: string;
   image: string;
   client: string;
   location: string;
@@ -18,16 +19,17 @@ interface ShowcaseProject {
   deliverables: string[];
 }
 
-const showcaseProjects: ShowcaseProject[] = [
+const landmarkProjects: LandmarkProject[] = [
   {
     id: "expressway",
-    num: "01",
-    category: "Infrastructure Alignment",
+    category: "bridges",
+    categoryTag: "INFRASTRUCTURE",
     title: "Dhaka–Ashulia Elevated Expressway",
+    subtitle: "Sub-mm Pier Axis Alignment • SOB Datum",
     image: "/inner/bridge-aerial.webp",
     client: "Bangladesh Bridge Authority (BBA)",
     location: "Dhaka-Ashulia Corridor",
-    benchmark: "Sub-mm Pier Axis Tolerance",
+    benchmark: "Sub-millimeter Pier Axis Tolerance",
     summary:
       "Millimeter geodetic corridor control establishment, elevated viaduct pier centerline setting-out, and right-of-way topographic modeling for Bangladesh Bridge Authority.",
     deliverables: [
@@ -38,28 +40,11 @@ const showcaseProjects: ShowcaseProject[] = [
     ],
   },
   {
-    id: "badc-gis",
-    num: "02",
-    category: "Satellite Remote Sensing & GIS",
-    title: "BADC Agricultural Information System (WEB-AIS)",
-    image: "/assets/showcase/badc-irrigation-gis-project.jpg",
-    client: "Ministry of Agriculture / BADC",
-    location: "23 Unions, 260 Mouzas",
-    benchmark: "208.37 km² Spatial Geodatabase",
-    summary:
-      "Pilot irrigation water management geodatabase, river gauge monitoring, and web-based spatial agricultural database with multi-temporal NDVI vegetation analysis.",
-    deliverables: [
-      "208.37 km² high-density spatial geodatabase",
-      "Interactive Web-AIS GIS portal with NDVI diagnostics",
-      "River gauge and canal network monitoring benchmarks",
-      "260 Mouzas boundary demarcation and land cover maps",
-    ],
-  },
-  {
     id: "chittagong-ez",
-    num: "03",
-    category: "UAV Photogrammetry",
-    title: "Chittagong Economic Zone 3D Mesh & Earthwork",
+    category: "uav",
+    categoryTag: "UAV PHOTOGRAMMETRY",
+    title: "Chittagong Economic Zone 3D Mesh",
+    subtitle: "2.5cm GSD True Orthomosaic & Earthwork",
     image: "/inner/drone-fields.webp",
     client: "BEZA Industrial Authority",
     location: "Mirsarai, Chattogram",
@@ -75,9 +60,10 @@ const showcaseProjects: ShowcaseProject[] = [
   },
   {
     id: "sylhet-flood",
-    num: "04",
-    category: "Hydrographic Sounding",
-    title: "Surma–Kushiyara Basin Riverbed Bathymetry",
+    category: "hydro",
+    categoryTag: "HYDROGRAPHY",
+    title: "Surma–Kushiyara Riverbed Bathymetry",
+    subtitle: "Dual-Frequency Acoustic Depth Sounding",
     image: "/assets/showcase/river-bathymetry-sounding.jpg",
     client: "Bangladesh Water Development Board (BWDB)",
     location: "Surma-Kushiyara Delta Basin",
@@ -92,10 +78,30 @@ const showcaseProjects: ShowcaseProject[] = [
     ],
   },
   {
+    id: "badc-gis",
+    category: "gis",
+    categoryTag: "REMOTE SENSING & GIS",
+    title: "BADC Agricultural Information System",
+    subtitle: "208.37 km² Spatial Geodatabase & Web-AIS",
+    image: "/assets/showcase/badc-irrigation-gis-project.jpg",
+    client: "Ministry of Agriculture / BADC",
+    location: "23 Unions, 260 Mouzas",
+    benchmark: "208.37 km² Spatial Geodatabase",
+    summary:
+      "Pilot irrigation water management geodatabase, river gauge monitoring, and web-based spatial agricultural database with multi-temporal NDVI vegetation analysis.",
+    deliverables: [
+      "208.37 km² high-density spatial geodatabase",
+      "Interactive Web-AIS GIS portal with NDVI diagnostics",
+      "River gauge and canal network monitoring benchmarks",
+      "260 Mouzas boundary demarcation and land cover maps",
+    ],
+  },
+  {
     id: "geodetic-control",
-    num: "05",
-    category: "Topographic Geodetics",
-    title: "Nationwide Geodetic Ground Control Network",
+    category: "bridges",
+    categoryTag: "GEODETIC BASELINE",
+    title: "Nationwide Ground Control Network",
+    subtitle: "All 64 Districts SOB Datum Baselines",
     image: "/assets/showcase/total-station-instrument.png",
     client: "Survey of Bangladesh (SOB) Datum",
     location: "All 64 Districts",
@@ -111,9 +117,10 @@ const showcaseProjects: ShowcaseProject[] = [
   },
   {
     id: "bpdb-gis",
-    num: "06",
-    category: "Spatial Asset Database",
-    title: "BPDB Distribution Asset GIS & Mapping",
+    category: "gis",
+    categoryTag: "SPATIAL DATABASE",
+    title: "BPDB Distribution Asset GIS",
+    subtitle: "PostgreSQL/PostGIS Utility Geodatabase",
     image: "/inner/gis-analyst.webp",
     client: "Power Development Board (BPDB)",
     location: "Chittagong & Sylhet Zones",
@@ -130,88 +137,100 @@ const showcaseProjects: ShowcaseProject[] = [
 ];
 
 export const ProjectsSection: React.FC = () => {
-  const [activeProject, setActiveProject] = useState<ShowcaseProject | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [activeProject, setActiveProject] = useState<LandmarkProject | null>(null);
+
+  const filteredProjects =
+    selectedCategory === "all"
+      ? landmarkProjects
+      : landmarkProjects.filter((p) => p.category === selectedCategory);
 
   return (
     <section id="portfolio" className="py-20 lg:py-28 bg-white overflow-hidden">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* TROMA Style Minimal Header (Left Title + Right Coral Button, NO Box Container) */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
-              Recent Work
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
-              Check Some Of Our Recent Work
-            </h2>
-          </div>
-
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold rounded-full shadow-lg shadow-orange-500/25 transition transform hover:-translate-y-0.5 self-start sm:self-end shrink-0"
-          >
-            <span>View All 31 Projects</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+        {/* BuildGo 1:1 Section Header: Subtitle + Title + Filter Links */}
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
+            • Our Landmark Projects
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
+            Discover Our Landmark Projects.
+          </h2>
         </div>
 
-        {/* TROMA Style 6-Image Clean Gallery Grid (ZERO Box Containers, Pure Images & Typography) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 sm:gap-y-12">
-          {showcaseProjects.map((proj) => (
+        {/* BuildGo Category Filter Tabs */}
+        <div className="flex items-center justify-center gap-3 sm:gap-6 flex-wrap mb-12 sm:mb-16 text-xs sm:text-sm font-semibold">
+          {[
+            { id: "all", label: "All Deliverables (31)" },
+            { id: "bridges", label: "Expressway & Bridges" },
+            { id: "uav", label: "UAV Photogrammetry" },
+            { id: "hydro", label: "River Bathymetry" },
+            { id: "gis", label: "Satellite GIS" },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setSelectedCategory(tab.id)}
+              className={`transition-colors duration-200 pb-1 relative cursor-pointer ${
+                selectedCategory === tab.id
+                  ? "text-[#ea580c] font-bold"
+                  : "text-slate-500 hover:text-slate-900"
+              }`}
+            >
+              <span>{tab.label}</span>
+              {selectedCategory === tab.id && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#ea580c] rounded-full" />
+              )}
+            </button>
+          ))}
+        </div>
+
+        {/* BuildGo 1:1 Large Immersive Project Cards (3 Columns, ZERO Box Containers) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {filteredProjects.slice(0, 3).map((proj) => (
             <div
               key={proj.id}
               onClick={() => setActiveProject(proj)}
-              className="group cursor-pointer flex flex-col"
+              className="group cursor-pointer relative aspect-[3/4] sm:aspect-[4/5] rounded-3xl overflow-hidden bg-slate-950 shadow-lg group-hover:shadow-2xl transition-all duration-500"
             >
-              {/* Image Block: Direct on canvas with smooth rounded-2xl corners, NO box container */}
-              <div className="relative aspect-[16/11] rounded-2xl overflow-hidden bg-slate-900 shadow-sm group-hover:shadow-xl transition-all duration-500 mb-4">
-                <Image
-                  src={proj.image}
-                  alt={proj.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <Image
+                src={proj.image}
+                alt={proj.title}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"
+              />
+              {/* BuildGo Style Deep Vignette Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent" />
 
-                {/* Floating category pill */}
-                <div className="absolute top-3 left-3 z-10">
-                  <span className="px-2.5 py-1 rounded-md bg-slate-900/85 backdrop-blur-md text-[9px] font-mono font-bold uppercase tracking-wider text-white border border-white/10 shadow-sm">
-                    {proj.category}
-                  </span>
-                </div>
-
-                {/* Hover arrow badge */}
-                <div className="absolute bottom-3 right-3 z-10 w-8 h-8 rounded-full bg-white text-[#ea580c] flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300 shadow-md">
-                  <ArrowUpRight className="w-4 h-4" />
+              {/* Bottom Caption Overlay (BuildGo Style with Orange Pill Tag) */}
+              <div className="absolute bottom-6 left-6 right-6 text-white z-10">
+                <span className="inline-block px-3 py-1 rounded-md bg-[#ea580c] text-[10px] font-bold tracking-wider uppercase text-white mb-2.5 shadow-md">
+                  {proj.categoryTag}
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug mb-1">
+                  {proj.title}
+                </h3>
+                <p className="text-xs text-slate-300 font-medium mb-3">
+                  {proj.subtitle}
+                </p>
+                <div className="inline-flex items-center gap-1.5 text-xs font-bold text-orange-400 group-hover:text-white transition-colors">
+                  <span>Inspect Dossier &amp; Data Assets</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </div>
-
-              {/* Title & Metadata directly below image */}
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#ea580c] block mb-1">
-                {proj.client}
-              </span>
-              <h3 className="text-base sm:text-lg font-black text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-1">
-                {proj.title}
-              </h3>
-              <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
-                {proj.summary}
-              </p>
             </div>
           ))}
         </div>
 
-        {/* Minimal Text Link to Complete Archive (NO Giant Box Container) */}
-        <div className="mt-14 sm:mt-16 pt-8 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs sm:text-sm text-slate-600">
-          <p>
-            Looking for our complete catalog of <strong className="text-slate-900 font-bold">31 verified infrastructure deliverables</strong> across all 64 districts in Bangladesh?
-          </p>
+        {/* Direct Link to Complete Archive */}
+        <div className="mt-14 sm:mt-16 text-center">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-1.5 font-bold text-[#ea580c] hover:text-[#c2410c] transition shrink-0"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 hover:bg-[#ea580c] text-white text-xs sm:text-sm font-bold rounded-full shadow-lg transition transform hover:-translate-y-0.5 group"
           >
             <span>Browse Complete 31 Projects Directory</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>
@@ -220,7 +239,7 @@ export const ProjectsSection: React.FC = () => {
       {activeProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-xs animate-in fade-in duration-200">
           <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden max-h-[90vh] flex flex-col">
-            <div className="relative h-52 sm:h-60 bg-slate-900">
+            <div className="relative h-56 sm:h-64 bg-slate-900">
               <Image
                 src={activeProject.image}
                 alt={activeProject.title}
@@ -229,11 +248,11 @@ export const ProjectsSection: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
-              <div className="absolute bottom-4 left-6 right-6">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-orange-400 block mb-1">
-                  {activeProject.num} • {activeProject.category}
+              <div className="absolute bottom-5 left-6 right-6">
+                <span className="px-2.5 py-1 rounded-md bg-[#ea580c] text-[10px] font-bold uppercase tracking-wider text-white inline-block mb-2">
+                  {activeProject.categoryTag}
                 </span>
-                <h3 className="text-lg sm:text-2xl font-black text-white tracking-tight leading-snug">
+                <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
                   {activeProject.title}
                 </h3>
               </div>
