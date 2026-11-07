@@ -45,12 +45,9 @@ export const ContactSection: React.FC = () => {
           {/* Left Column (5 Cols): Direct Communication Links directly on canvas */}
           <div className="lg:col-span-5 space-y-6">
             <div>
-              <h3 className="text-xl sm:text-2xl font-black text-[#0f172a] tracking-tight leading-snug mb-2">
+              <h3 className="text-xl sm:text-2xl font-black text-[#0f172a] tracking-tight leading-snug">
                 Dhaka Operations Centre
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                Central field instrumentation facility, GIS workstations, and drone fleet based in Dhaka with rapid mobilization capability to any district in Bangladesh.
-              </p>
             </div>
 
             <div className="space-y-4 pt-2 font-mono text-xs">

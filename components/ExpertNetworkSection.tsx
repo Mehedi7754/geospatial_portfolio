@@ -24,11 +24,11 @@ export const ExpertNetworkSection: React.FC = () => {
   return (
     <section id="trust" className="py-20 lg:py-28 bg-white border-t border-slate-200">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 mb-12 border-b border-slate-200">
+        {/* Section Header: Minimal Monograph Style (Zero Extra Paragraphs) */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 mb-10 border-b border-slate-200">
           <div>
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
-              [ TESTIMONIALS &amp; CLIENT ENDORSEMENTS ]
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#ea580c] block mb-1">
+              • Endorsements
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
               Strategic Partner Endorsements
@@ -39,9 +39,8 @@ export const ExpertNetworkSection: React.FC = () => {
           </span>
         </div>
 
-        {/* Editorial Testimonial Spread: Sharp Portrait on Left + Quote on Right */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-14 items-center mb-16 sm:mb-20">
-          {/* Authentic Portrait with Sharp 0px Border Radius */}
+        {/* Testimonial Spread: Sharp Portrait on Left + Quote on Right (Zero Extra Paragraphs) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-14 items-center mb-14 sm:mb-16">
           <div className="md:col-span-4 relative flex items-center justify-center">
             <div className="relative w-56 h-68 sm:w-64 sm:h-76 bg-slate-900 border border-slate-300 rounded-none overflow-hidden shadow-xs">
               <Image
@@ -54,7 +53,6 @@ export const ExpertNetworkSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Quote & Speaker Info */}
           <div className="md:col-span-8 flex flex-col justify-center">
             <Quote className="w-10 h-10 text-[#ea580c] mb-4 opacity-80" />
             <blockquote className="text-base sm:text-2xl text-slate-900 font-bold leading-relaxed mb-6 font-serif">
@@ -78,9 +76,9 @@ export const ExpertNetworkSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Client Logos Grid with Thin 1px Dividing Rules (NO Card Containers) */}
-        <div className="pt-10 border-t border-slate-200">
-          <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-slate-400 block mb-6">
+        {/* Client Logos Grid */}
+        <div className="pt-8 border-t border-slate-200">
+          <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-slate-400 block mb-5">
             VERIFIED CONTRACTOR &amp; CONSULTANCY PARTNER FOR:
           </span>
 

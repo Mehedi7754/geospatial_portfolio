@@ -15,11 +15,7 @@ export const Footer: React.FC = () => {
             <Link href="/" className="inline-block">
               <AnimatedLogo size="sm" light priority showText={true} />
             </Link>
-            <p className="text-slate-400 text-xs leading-relaxed max-w-sm font-sans font-normal">
-              Accredited 1st Class geospatial and engineering consultancy delivering millimeter geodetic
-              surveys, drone photogrammetry, hydrography, and enterprise GIS databases across Bangladesh.
-            </p>
-            <div className="flex items-center gap-2 pt-2">
+            <div className="flex items-center gap-2 pt-1">
               <span className="px-2 py-0.5 text-[10px] font-bold bg-slate-900 text-orange-400 border border-orange-500/30 rounded-none">
                 SOB / PWD DATUM CALIBRATED
               </span>
