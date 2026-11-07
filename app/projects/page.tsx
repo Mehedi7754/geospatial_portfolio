@@ -86,43 +86,40 @@ export default function ProjectsArchivePage() {
       <Navbar />
 
       <main className="pt-28 pb-24">
-        {/* Editorial Sub-Page Header */}
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        {/* Minimal Sub-Page Header */}
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 mb-10">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-[#0284c7] transition mb-6"
+            className="inline-flex items-center gap-2 text-xs font-mono font-bold text-slate-500 hover:text-[#0284c7] transition mb-6"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Main Portfolio</span>
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>PORTFOLIO</span>
           </Link>
 
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-slate-100">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 border-b border-slate-200">
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#0284c7] block mb-2">
-                OFFICIAL RECORD ARCHIVE • 31 DELIVERABLES
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0284c7] block mb-1">
+                // ARCHIVE &bull; 31 DELIVERABLES
               </span>
-              <h1 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
-                Project Directory Archive
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0f172a] tracking-tight">
+                Selected Works Archive
               </h1>
-              <p className="mt-2 text-slate-500 text-sm max-w-2xl leading-relaxed">
-                Complete catalog of geodetic baseline surveys, drone photogrammetry mappings, bathymetric sounding, and enterprise GIS databases delivered for government departments and private developers.
-              </p>
             </div>
 
-            {/* Search Input */}
-            <div className="relative w-full lg:w-80">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            {/* Minimal Search Input */}
+            <div className="relative w-full sm:w-72">
+              <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
-                placeholder="Search project, agency, district..."
+                placeholder="Search projects..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-9 py-2.5 bg-slate-50 border border-slate-200 rounded-none text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#0284c7] focus:bg-white transition"
+                className="w-full pl-9 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-none text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#0284c7] focus:bg-white transition font-mono"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -130,31 +127,31 @@ export default function ProjectsArchivePage() {
             </div>
           </div>
 
-          {/* Filter Pills */}
-          <div className="pt-6 flex flex-wrap items-center gap-2">
+          {/* Minimal Text Filter Tabs */}
+          <div className="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-mono">
             {categories.map((cat) => (
               <button
                 key={cat.value}
                 type="button"
                 onClick={() => setActiveCategory(cat.value)}
-                className={`text-xs px-4 py-2 rounded-none font-mono font-bold transition-all ${
+                className={`py-1.5 transition-colors cursor-pointer border-b-2 ${
                   activeCategory === cat.value
-                    ? "bg-[#0284c7] text-white"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                    ? "text-[#0284c7] font-bold border-[#0284c7]"
+                    : "text-slate-500 hover:text-slate-900 border-transparent font-medium"
                 }`}
               >
                 {cat.label}
               </button>
             ))}
-            <span className="text-xs text-slate-400 ml-auto font-mono">
-              Showing {filteredProjects.length} of 31 projects
+            <span className="text-slate-400 ml-auto hidden md:block">
+              {filteredProjects.length} records
             </span>
           </div>
         </div>
 
-        {/* Project Showcase Grid - Perfect Sized Architectural Cards */}
+        {/* Minimal Project Showcase Grid */}
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
             {filteredProjects.map((proj) => {
               const image = projectVisuals[proj.id] || "/assets/showcase/badc-irrigation-gis-project.jpg";
 
@@ -162,56 +159,41 @@ export default function ProjectsArchivePage() {
                 <div
                   key={proj.id}
                   onClick={() => setSelectedProject(proj)}
-                  className="group cursor-pointer flex flex-col justify-between bg-white border border-slate-200 hover:border-slate-800 hover:shadow-md transition-all duration-300 rounded-none overflow-hidden"
+                  className="group cursor-pointer block"
                 >
-                  <div>
-                    {/* Visual Photo: Natural Cinematic Proportion with Zero Border Radius */}
-                    <div className="relative aspect-[16/10] w-full rounded-none overflow-hidden bg-slate-950">
-                      <Image
-                        src={image}
-                        alt={proj.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover rounded-none transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+                  {/* Clean Photographic Visual */}
+                  <div className="relative aspect-[16/10] w-full rounded-none overflow-hidden bg-slate-950 mb-3 border border-slate-200 group-hover:border-slate-800 transition-colors">
+                    <Image
+                      src={image}
+                      alt={proj.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover rounded-none transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
 
-                      {/* Top Category Badge & ID (Clean White Tag Pill like Reference) */}
-                      <div className="absolute top-3 left-3 z-10">
-                        <span className="px-2.5 py-1 bg-white/95 backdrop-blur-xs text-slate-900 font-mono text-[10px] font-bold uppercase tracking-wider shadow-sm rounded-none">
-                          #{String(proj.id).padStart(2, "0")} • {proj.category}
-                        </span>
-                      </div>
-
-                      {/* Bottom Image Metadata */}
-                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs font-mono z-10">
-                        <span className="truncate max-w-[200px] text-slate-200 text-[11px]">
-                          {proj.location || "Bangladesh"}
-                        </span>
-                        <span className="px-2 py-0.5 bg-[#0284c7] text-white text-[10px] font-bold rounded-none">
-                          {proj.metrics || "Verified"}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Card Content with Balanced Spacing */}
-                    <div className="p-5">
-                      <span className="text-[11px] font-mono font-bold text-[#0284c7] block mb-1.5 uppercase tracking-wide">
-                        {proj.client}
+                    {/* Minimal Category Tag */}
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="px-2 py-0.5 bg-slate-950/80 backdrop-blur-xs text-white font-mono text-[10px] font-bold uppercase tracking-wider rounded-none">
+                        #{String(proj.id).padStart(2, "0")} • {proj.category}
                       </span>
-                      <h3 className="text-base sm:text-[17px] font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors leading-snug mb-2 line-clamp-2 min-h-[46px]">
-                        {proj.title}
-                      </h3>
-                      <p className="text-xs text-slate-500 leading-relaxed line-clamp-2 mb-2 font-normal">
-                        {proj.description}
-                      </p>
+                    </div>
+
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs font-mono z-10">
+                      <span className="text-slate-200 text-[11px] truncate">
+                        {proj.location || "Bangladesh"}
+                      </span>
+                      <ArrowUpRight className="w-4 h-4 text-white group-hover:text-sky-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                     </div>
                   </div>
 
-                  <div className="px-5 pb-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-700 group-hover:text-[#0284c7] transition-colors font-mono">
-                    <span>Inspect Full Dossier</span>
-                    <ArrowUpRight className="w-4 h-4 text-[#0284c7] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </div>
+                  {/* Minimal Caption (No Extra Paragraphs) */}
+                  <span className="text-[11px] font-mono font-bold text-[#0284c7] block mb-1 uppercase tracking-wide">
+                    {proj.client}
+                  </span>
+                  <h3 className="text-base font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors leading-snug">
+                    {proj.title}
+                  </h3>
                 </div>
               );
             })}
