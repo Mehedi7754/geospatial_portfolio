@@ -53,116 +53,73 @@ export const Navbar: React.FC = () => {
         >
           <Link
             href="#home"
-            className="px-3 py-1.5 rounded-lg hover:text-[#0f172a] hover:bg-slate-100/80 transition-colors"
+            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
             Home
           </Link>
 
           <Link
             href="#about"
-            className="px-3 py-1.5 rounded-lg hover:text-[#0f172a] hover:bg-slate-100/80 transition-colors"
+            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
             About
           </Link>
 
-          {/* Services Dropdown */}
-          <div className="relative group">
-            <Link
-              href="#services"
-              className="flex items-center gap-1 px-3 py-1.5 rounded-lg hover:text-[#0f172a] hover:bg-slate-100/80 transition-colors"
-            >
-              Services
-              <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-700 transition-transform group-hover:rotate-180" />
-            </Link>
-
-            <div className="absolute top-full left-0 mt-1 w-60 py-2 bg-white rounded-2xl shadow-xl border border-slate-200/80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <Link
-                href="#services"
-                className="flex items-center justify-between px-4 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-amber-600 transition"
-              >
-                <span>Topographic &amp; Engineering</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
-              </Link>
-              <Link
-                href="#services"
-                className="flex items-center justify-between px-4 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-amber-600 transition"
-              >
-                <span>UAV Drone Photogrammetry</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
-              </Link>
-              <Link
-                href="#services"
-                className="flex items-center justify-between px-4 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-amber-600 transition"
-              >
-                <span>GIS Database &amp; Analytics</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
-              </Link>
-              <Link
-                href="#services"
-                className="flex items-center justify-between px-4 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-amber-600 transition"
-              >
-                <span>Bathymetric Hydro Survey</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
-              </Link>
-              <div className="border-t border-slate-100 my-1" />
-              <Link
-                href="#services"
-                className="flex items-center justify-between px-4 py-2 text-xs font-bold text-[#0f172a] hover:bg-slate-50 hover:text-amber-600 transition"
-              >
-                <span>Explore All 8 Capabilities</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-amber-500" />
-              </Link>
-            </div>
-          </div>
-
           <Link
-            href="#projects"
-            className="px-3 py-1.5 rounded-lg hover:text-[#0f172a] hover:bg-slate-100/80 transition-colors"
+            href="#services"
+            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
-            Portfolio
+            Services
           </Link>
 
           <Link
-            href="#directory"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:text-[#0f172a] hover:bg-slate-100/80 transition-colors"
+            href="#portfolio"
+            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors flex items-center gap-1.5"
           >
-            <span>Directory</span>
-            <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+            <span>Portfolio</span>
+            <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-100 text-[#ea580c]">
               31
             </span>
           </Link>
 
           <Link
             href="#fleet"
-            className="px-3 py-1.5 rounded-lg hover:text-[#0f172a] hover:bg-slate-100/80 transition-colors"
+            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
             Fleet
           </Link>
 
           <Link
-            href="#team"
-            className="px-3 py-1.5 rounded-lg hover:text-[#0f172a] hover:bg-slate-100/80 transition-colors"
+            href="#trust"
+            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
-            Specialists
+            Partners
+          </Link>
+
+          <Link
+            href="#contact"
+            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+          >
+            Contact
           </Link>
         </nav>
 
-        {/* Action Buttons: Phone Hotline & Request Proposal */}
+        {/* Action Buttons: Phone Hotline & Coral Pill CTA */}
         <div className="hidden sm:flex items-center gap-3">
           <a
             href="tel:+8801713907779"
-            className="hidden md:flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-[#0f172a] transition"
+            className="hidden xl:flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-[#ea580c] transition"
           >
-            <Phone className="w-3.5 h-3.5 text-amber-500" />
+            <Phone className="w-3.5 h-3.5 text-[#ea580c]" />
             <span>+880 1713-907779</span>
           </a>
 
           <Link
             href="#contact"
-            className="flex items-center gap-2 px-4 py-2 bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs font-bold rounded-xl shadow-xs hover:shadow-md transition-all duration-200 group"
+            className="flex items-center gap-2 px-5 py-2.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-full shadow-md shadow-orange-500/25 transition-all duration-200 group transform hover:-translate-y-0.5"
           >
             <span>Request Proposal</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUpRight className="w-3.5 h-3.5 text-white/90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
 
@@ -184,59 +141,52 @@ export const Navbar: React.FC = () => {
             <Link
               href="#home"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
               Home
             </Link>
             <Link
               href="#about"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
               About Us
             </Link>
             <Link
               href="#services"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
-              Capabilities &amp; Services
+              Our Services
             </Link>
             <Link
-              href="#projects"
+              href="#portfolio"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c] flex items-center justify-between"
             >
-              Business Portfolio
-            </Link>
-            <Link
-              href="#directory"
-              onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-slate-50 flex items-center justify-between"
-            >
-              <span>Project Directory</span>
-              <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">
+              <span>Recent Work &amp; Portfolio</span>
+              <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-[#ea580c]">
                 31 Projects
               </span>
             </Link>
             <Link
               href="#fleet"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
-              Calibrated Field Fleet
+              Calibrated Fleet
             </Link>
             <Link
-              href="#team"
+              href="#trust"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
-              Engineering Specialists
+              Client Endorsements
             </Link>
             <Link
               href="#contact"
               onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
               Contact &amp; Proposal RFQ
             </Link>
@@ -247,16 +197,16 @@ export const Navbar: React.FC = () => {
               href="tel:+8801713907779"
               className="flex items-center gap-2 text-xs font-semibold text-slate-600"
             >
-              <Phone className="w-4 h-4 text-amber-500" />
+              <Phone className="w-4 h-4 text-[#ea580c]" />
               <span>Direct Desk: +880 1713 907779</span>
             </a>
             <Link
               href="#contact"
               onClick={closeMobile}
-              className="flex items-center justify-center gap-2 w-full py-2.5 bg-[#0f172a] text-white text-xs font-bold rounded-xl shadow-xs"
+              className="flex items-center justify-center gap-2 w-full py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-full shadow-md shadow-orange-500/25 transition"
             >
-              <span>Request Technical Proposal</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-amber-400" />
+              <span>Request Formal Proposal</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-white" />
             </Link>
           </div>
         </div>

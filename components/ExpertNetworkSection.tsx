@@ -2,147 +2,104 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import {
-  Route,
-  Train,
-  Waves,
-  Building,
-  Sprout,
-  Trash2,
-  ArrowUpRight,
-  Users,
-} from "lucide-react";
+import { Quote, CheckCircle2, ShieldCheck, Award } from "lucide-react";
+
+interface PartnerLogo {
+  src: string;
+  name: string;
+}
+
+const partnerLogos: PartnerLogo[] = [
+  { src: "/partners/partner_1.png", name: "EQMS" },
+  { src: "/partners/partner_2.webp", name: "DNCC" },
+  { src: "/partners/partner_3.png", name: "CEGIS" },
+  { src: "/partners/partner_4.png", name: "LGED" },
+  { src: "/partners/partner_5.png", name: "BPDB" },
+  { src: "/partners/partner_6.png", name: "BETS" },
+  { src: "/partners/partner_7.png", name: "EPC" },
+  { src: "/partners/partner_8.png", name: "Rajshahi University" },
+];
 
 export const ExpertNetworkSection: React.FC = () => {
-  const expertDomains = [
-    {
-      id: "roads",
-      title: "Roads & Highways Engineering",
-      image: "/assets/showcase/engineering-site-investigation.png",
-      icon: Route,
-      scope: "Geometric corridor alignment, pavement condition surveys, and highway drainage layouts.",
-      highlight: "Traverse cross-sections & curve geometry setting",
-      leadTime: "Fast-Track Mobilization",
-    },
-    {
-      id: "rail",
-      title: "Railway Infrastructure & Track Design",
-      image: "/assets/showcase/railway-corridor-survey.jpg",
-      icon: Train,
-      scope: "Bypass corridor alignments, station yards, and workshop facility track centerlines.",
-      highlight: "UAV photogrammetric DSM & leveling",
-      leadTime: "Technical Consultant",
-    },
-    {
-      id: "hydro",
-      title: "River Hydraulics & Water Resources",
-      image: "/assets/showcase/bridge-survey-waterway.jpg",
-      icon: Waves,
-      scope: "Bathymetric profiling, riverbed morphology, scour depth analysis, and acoustic echo sounding.",
-      highlight: "HEC-RAS 1D/2D hydraulic cross-sections",
-      leadTime: "Hydro Vessel Deployment",
-    },
-    {
-      id: "urban",
-      title: "Architectural & Urban Planning",
-      image: "/assets/showcase/gabtoli-terminal-3d-model.jpg",
-      icon: Building,
-      scope: "Inter-district bus terminals, commercial developments, civic masterplans, and 3D architectural models.",
-      highlight: "3D BIM models & vehicular circulation",
-      leadTime: "Urban Planning Team",
-    },
-    {
-      id: "agri",
-      title: "Agricultural GIS & Irrigation Networks",
-      image: "/assets/showcase/badc-irrigation-gis-project.jpg",
-      icon: Sprout,
-      scope: "Primary & secondary canal digitizing, multi-temporal NDVI vegetation health, and irrigation systems.",
-      highlight: "High-density rural mapping & WEB-AIS",
-      leadTime: "GIS Specialist Team",
-    },
-    {
-      id: "waste",
-      title: "Solid Waste & Sanitary Landfills",
-      image: "/assets/showcase/feasibility-cad-engineering.png",
-      icon: Trash2,
-      scope: "Municipal solid waste sanitary landfill site selection, environmental feasibility, and engineering design.",
-      highlight: "Leachate drainage & multi-criteria GIS",
-      leadTime: "Environmental Team",
-    },
-  ];
-
   return (
-    <section id="team" className="py-20 lg:py-24 bg-[#f8fafc] border-b border-slate-200/80">
+    <section id="trust" className="py-20 lg:py-28 bg-white border-b border-slate-100">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Minimal Section Header */}
-        <div className="max-w-2xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-800 text-[11px] font-bold tracking-wider uppercase mb-3">
-            <Users className="w-3.5 h-3.5 text-amber-600" />
-            <span>Specialists Network</span>
+        {/* Centered Heading (Matching Reference Design "What People Say") */}
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/70 text-[#ea580c] text-[11px] font-bold tracking-wider uppercase mb-3.5">
+            <Award className="w-3.5 h-3.5 text-[#ea580c]" />
+            <span>Client Endorsements</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-[#0f172a] tracking-tight leading-tight">
-            Engineering specialists &amp; subject-matter experts.
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0f172a] tracking-tight leading-tight mb-3">
+            What Our Partners Say
           </h2>
-          <p className="mt-2 text-slate-500 text-sm leading-relaxed">
-            Multidisciplinary team of transport planners, licensed UAV pilots, hydrologists, and GIS database developers.
+          <p className="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-xl mx-auto">
+            Verified benchmarks and accuracy trusted by Bangladesh&apos;s leading government departments and engineering authorities.
           </p>
         </div>
 
-        {/* 6 Visual Specialist Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {expertDomains.map((domain) => {
-            const Icon = domain.icon;
+        {/* Highlighted Testimonial Card (Matching Reference Design Testimonial Layout) */}
+        <div className="max-w-4xl mx-auto rounded-3xl bg-[#fafafa] border border-slate-200/80 p-6 sm:p-10 shadow-lg relative overflow-hidden mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            {/* Left Column: Portrait with Warm Background (Matching Reference) */}
+            <div className="md:col-span-4 relative flex items-center justify-center">
+              <div className="relative w-44 h-52 sm:w-52 sm:h-60 rounded-2xl overflow-hidden bg-amber-400 border-4 border-white shadow-xl">
+                <Image
+                  src="/field-surveyor-v2.webp"
+                  alt="Principal Surveyor"
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
+            </div>
 
-            return (
-              <div
-                key={domain.id}
-                className="group rounded-2xl bg-white border border-slate-200/80 hover:border-slate-900 overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col justify-between"
-              >
+            {/* Right Column: Quote & Credential */}
+            <div className="md:col-span-8 flex flex-col justify-center">
+              <Quote className="w-10 h-10 text-orange-300 mb-3" />
+              <blockquote className="text-sm sm:text-base text-slate-700 font-medium leading-relaxed mb-6">
+                &ldquo;Geospatial Works delivered exceptional sub-centimeter RTK baselines and high-density GCP grids across all 64 districts. Their commitment to strict Survey of Bangladesh (SOB) benchmarks and rapid field mobilization makes them an invaluable technical partner for mega-infrastructure.&rdquo;
+              </blockquote>
+
+              <div className="flex items-center justify-between pt-4 border-t border-slate-200/60 flex-wrap gap-2">
                 <div>
-                  {/* Real Field Image Header */}
-                  <div className="relative aspect-[16/10] bg-slate-100 overflow-hidden">
-                    <Image
-                      src={domain.image}
-                      alt={domain.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
-
-                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-slate-900/85 backdrop-blur-xs text-[10px] font-bold text-white tracking-wider uppercase flex items-center gap-1.5">
-                      <Icon className="w-3 h-3 text-amber-400" />
-                      <span>{domain.leadTime}</span>
-                    </div>
-                  </div>
-
-                  <div className="p-5">
-                    <h3 className="text-base font-bold text-[#0f172a] mb-1.5 leading-snug">
-                      {domain.title}
-                    </h3>
-                    <p className="text-xs text-slate-500 leading-relaxed mb-3">
-                      {domain.scope}
-                    </p>
-
-                    <div className="text-[11px] font-medium text-slate-600 bg-slate-50 px-2.5 py-1.5 rounded-xl border border-slate-100">
-                      Focus: <span className="font-semibold text-slate-800">{domain.highlight}</span>
-                    </div>
-                  </div>
+                  <h4 className="text-sm font-bold text-slate-900 leading-snug">
+                    Md. Mahfuzur Rahman
+                  </h4>
+                  <span className="text-xs text-[#ea580c] font-semibold block">
+                    Chief Geodetic Consultant &amp; Survey Director
+                  </span>
                 </div>
-
-                <div className="p-5 pt-0">
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-700 group-hover:text-amber-600 transition-colors">
-                    <span className="text-[11px] text-slate-400 font-normal">Ready for Mobilization</span>
-                    <Link href="#contact" className="inline-flex items-center gap-1">
-                      <span>Inquire</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-bold border border-emerald-200">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>100% SOB Datum Certified</span>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          </div>
+        </div>
+
+        {/* Client Logos Strip (Clean Row of Government & Enterprise Logos) */}
+        <div className="pt-6 border-t border-slate-100">
+          <span className="text-[11px] font-bold uppercase tracking-widest text-slate-400 text-center block mb-8">
+            Trusted By Government Departments &amp; Leading Engineering Authorities
+          </span>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 sm:gap-6 items-center">
+            {partnerLogos.map((partner, idx) => (
+              <div
+                key={idx}
+                className="p-3 rounded-2xl bg-[#fafafa] border border-slate-200/60 hover:border-orange-300 transition-all duration-300 flex items-center justify-center h-20 group hover:shadow-xs"
+              >
+                <Image
+                  src={partner.src}
+                  alt={partner.name}
+                  width={110}
+                  height={45}
+                  className="max-h-10 max-w-[90px] w-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

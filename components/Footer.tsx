@@ -34,28 +34,33 @@ export const Footer: React.FC = () => {
             <h4 className="text-white font-bold text-sm tracking-tight">Navigation</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="#home" className="hover:text-amber-400 transition">
-                  Home Portfolio
+                <Link href="#home" className="hover:text-[#ea580c] transition">
+                  Home
                 </Link>
               </li>
               <li>
-                <Link href="#about" className="hover:text-amber-400 transition">
-                  About Credentials
+                <Link href="#about" className="hover:text-[#ea580c] transition">
+                  About Us
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-amber-400 transition">
-                  8 Capabilities
+                <Link href="#services" className="hover:text-[#ea580c] transition">
+                  Our Services
                 </Link>
               </li>
               <li>
-                <Link href="#projects" className="hover:text-amber-400 transition">
-                  Featured Projects
+                <Link href="#portfolio" className="hover:text-[#ea580c] transition">
+                  Recent Work (31)
                 </Link>
               </li>
               <li>
-                <Link href="#directory" className="hover:text-amber-400 transition">
-                  31 Projects Archive
+                <Link href="#fleet" className="hover:text-[#ea580c] transition">
+                  Calibrated Fleet
+                </Link>
+              </li>
+              <li>
+                <Link href="#trust" className="hover:text-[#ea580c] transition">
+                  Client Endorsements
                 </Link>
               </li>
             </ul>
@@ -63,31 +68,31 @@ export const Footer: React.FC = () => {
 
           {/* Core Services (3 Cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-white font-bold text-sm tracking-tight">Technical Disciplines</h4>
+            <h4 className="text-white font-bold text-sm tracking-tight">Disciplines</h4>
             <ul className="space-y-2 text-slate-400">
               <li>
-                <Link href="#services" className="hover:text-amber-400 transition">
+                <Link href="#services" className="hover:text-[#ea580c] transition">
                   Topographic &amp; Geodetic Survey
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-amber-400 transition">
-                  UAV Drone Aerial Photogrammetry
+                <Link href="#services" className="hover:text-[#ea580c] transition">
+                  UAV Drone Photogrammetry
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-amber-400 transition">
+                <Link href="#services" className="hover:text-[#ea580c] transition">
                   Bridge Pier &amp; Highway Alignment
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-amber-400 transition">
-                  Bathymetric Hydro Depth Profiling
+                <Link href="#services" className="hover:text-[#ea580c] transition">
+                  Bathymetric Hydro Sounding
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-amber-400 transition">
-                  Cadastral Mouza Demarcation
+                <Link href="#services" className="hover:text-[#ea580c] transition">
+                  GIS Databases &amp; Web Portals
                 </Link>
               </li>
             </ul>
@@ -99,22 +104,22 @@ export const Footer: React.FC = () => {
             <div className="space-y-2.5">
               <a
                 href="tel:+8801713907779"
-                className="flex items-center gap-2 text-slate-300 hover:text-amber-400 transition font-bold"
+                className="flex items-center gap-2 text-slate-300 hover:text-[#ea580c] transition font-bold"
               >
-                <Phone className="w-4 h-4 text-amber-500" />
+                <Phone className="w-4 h-4 text-[#ea580c]" />
                 <span>+880 1713 90 777 9</span>
               </a>
 
               <a
                 href="mailto:md.geospatialworks@gmail.com"
-                className="flex items-center gap-2 text-slate-300 hover:text-amber-400 transition"
+                className="flex items-center gap-2 text-slate-300 hover:text-[#ea580c] transition"
               >
-                <Mail className="w-4 h-4 text-amber-500" />
+                <Mail className="w-4 h-4 text-[#ea580c]" />
                 <span>md.geospatialworks@gmail.com</span>
               </a>
 
               <p className="flex items-start gap-2 text-slate-400 leading-snug">
-                <MapPin className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#ea580c] flex-shrink-0 mt-0.5" />
                 <span>Plot 14, Road 02, Aram Housing, 40ft, Bosila, Mohammadpur, Dhaka-1207</span>
               </p>
             </div>

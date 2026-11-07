@@ -48,7 +48,7 @@ export const ContactSection: React.FC = () => {
 
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="max-w-2xl">
-              <span className="text-xs font-bold uppercase tracking-widest text-amber-400 block mb-2">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
                 Enterprise Mobilization &amp; Tender Inquiries
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
@@ -63,7 +63,7 @@ export const ContactSection: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center gap-4 self-start lg:self-center">
               <a
                 href="#rfq-form"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs sm:text-sm font-bold rounded-xl shadow-md transition"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold rounded-full shadow-lg shadow-orange-500/30 transition transform hover:-translate-y-0.5"
               >
                 <span>Request Formal Proposal</span>
                 <ArrowRight className="w-4 h-4" />
@@ -71,9 +71,9 @@ export const ContactSection: React.FC = () => {
 
               <a
                 href="tel:+8801713907779"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold rounded-xl border border-white/20 transition backdrop-blur-md"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold rounded-full border border-white/20 transition backdrop-blur-md"
               >
-                <Phone className="w-4 h-4 text-amber-400" />
+                <Phone className="w-4 h-4 text-orange-400" />
                 <span>+880 1713 90 777 9</span>
               </a>
             </div>
@@ -85,8 +85,8 @@ export const ContactSection: React.FC = () => {
           {/* Left Column (5 Cols): Office Headquarters & Direct Desk */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-[11px] font-bold tracking-wider uppercase mb-3">
-                <Building2 className="w-3.5 h-3.5 text-amber-600" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/70 text-[#ea580c] text-[11px] font-bold tracking-wider uppercase mb-3">
+                <Building2 className="w-3.5 h-3.5 text-[#ea580c]" />
                 <span>Headquarters &amp; Field Station</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-black text-[#0f172a] tracking-tight leading-snug mb-4">
@@ -101,16 +101,16 @@ export const ContactSection: React.FC = () => {
               <div className="space-y-4 text-xs sm:text-sm">
                 <a
                   href="tel:+8801713907779"
-                  className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-amber-400 transition flex items-center gap-4 group"
+                  className="p-4 rounded-2xl bg-white border border-slate-200/80 hover:border-orange-300 transition flex items-center gap-4 group shadow-2xs"
                 >
-                  <div className="p-3 rounded-xl bg-white border border-slate-200 text-amber-600 shadow-2xs group-hover:bg-amber-500 group-hover:text-slate-950 transition">
+                  <div className="p-3 rounded-xl bg-orange-50 text-[#ea580c] group-hover:bg-[#ea580c] group-hover:text-white transition">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-[10px] font-bold uppercase text-slate-400 block">
                       Direct Hotline
                     </span>
-                    <span className="font-bold text-slate-900 group-hover:text-amber-600 transition">
+                    <span className="font-bold text-slate-900 group-hover:text-[#ea580c] transition">
                       +880 1713 90 777 9
                     </span>
                   </div>
@@ -118,23 +118,23 @@ export const ContactSection: React.FC = () => {
 
                 <a
                   href="mailto:md.geospatialworks@gmail.com"
-                  className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-amber-400 transition flex items-center gap-4 group"
+                  className="p-4 rounded-2xl bg-white border border-slate-200/80 hover:border-orange-300 transition flex items-center gap-4 group shadow-2xs"
                 >
-                  <div className="p-3 rounded-xl bg-white border border-slate-200 text-amber-600 shadow-2xs group-hover:bg-amber-500 group-hover:text-slate-950 transition">
+                  <div className="p-3 rounded-xl bg-orange-50 text-[#ea580c] group-hover:bg-[#ea580c] group-hover:text-white transition">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-[10px] font-bold uppercase text-slate-400 block">
                       Official Inquiries
                     </span>
-                    <span className="font-bold text-slate-900 group-hover:text-amber-600 transition">
+                    <span className="font-bold text-slate-900 group-hover:text-[#ea580c] transition">
                       md.geospatialworks@gmail.com
                     </span>
                   </div>
                 </a>
 
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-white border border-slate-200 text-amber-600 shadow-2xs flex-shrink-0">
+                <div className="p-4 rounded-2xl bg-white border border-slate-200/80 flex items-start gap-4 shadow-2xs">
+                  <div className="p-3 rounded-xl bg-orange-50 text-[#ea580c] flex-shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
@@ -147,8 +147,8 @@ export const ContactSection: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-white border border-slate-200 text-amber-600 shadow-2xs flex-shrink-0">
+                <div className="p-4 rounded-2xl bg-white border border-slate-200/80 flex items-center gap-4 shadow-2xs">
+                  <div className="p-3 rounded-xl bg-orange-50 text-[#ea580c] flex-shrink-0">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
@@ -176,7 +176,7 @@ export const ContactSection: React.FC = () => {
           {/* Right Column (7 Cols): Modern RFQ & Proposal Builder */}
           <div className="lg:col-span-7 bg-slate-50 border border-slate-200/80 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xs">
             <div className="mb-6 pb-6 border-b border-slate-200">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-700 block mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#ea580c] block mb-1">
                 Project Quotation &amp; Feasibility
               </span>
               <h4 className="text-xl sm:text-2xl font-bold text-[#0f172a] tracking-tight">
@@ -329,14 +329,14 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs sm:text-sm font-bold rounded-xl shadow-md transition disabled:opacity-50"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold rounded-full shadow-lg shadow-orange-500/25 transition disabled:opacity-50 transform hover:-translate-y-0.5"
                   >
                     {loading ? (
                       <span>Transmitting Request...</span>
                     ) : (
                       <>
                         <span>Submit Proposal Request</span>
-                        <Send className="w-4 h-4 text-amber-400" />
+                        <Send className="w-4 h-4 text-white" />
                       </>
                     )}
                   </button>
