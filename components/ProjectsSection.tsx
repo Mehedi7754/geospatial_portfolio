@@ -38,21 +38,21 @@ const showcaseProjects: ShowcaseProject[] = [
     ],
   },
   {
-    id: "chittagong-ez",
+    id: "badc-gis",
     num: "02",
-    category: "UAV Photogrammetry",
-    title: "Chittagong Economic Zone 3D Mesh & Earthwork",
-    image: "/assets/showcase/photogrammetry-3d-terrain.png",
-    client: "BEZA Industrial Authority",
-    location: "Mirsarai, Chattogram",
-    benchmark: "2.5cm GSD True Orthomosaic",
+    category: "Satellite Remote Sensing & GIS",
+    title: "BADC Agricultural Information System (WEB-AIS)",
+    image: "/assets/showcase/badc-irrigation-gis-project.jpg",
+    client: "Ministry of Agriculture / BADC",
+    location: "23 Unions, 260 Mouzas",
+    benchmark: "208.37 km² Spatial Geodatabase",
     summary:
-      "High-precision UAV photogrammetric aerial survey producing 2.5cm GSD true orthomosaics, dense 3D point clouds, and volumetric cut/fill earthwork computations for industrial development.",
+      "Pilot irrigation water management geodatabase, river gauge monitoring, and web-based spatial agricultural database with multi-temporal NDVI vegetation analysis.",
     deliverables: [
-      "2.5cm Ground Sampling Distance true orthomosaic",
-      "Dense 3D point cloud & Digital Elevation Model (DEM)",
-      "Volumetric cut & fill earthwork grading reports",
-      "Masterplan plot demarcation and title boundary baselines",
+      "208.37 km² high-density spatial geodatabase",
+      "Interactive Web-AIS GIS portal with NDVI diagnostics",
+      "River gauge and canal network monitoring benchmarks",
+      "260 Mouzas boundary demarcation and land cover maps",
     ],
   },
   {
@@ -74,21 +74,21 @@ const showcaseProjects: ShowcaseProject[] = [
     ],
   },
   {
-    id: "badc-gis",
+    id: "chittagong-ez",
     num: "04",
-    category: "Satellite Remote Sensing & GIS",
-    title: "BADC Agricultural Information System (WEB-AIS)",
-    image: "/assets/showcase/badc-irrigation-gis-project.jpg",
-    client: "Ministry of Agriculture / BADC",
-    location: "23 Unions, 260 Mouzas",
-    benchmark: "208.37 km² Spatial Geodatabase",
+    category: "UAV Photogrammetry",
+    title: "Chittagong Economic Zone 3D Mesh & Earthwork",
+    image: "/inner/drone-fields.webp", // Perfectly proportioned 3:2 aerial drone photogrammetry
+    client: "BEZA Industrial Authority",
+    location: "Mirsarai, Chattogram",
+    benchmark: "2.5cm GSD True Orthomosaic",
     summary:
-      "Pilot irrigation water management geodatabase, river gauge monitoring, and web-based spatial agricultural database with multi-temporal NDVI vegetation analysis.",
+      "High-precision UAV photogrammetric aerial survey producing 2.5cm GSD true orthomosaics, dense 3D point clouds, and volumetric cut/fill earthwork computations for industrial development.",
     deliverables: [
-      "208.37 km² high-density spatial geodatabase",
-      "Interactive Web-AIS GIS portal with NDVI diagnostics",
-      "River gauge and canal network monitoring benchmarks",
-      "260 Mouzas boundary demarcation and land cover maps",
+      "2.5cm Ground Sampling Distance true orthomosaic",
+      "Dense 3D point cloud & Digital Elevation Model (DEM)",
+      "Volumetric cut & fill earthwork grading reports",
+      "Masterplan plot demarcation and title boundary baselines",
     ],
   },
 ];
@@ -128,7 +128,7 @@ export const ProjectsSection: React.FC = () => {
               className="group cursor-pointer flex flex-col justify-between"
             >
               <div>
-                {/* Visual Image Block */}
+                {/* Visual Image Block with Responsive Aspect Ratio */}
                 <div className="relative aspect-[16/10] rounded-3xl overflow-hidden bg-slate-950 shadow-lg mb-6">
                   <Image
                     src={proj.image}

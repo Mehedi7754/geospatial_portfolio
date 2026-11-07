@@ -72,37 +72,36 @@ export const Hero: React.FC = () => {
     return () => clearInterval(timer);
   }, [nextSlide]);
 
-  const active = heroShowcases[currentSlide];
-
   return (
     <section id="home" className="pt-28 pb-16 sm:pt-36 sm:pb-20 bg-white overflow-hidden">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Side-by-Side Grid: Text on Left + Zoomed Image Showcase on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center mb-16 sm:mb-20">
-          {/* Left Column (7 Cols): Typography & Action Links */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+        {/* Main Side-by-Side Grid: Text on Left (5 Cols) + Larger Zoomed Image Showcase on Right (7 Cols) */}
+        {/* On Mobile: Text is order-1 on top, Image is order-2 immediately below it */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16 sm:mb-20">
+          {/* Left Column (5 Cols Desktop, Order 1 Mobile): Refined Typography & Action Links */}
+          <div className="order-1 lg:order-1 lg:col-span-5 flex flex-col justify-center">
             {/* Accreditation Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/70 text-[#ea580c] text-[11px] font-bold tracking-wider uppercase mb-5 w-max">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/70 text-[#ea580c] text-[11px] font-bold tracking-wider uppercase mb-4 w-max">
               <span className="w-2 h-2 rounded-full bg-[#ea580c] animate-pulse" />
               <span>1st Class Geospatial &amp; Geodetic Consultancy</span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[58px] font-black text-[#0f172a] tracking-tight leading-[1.08] mb-5">
+            {/* Main Headline (Scaled down slightly for refined professionalism) */}
+            <h1 className="text-2xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-black text-[#0f172a] tracking-tight leading-[1.12] mb-4">
               Engineering the ground. <br />
               <span className="text-[#ea580c]">Shaping Bangladesh&apos;s future.</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mb-8 font-normal">
-              Official geodetic surveying, drone photogrammetry, bathymetric sounding, and enterprise GIS databases calibrated to Survey of Bangladesh (SOB) geodetic datum.
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-lg mb-6 font-normal">
+              Official geodetic surveying, drone photogrammetry, bathymetric sounding, and enterprise GIS databases calibrated to Survey of Bangladesh (SOB) datum.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-8">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6">
               <Link
                 href="#portfolio"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold rounded-full shadow-lg shadow-orange-500/25 transition transform hover:-translate-y-0.5 active:translate-y-0 text-center"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold rounded-full shadow-lg shadow-orange-500/25 transition transform hover:-translate-y-0.5 active:translate-y-0 text-center"
               >
                 <span>Explore Selected Work</span>
                 <ArrowRight className="w-4 h-4" />
@@ -110,7 +109,7 @@ export const Hero: React.FC = () => {
 
               <Link
                 href="/projects"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold rounded-full shadow-md transition transform hover:-translate-y-0.5 text-center"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold rounded-full shadow-md transition transform hover:-translate-y-0.5 text-center"
               >
                 <span>All 31 Projects Archive</span>
                 <ArrowUpRight className="w-4 h-4 text-orange-400" />
@@ -118,21 +117,21 @@ export const Hero: React.FC = () => {
 
               <Link
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-bold rounded-full border border-slate-200 transition text-center"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-bold rounded-full border border-slate-200 transition text-center"
               >
-                <span>Request Proposal</span>
+                <span>Proposal</span>
               </Link>
             </div>
 
             {/* Quick Metrics Strip */}
-            <div className="pt-6 border-t border-slate-100 flex flex-wrap items-center gap-6 text-xs text-slate-600">
+            <div className="pt-5 border-t border-slate-100 flex flex-wrap items-center gap-5 text-xs text-slate-600">
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#ea580c]" />
-                <span className="font-bold text-slate-900">31</span> Verified Infrastructure Projects
+                <span className="font-bold text-slate-900">31</span> Mega Projects
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#ea580c]" />
-                <span className="font-bold text-slate-900">All 64</span> Districts Covered
+                <span className="font-bold text-slate-900">All 64</span> Districts
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#ea580c]" />
@@ -141,9 +140,9 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column (5 Cols): Side-by-Side Zoomed Image Showcase */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative aspect-[4/3] sm:aspect-[5/4] rounded-3xl overflow-hidden bg-slate-950 shadow-2xl group border border-slate-100">
+          {/* Right Column (7 Cols Desktop, Order 2 Mobile): Prominent Larger Zoomed Image Showcase */}
+          <div className="order-2 lg:order-2 lg:col-span-7 relative w-full">
+            <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/11] min-h-[340px] sm:min-h-[420px] lg:min-h-[460px] rounded-3xl overflow-hidden bg-slate-950 shadow-2xl group border border-slate-100">
               {heroShowcases.map((slide, idx) => (
                 <div
                   key={idx}
@@ -156,12 +155,12 @@ export const Hero: React.FC = () => {
                     alt={slide.title}
                     fill
                     priority={idx === 0}
-                    sizes="(max-width: 1024px) 100vw, 42vw"
+                    sizes="(max-width: 1024px) 100vw, 58vw"
                     className={`object-cover transition-transform duration-1000 group-hover:scale-130 ${slide.zoomClass}`}
                   />
                   {/* Vignette Gradients */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-slate-950/40 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-slate-950/35 via-transparent to-transparent" />
 
                   {/* Top Badge */}
                   <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-white text-xs z-20">
@@ -187,7 +186,7 @@ export const Hero: React.FC = () => {
                         href="/projects"
                         className="inline-flex items-center gap-1 font-bold text-white hover:text-orange-400 transition"
                       >
-                        <span>Dossier</span>
+                        <span>Inspect Dossier</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>

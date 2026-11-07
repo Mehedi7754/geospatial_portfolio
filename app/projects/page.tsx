@@ -22,7 +22,7 @@ import {
 const projectVisuals: Record<number, string> = {
   1: "/assets/showcase/gulshan-badda-road-project.jpg",
   2: "/assets/showcase/engineering-site-investigation.png",
-  3: "/assets/showcase/photogrammetry-3d-terrain.png",
+  3: "/inner/drone-fields.webp",
   4: "/assets/showcase/national-gcp-network.jpg",
   5: "/assets/showcase/total-station-instrument.png",
   6: "/assets/showcase/bridge-survey-waterway.jpg",
