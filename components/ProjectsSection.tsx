@@ -235,11 +235,11 @@ export const ProjectsSection: React.FC = () => {
                 </h3>
               </div>
 
-              <div className="relative min-w-[260px] sm:min-w-[320px]">
+              <div className="relative w-full md:w-80">
                 <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
-                  placeholder="Search by project name or client..."
+                  placeholder="Search by project or client..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-9 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-full text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#347b3d] focus:bg-white transition"
@@ -289,11 +289,11 @@ export const ProjectsSection: React.FC = () => {
                     className="py-3 px-2 sm:px-3 hover:bg-[#f8fbf6] rounded-xl transition-colors cursor-pointer group"
                     onClick={() => toggleExpand(proj.id)}
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
                       {/* Left: Thumbnail + #ID + Title + Category Badge */}
-                      <div className="min-w-0 flex-1 flex items-center gap-3">
+                      <div className="min-w-0 flex-1 flex items-start sm:items-center gap-3">
                         {/* Compact Visual Thumbnail */}
-                        <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200">
+                        <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200 mt-0.5 sm:mt-0">
                           <Image
                             src={projectImage}
                             alt={proj.title}
@@ -311,19 +311,19 @@ export const ProjectsSection: React.FC = () => {
                             <h4 className="text-sm font-bold text-[#0f172a] group-hover:text-[#347b3d] transition-colors leading-snug">
                               {proj.title}
                             </h4>
-                            <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-[#eef7ee] text-[#2b6d34] border border-[#d2ebd3]">
+                            <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-[#eef7ee] text-[#2b6d34] border border-[#d2ebd3] flex-shrink-0">
                               {proj.category}
                             </span>
                           </div>
 
                           {/* Client & Location line */}
-                          <div className="text-xs text-slate-500 mt-0.5 flex items-center gap-2 truncate">
+                          <div className="text-xs text-slate-500 mt-1 flex items-center gap-2 flex-wrap">
                             <span>
                               Client: <strong className="text-slate-700 font-semibold">{proj.client}</strong>
                             </span>
                             {proj.location && (
                               <>
-                                <span>•</span>
+                                <span className="text-slate-300">•</span>
                                 <span>{proj.location}</span>
                               </>
                             )}
@@ -332,13 +332,14 @@ export const ProjectsSection: React.FC = () => {
                       </div>
 
                       {/* Right: Verified Deliverable pill button */}
-                      <div className="flex items-center gap-2 flex-shrink-0 self-start sm:self-center pl-15 sm:pl-0">
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#eef7ee] text-[#2b6d34] border border-[#cbe6cc] group-hover:bg-[#e1f2e2] transition-colors">
+                      <div className="flex items-center justify-between sm:justify-end gap-2 flex-shrink-0 pt-1 sm:pt-0">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-full text-[11px] font-bold bg-[#eef7ee] text-[#2b6d34] border border-[#cbe6cc] group-hover:bg-[#e1f2e2] transition-colors">
                           <CheckCircle2 className="w-3 h-3 text-[#2b6d34]" />
-                          <span>Verified Deliverable</span>
+                          <span className="hidden xs:inline">Verified Deliverable</span>
+                          <span className="xs:hidden">Verified</span>
                         </span>
                         <ChevronDown
-                          className={`w-4 h-4 text-slate-400 group-hover:text-[#347b3d] transition-transform duration-200 ${
+                          className={`w-4 h-4 text-slate-400 group-hover:text-[#347b3d] transition-transform duration-200 flex-shrink-0 ${
                             isExpanded ? "rotate-180" : ""
                           }`}
                         />
@@ -353,13 +354,13 @@ export const ProjectsSection: React.FC = () => {
                       >
                         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
                           {/* Left: High-Res Project Visual Photo */}
-                          <div className="md:col-span-4 relative aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
+                          <div className="md:col-span-4 relative aspect-[16/10] sm:aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 border border-slate-200 w-full">
                             <Image
                               src={projectImage}
                               alt={proj.title}
                               fill
                               sizes="(max-width: 768px) 100vw, 30vw"
-                              className="object-cover"
+                              className="object-cover object-center"
                             />
                             <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-slate-900/80 backdrop-blur-xs text-[10px] font-bold text-white">
                               {proj.category}
@@ -372,7 +373,7 @@ export const ProjectsSection: React.FC = () => {
                               {proj.description}
                             </p>
 
-                            <div className="grid grid-cols-2 gap-2 text-xs">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                               <div>
                                 <span className="text-slate-400 block text-[10px] uppercase font-bold">Client:</span>
                                 <span className="font-semibold text-slate-800">{proj.client}</span>

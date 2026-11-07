@@ -15,12 +15,12 @@ import { FloatingContactButton } from "@/components/FloatingContactButton";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#f8fafc] text-[#0f172a] antialiased">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#f8fafc] text-[#0f172a] antialiased">
       {/* Sticky Modern Business Portfolio Navbar */}
       <Navbar />
 
       {/* Main Portfolio Sections */}
-      <main>
+      <main className="w-full max-w-full overflow-x-hidden">
         {/* High-Impact Dribbble Construction Portfolio Hero */}
         <Hero />
 

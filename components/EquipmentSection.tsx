@@ -204,6 +204,12 @@ export const EquipmentSection: React.FC = () => {
             {filteredEquipment.map((eq, idx) => {
               const Icon = getCategoryIcon(eq.category);
               const instrumentPhoto = fleetImages[eq.name] || "/assets/showcase/chcnav-i83-rtk-gnss.jpg";
+              const isCutoutInstrument =
+                eq.category === "Optical & Survey" ||
+                eq.name.includes("Total Station") ||
+                eq.name.includes("Optical Level") ||
+                eq.name.includes("Echo Sounder") ||
+                eq.name.includes("RTK GNSS");
 
               return (
                 <div
@@ -211,29 +217,33 @@ export const EquipmentSection: React.FC = () => {
                   className="group rounded-2xl bg-white border border-slate-200/80 hover:border-slate-900 transition-all duration-300 hover:shadow-lg overflow-hidden flex flex-col justify-between"
                 >
                   <div>
-                    {/* Visual Instrument Image */}
-                    <div className="relative aspect-[16/10] bg-slate-100 overflow-hidden">
+                    {/* Visual Instrument Image Container */}
+                    <div className={`relative aspect-[16/10] overflow-hidden ${isCutoutInstrument ? "bg-gradient-to-b from-slate-50 to-slate-100/90" : "bg-slate-100"}`}>
                       <Image
                         src={instrumentPhoto}
                         alt={eq.name}
                         fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className={`${
+                          isCutoutInstrument
+                            ? "object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                            : "object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        }`}
                       />
                       <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-slate-900/85 backdrop-blur-xs text-[10px] font-bold text-white uppercase tracking-wider">
                         {eq.category}
                       </div>
 
-                      <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-[11px] font-bold text-slate-900 shadow-xs">
+                      <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-xs text-[11px] font-bold text-slate-900 shadow-xs border border-slate-200/80">
                         {eq.quantity}
                       </div>
                     </div>
 
-                    <div className="p-5">
-                      <h3 className="text-base font-bold text-[#0f172a] leading-snug mb-0.5">
+                    <div className="p-4 sm:p-5">
+                      <h3 className="text-sm sm:text-base font-bold text-[#0f172a] leading-snug mb-0.5">
                         {eq.name}
                       </h3>
-                      <span className="text-[11px] font-mono text-slate-400 block mb-3">
+                      <span className="text-[11px] font-mono text-slate-400 block mb-2.5">
                         Model: {eq.model} • Origin: {eq.origin}
                       </span>
 

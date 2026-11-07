@@ -38,7 +38,7 @@ const servicesData: ServiceItem[] = [
     subtitle: "Multi-temporal NDVI vegetation & regional land cover analysis",
     description:
       "Satellite imagery analysis, multi-temporal NDVI vegetation health mapping, and regional land cover change monitoring for agricultural and environmental planning.",
-    image: "/ppt_images/image7.png",
+    image: "/assets/showcase/satellite-remote-sensing.png",
     icon: Activity,
     deliverables: [
       "Multi-temporal NDVI vegetation health maps",
@@ -55,7 +55,7 @@ const servicesData: ServiceItem[] = [
     subtitle: "Sub-millimeter pier, axis & highway corridor setting-out",
     description:
       "Exact field marking for bridge piers, building columns, highway alignments, and structural right-of-way boundaries adhering to strict engineering tolerances.",
-    image: "/ppt_images/image8.png",
+    image: "/assets/showcase/engineering-site-investigation.png",
     icon: Layers,
     deliverables: [
       "Building axis and foundation centerlines with sub-mm tolerances",
@@ -72,7 +72,7 @@ const servicesData: ServiceItem[] = [
     subtitle: "Enterprise GIS strategy, tender documentation & spatial advisory",
     description:
       "Expert advisory, tender documentation, and strategic planning for enterprise GIS, geodetic surveys, and national land zoning initiatives.",
-    image: "/ppt_images/image9.png",
+    image: "/assets/showcase/spatial-data-analytics.png",
     icon: Scale,
     deliverables: [
       "Institutional geodatabase architecture design",
@@ -89,7 +89,7 @@ const servicesData: ServiceItem[] = [
     subtitle: "PostgreSQL/PostGIS geodatabases & interactive web portals",
     description:
       "Custom GIS development, relational PostGIS database architectures, and interactive web mapping portals for municipalities and utility networks.",
-    image: "/ppt_images/image44.jpeg",
+    image: "/assets/showcase/gis-mapping-analysis.png",
     icon: Database,
     deliverables: [
       "PostgreSQL/PostGIS relational geodatabases",
@@ -100,7 +100,7 @@ const servicesData: ServiceItem[] = [
     techStack: ["ArcGIS Pro", "QGIS Desktop", "PostgreSQL / PostGIS", "Python GeoPandas"],
   },
 
-  // --- ROW 2: Technical Diagrams & Deliverable BOQ ---
+  // --- ROW 2: Field Survey & Spatial Modeling ---
   {
     id: "topographic",
     category: "Digital Survey",
@@ -108,7 +108,7 @@ const servicesData: ServiceItem[] = [
     subtitle: "Sub-centimeter contour mapping, DEM/DSM & TBM baselines",
     description:
       "Sub-centimeter terrain, elevation, contour, and site feature mapping for bridges, highways, and infrastructure design tied to SOB/PWD datum.",
-    image: "/ppt_images/image10.png",
+    image: "/assets/showcase/photogrammetry-3d-terrain.png",
     icon: Compass,
     deliverables: [
       "Digital Elevation & Surface Models (DEM/DSM)",
@@ -125,7 +125,7 @@ const servicesData: ServiceItem[] = [
     subtitle: "Sub-3cm GSD orthomosaics, 3D mesh & volumetric cut/fill",
     description:
       "High-resolution drone orthomosaics, 3D terrain reconstruction, point cloud generation, and volumetric earthwork computations for industrial zones.",
-    image: "/ppt_images/image4.png",
+    image: "/assets/showcase/drone-uav-field-operation.png",
     icon: Plane,
     deliverables: [
       "Sub-3cm GSD true orthomosaic digital maps",
@@ -142,7 +142,7 @@ const servicesData: ServiceItem[] = [
     subtitle: "CS/RS/BS cadastral map geo-rectification & title boundary staking",
     description:
       "Historical CS/RS/SA/BS mouza sheet geo-referencing, title boundary demarcation, and Right-of-Way (RoW) acquisition strip maps.",
-    image: "/ppt_images/image68.png",
+    image: "/assets/showcase/feasibility-cad-engineering.png",
     icon: MapPin,
     deliverables: [
       "Scanned & rectified CS/RS/BS cadastral sheets",
@@ -159,7 +159,7 @@ const servicesData: ServiceItem[] = [
     subtitle: "Dual-frequency acoustic depth sounding & riverbed morphology",
     description:
       "Underwater riverbed acoustic depth profiling, cross-section sounding, and hydrodynamic modeling for flood mitigation and dredging plans.",
-    image: "/ppt_images/image13.png",
+    image: "/assets/showcase/river-bathymetry-sounding.jpg",
     icon: Waves,
     deliverables: [
       "High-precision acoustic riverbed depth contour maps",
