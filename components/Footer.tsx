@@ -2,17 +2,17 @@
 
 import React from "react";
 import Link from "next/link";
-import { Phone, Mail, MapPin, ArrowUpRight, ShieldCheck, Award } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
 import { AnimatedLogo } from "./AnimatedLogo";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-950 text-slate-400 text-xs border-t border-slate-800 pt-16 pb-12">
+    <footer className="bg-slate-950 text-slate-400 text-xs border-t border-slate-900 pt-16 pb-12">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-900">
           {/* Brand Info (4 Cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <Link href="#home" className="inline-block">
+            <Link href="/" className="inline-block">
               <AnimatedLogo size="sm" light priority showText={true} />
             </Link>
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
               surveys, drone photogrammetry, hydrography, and enterprise GIS databases across Bangladesh.
             </p>
             <div className="flex items-center gap-2 pt-2">
-              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-orange-500/10 text-orange-400 border border-orange-500/20">
                 SOB / PWD Datum Calibrated
               </span>
               <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
@@ -34,32 +34,32 @@ export const Footer: React.FC = () => {
             <h4 className="text-white font-bold text-sm tracking-tight">Navigation</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="#home" className="hover:text-[#ea580c] transition">
+                <Link href="/" className="hover:text-[#ea580c] transition">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="#about" className="hover:text-[#ea580c] transition">
-                  About Us
+                <Link href="/#portfolio" className="hover:text-[#ea580c] transition">
+                  Featured Work
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-[#ea580c] transition">
-                  Our Services
+                <Link href="/projects" className="hover:text-[#ea580c] transition">
+                  31 Projects Archive
                 </Link>
               </li>
               <li>
-                <Link href="#portfolio" className="hover:text-[#ea580c] transition">
-                  Recent Work (31)
+                <Link href="/fleet" className="hover:text-[#ea580c] transition">
+                  Calibrated Fleet
                 </Link>
               </li>
               <li>
-                <Link href="#trust" className="hover:text-[#ea580c] transition">
-                  Client Reviews
+                <Link href="/#about" className="hover:text-[#ea580c] transition">
+                  About Agency
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="hover:text-[#ea580c] transition">
+                <Link href="/#contact" className="hover:text-[#ea580c] transition">
                   Get In Touch
                 </Link>
               </li>
@@ -71,27 +71,27 @@ export const Footer: React.FC = () => {
             <h4 className="text-white font-bold text-sm tracking-tight">Disciplines</h4>
             <ul className="space-y-2 text-slate-400">
               <li>
-                <Link href="#services" className="hover:text-[#ea580c] transition">
+                <Link href="/#services" className="hover:text-[#ea580c] transition">
                   Topographic &amp; Geodetic Survey
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-[#ea580c] transition">
+                <Link href="/#services" className="hover:text-[#ea580c] transition">
                   UAV Drone Photogrammetry
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-[#ea580c] transition">
+                <Link href="/#services" className="hover:text-[#ea580c] transition">
                   Bridge Pier &amp; Highway Alignment
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-[#ea580c] transition">
+                <Link href="/#services" className="hover:text-[#ea580c] transition">
                   Bathymetric Hydro Sounding
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-[#ea580c] transition">
+                <Link href="/#services" className="hover:text-[#ea580c] transition">
                   GIS Databases &amp; Web Portals
                 </Link>
               </li>

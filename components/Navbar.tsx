@@ -2,13 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronDown, ArrowUpRight, Menu, X, Phone, FileText } from "lucide-react";
+import { ArrowUpRight, Menu, X, Phone } from "lucide-react";
 import { AnimatedLogo } from "./AnimatedLogo";
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,27 +20,26 @@ export const Navbar: React.FC = () => {
 
   const closeMobile = () => {
     setMobileMenuOpen(false);
-    setServicesDropdownOpen(false);
   };
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "py-2.5 bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200/80"
-          : "py-4 bg-white/90 backdrop-blur-sm border-b border-slate-200/60"
+          ? "py-3 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100"
+          : "py-4 bg-white/90 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
         {/* Brand Logo with Animated Pin */}
         <Link
-          href="#home"
+          href="/"
           onClick={closeMobile}
           className="flex items-center gap-3 group focus:outline-hidden"
           aria-label="Geospatial Works Home"
         >
           <AnimatedLogo size="sm" priority showText={true} />
-          <span className="hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-amber-50 text-amber-700 border border-amber-200/70">
+          <span className="hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-orange-50 text-[#ea580c] border border-orange-200/70">
             Portfolio
           </span>
         </Link>
@@ -52,45 +50,52 @@ export const Navbar: React.FC = () => {
           aria-label="Main Navigation"
         >
           <Link
-            href="#home"
+            href="/#home"
             className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
             Home
           </Link>
 
           <Link
-            href="#about"
+            href="/#portfolio"
             className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
-            About
+            Featured Work
           </Link>
 
           <Link
-            href="#services"
-            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
-          >
-            Services
-          </Link>
-
-          <Link
-            href="#portfolio"
+            href="/projects"
             className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors flex items-center gap-1.5"
           >
-            <span>Portfolio</span>
+            <span>All Projects</span>
             <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-100 text-[#ea580c]">
               31
             </span>
           </Link>
 
           <Link
-            href="#trust"
+            href="/#services"
             className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
-            Reviews
+            Disciplines
           </Link>
 
           <Link
-            href="#contact"
+            href="/#about"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+          >
+            About
+          </Link>
+
+          <Link
+            href="/fleet"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+          >
+            Fleet
+          </Link>
+
+          <Link
+            href="/#contact"
             className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
             Contact
@@ -108,8 +113,8 @@ export const Navbar: React.FC = () => {
           </a>
 
           <Link
-            href="#contact"
-            className="flex items-center gap-2 px-5 py-2.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-full shadow-md shadow-orange-500/25 transition-all duration-200 group transform hover:-translate-y-0.5"
+            href="/#contact"
+            className="flex items-center gap-2 px-6 py-2.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-full shadow-md shadow-orange-500/25 transition-all duration-200 group transform hover:-translate-y-0.5"
           >
             <span>Request Proposal</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-white/90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -132,45 +137,52 @@ export const Navbar: React.FC = () => {
         <div className="lg:hidden bg-white border-b border-slate-200 px-6 py-6 space-y-4 shadow-xl animate-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-2 text-sm font-semibold text-slate-700">
             <Link
-              href="#home"
+              href="/#home"
               onClick={closeMobile}
               className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
               Home
             </Link>
             <Link
-              href="#about"
+              href="/#portfolio"
               onClick={closeMobile}
               className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
-              About Us
+              Featured Work
             </Link>
             <Link
-              href="#services"
-              onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
-            >
-              Our Services
-            </Link>
-            <Link
-              href="#portfolio"
+              href="/projects"
               onClick={closeMobile}
               className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c] flex items-center justify-between"
             >
-              <span>Recent Work &amp; Portfolio</span>
+              <span>31 Projects Archive</span>
               <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-[#ea580c]">
                 31
               </span>
             </Link>
             <Link
-              href="#trust"
+              href="/#services"
               onClick={closeMobile}
               className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
-              Client Reviews
+              Disciplines
             </Link>
             <Link
-              href="#contact"
+              href="/#about"
+              onClick={closeMobile}
+              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
+            >
+              About Agency
+            </Link>
+            <Link
+              href="/fleet"
+              onClick={closeMobile}
+              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
+            >
+              Calibrated Fleet
+            </Link>
+            <Link
+              href="/#contact"
               onClick={closeMobile}
               className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
@@ -187,7 +199,7 @@ export const Navbar: React.FC = () => {
               <span>Direct Desk: +880 1713 907779</span>
             </a>
             <Link
-              href="#contact"
+              href="/#contact"
               onClick={closeMobile}
               className="flex items-center justify-center gap-2 w-full py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-full shadow-md shadow-orange-500/25 transition"
             >
