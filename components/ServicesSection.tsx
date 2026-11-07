@@ -156,14 +156,14 @@ export const ServicesSection: React.FC = () => {
             </div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-black text-[#0f172a] tracking-tight leading-[1.05] mb-5">
-              Real <br />
-              landscapes. <br />
-              <span className="text-[#ea580c]">Real</span> <br />
-              <span className="text-[#ea580c]">impact.</span>
+              Engineering <br />
+              rigor. <br />
+              <span className="text-[#ea580c]">Proven</span> <br />
+              <span className="text-[#ea580c]">precision.</span>
             </h2>
 
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm mb-6 font-normal">
-              A selection of our core engineering capabilities across geodetic surveying, drone photogrammetry, hydrography, and spatial analytics.
+              Accredited 1st Class geodetic baseline surveying, drone photogrammetry, hydrography, and enterprise GIS databases.
             </p>
 
             <div className="mb-8">

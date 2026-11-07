@@ -75,8 +75,8 @@ export const Hero: React.FC = () => {
               <span className="text-[#ea580c]">Shaping Bangladesh&apos;s future.</span>
             </h1>
 
-            {/* Direct Action Links (No extra paragraph clutter) */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6">
+            {/* Desktop Direct Action Links (Hidden on mobile, shown below image on mobile) */}
+            <div className="hidden lg:flex flex-wrap items-center gap-3 sm:gap-4 mb-6">
               <Link
                 href="#portfolio"
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold transition rounded-none shadow-xs"
@@ -101,8 +101,8 @@ export const Hero: React.FC = () => {
               </Link>
             </div>
 
-            {/* Concise Technical Metric Tags */}
-            <div className="pt-4 border-t border-slate-200 flex flex-wrap items-center gap-5 sm:gap-7 text-xs font-mono text-slate-700">
+            {/* Desktop Technical Metric Tags */}
+            <div className="hidden lg:flex pt-4 border-t border-slate-200 flex-wrap items-center gap-5 sm:gap-7 text-xs font-mono text-slate-700">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#ea580c]" />
                 <span className="font-bold text-slate-900">31 Mega Projects</span>
@@ -192,6 +192,49 @@ export const Hero: React.FC = () => {
 
               <div className="absolute bottom-2 right-4 z-20 text-[10px] font-mono text-white/70">
                 PLATE {currentSlide + 1} / {heroShowcases.length}
+              </div>
+            </div>
+
+            {/* Mobile View: Explore Work Section Placed DIRECTLY Below Hero Image */}
+            <div className="lg:hidden mt-6 flex flex-col gap-5">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <Link
+                  href="#portfolio"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold transition rounded-none shadow-xs text-center"
+                >
+                  <span>Explore Selected Works</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold transition rounded-none text-center"
+                >
+                  <span>All 31 Projects Archive</span>
+                  <ArrowUpRight className="w-4 h-4 text-orange-400" />
+                </Link>
+
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-1.5 px-5 py-3.5 border border-slate-300 hover:border-slate-900 text-slate-800 text-xs sm:text-sm font-bold transition rounded-none text-center"
+                >
+                  <span>Proposal</span>
+                </Link>
+              </div>
+
+              <div className="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-slate-700">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#ea580c]" />
+                  <span className="font-bold text-slate-900">31 Mega Projects</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#ea580c]" />
+                  <span className="font-bold text-slate-900">All 64 Districts</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#ea580c]" />
+                  <span className="font-bold text-[#ea580c]">SOB Datum Certified</span>
+                </div>
               </div>
             </div>
           </div>

@@ -22,7 +22,7 @@ const landmarkProjects: LandmarkProject[] = [
     id: "expressway",
     category: "bridges",
     categoryTag: "INFRASTRUCTURE",
-    title: "Dhaka–Ashulia Elevated Expressway",
+    title: "Dhaka–Ashulia Elevated Expressway Alignment",
     client: "Bangladesh Bridge Authority (BBA)",
     location: "Dhaka-Ashulia Corridor",
     benchmark: "Sub-millimeter Pier Axis Tolerance",
@@ -37,8 +37,8 @@ const landmarkProjects: LandmarkProject[] = [
   {
     id: "chittagong-ez",
     category: "uav",
-    categoryTag: "UAV PHOTOGRAMMETRY",
-    title: "Chittagong Economic Zone 3D Mesh",
+    categoryTag: "AERIAL SURVEY",
+    title: "Chittagong Economic Zone 3D Mapping",
     client: "BEZA Industrial Authority",
     location: "Mirsarai, Chattogram",
     benchmark: "2.5cm GSD True Orthomosaic",
@@ -53,8 +53,8 @@ const landmarkProjects: LandmarkProject[] = [
   {
     id: "sylhet-flood",
     category: "hydro",
-    categoryTag: "HYDROGRAPHY",
-    title: "Surma–Kushiyara Basin Riverbed Bathymetry",
+    categoryTag: "GIS & MAPPING",
+    title: "Sylhet Riverbank & Floodplain Modeling",
     client: "Bangladesh Water Development Board (BWDB)",
     location: "Surma-Kushiyara Delta Basin",
     benchmark: "Acoustic Depth Sounding (SOB Datum)",
@@ -69,7 +69,7 @@ const landmarkProjects: LandmarkProject[] = [
   {
     id: "badc-gis",
     category: "gis",
-    categoryTag: "REMOTE SENSING & GIS",
+    categoryTag: "GIS & MAPPING",
     title: "BADC Agricultural Information System (WEB-AIS)",
     client: "Ministry of Agriculture / BADC",
     location: "23 Unions, 260 Mouzas",
@@ -85,8 +85,8 @@ const landmarkProjects: LandmarkProject[] = [
   {
     id: "geodetic-control",
     category: "bridges",
-    categoryTag: "GEODETIC CONTROL",
-    title: "Nationwide Ground Control Network",
+    categoryTag: "INFRASTRUCTURE",
+    title: "Nationwide Geodetic Ground Control Network",
     client: "Survey of Bangladesh (SOB) Datum",
     location: "All 64 Districts",
     benchmark: "1st Class Baseline Calibration",
@@ -101,7 +101,7 @@ const landmarkProjects: LandmarkProject[] = [
   {
     id: "bpdb-gis",
     category: "gis",
-    categoryTag: "SPATIAL DATABASE",
+    categoryTag: "GIS & MAPPING",
     title: "BPDB Distribution Asset GIS & Mapping",
     client: "Power Development Board (BPDB)",
     location: "Chittagong & Sylhet Zones",
@@ -110,10 +110,18 @@ const landmarkProjects: LandmarkProject[] = [
     deliverables: [
       "PostgreSQL/PostGIS electrical feeder database",
       "High-resolution mobile GIS field audit logs",
-      "Interactive asset inspection web portal",
-      "Transformer load density spatial heatmaps",
+      "Substation single-line schematic spatial integration",
+      "Network load balancing GIS thematic maps",
     ],
   },
+];
+
+const categoryTabs = [
+  { id: "all", label: "All Works (31)" },
+  { id: "bridges", label: "Expressway" },
+  { id: "uav", label: "AERIAL SURVEY" },
+  { id: "hydro", label: "Bathymetry" },
+  { id: "gis", label: "Spatial GIS" },
 ];
 
 export const ProjectsSection: React.FC = () => {
@@ -128,87 +136,100 @@ export const ProjectsSection: React.FC = () => {
   return (
     <section id="portfolio" className="py-20 lg:py-28 bg-white border-t border-slate-200">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* BuildGo 1:1 Section Header (Zero Extra Paragraphs) */}
-        <div className="text-center max-w-2xl mx-auto mb-8">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
-            • Our Landmark Projects
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
-            Discover Our Landmark Projects.
-          </h2>
-        </div>
+        {/* Custom Image-Type Layout: Left Editorial Typography + Right 3 Photographic Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          {/* Left Column (4 Cols): / PROJECTS Heading, Note & Button (Matching Reference Image) */}
+          <div className="lg:col-span-4 lg:sticky lg:top-28">
+            <div className="flex items-center gap-3 text-xs font-mono font-bold tracking-widest text-[#ea580c] uppercase mb-5">
+              <span>/ PROJECTS</span>
+              <span className="w-12 h-[1px] bg-slate-300" />
+            </div>
 
-        {/* BuildGo Category Filter Tabs */}
-        <div className="flex items-center justify-center gap-2 sm:gap-4 flex-wrap mb-10 sm:mb-12 text-xs font-mono font-bold">
-          {[
-            { id: "all", label: "All Deliverables (31)" },
-            { id: "bridges", label: "Expressway & Bridges" },
-            { id: "uav", label: "UAV Photogrammetry" },
-            { id: "hydro", label: "River Bathymetry" },
-            { id: "gis", label: "Satellite GIS" },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              onClick={() => setSelectedCategory(tab.id)}
-              className={`px-3 py-1.5 transition-colors cursor-pointer rounded-none border ${
-                selectedCategory === tab.id
-                  ? "bg-slate-900 text-white border-slate-900"
-                  : "bg-white text-slate-600 border-slate-200 hover:border-slate-400"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-black text-[#0f172a] tracking-tight leading-[1.05] mb-5">
+              Real <br />
+              landscapes. <br />
+              <span className="text-[#ea580c]">Real</span> <br />
+              <span className="text-[#ea580c]">impact.</span>
+            </h2>
 
-        {/* BuildGo 1:1 Large Immersive Image Panels (3 Columns, ZERO Extra Paragraphs) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredProjects.slice(0, 3).map((proj) => (
-            <div
-              key={proj.id}
-              onClick={() => setActiveProject(proj)}
-              className="group cursor-pointer relative aspect-[3/4] sm:aspect-[4/5] w-full bg-slate-950 border border-slate-300 rounded-none overflow-hidden shadow-sm group-hover:border-slate-900 transition-all duration-500"
-            >
-              <Image
-                src={proj.image}
-                alt={proj.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover object-center rounded-none transition-transform duration-1000 group-hover:scale-103"
-              />
-              {/* BuildGo Deep Dark Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent" />
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm mb-6 font-normal">
+              A selection of our work across surveying, mapping and spatial analysis.
+            </p>
 
-              {/* Bottom Caption Overlay (BuildGo Style with Orange Tag) */}
-              <div className="absolute bottom-5 left-5 right-5 text-white z-10">
-                <span className="inline-block px-2.5 py-1 bg-[#ea580c] text-[10px] font-mono font-bold tracking-wider uppercase text-white mb-2 rounded-none shadow-xs">
-                  {proj.categoryTag}
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-snug mb-1">
-                  {proj.title}
-                </h3>
-                <span className="text-xs text-slate-300 font-mono block mb-2">
-                  {proj.client} • {proj.location}
-                </span>
-                <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-orange-400 group-hover:text-white transition-colors">
-                  <span>INSPECT DOSSIER</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </div>
+            <div className="mb-8">
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 border border-slate-900 bg-white hover:bg-slate-900 text-slate-900 hover:text-white text-xs font-mono font-bold transition rounded-none uppercase tracking-wider group shadow-xs"
+              >
+                <span>View all projects</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            {/* Category Filter Switcher */}
+            <div className="pt-5 border-t border-slate-200">
+              <span className="text-[10px] font-mono uppercase font-bold text-slate-400 block mb-2.5">
+                FILTER DELIVERABLES:
+              </span>
+              <div className="flex flex-wrap gap-1.5 font-mono text-xs">
+                {categoryTabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => setSelectedCategory(tab.id)}
+                    className={`px-3 py-1.5 text-[11px] font-bold uppercase transition rounded-none cursor-pointer ${
+                      selectedCategory === tab.id
+                        ? "bg-[#ea580c] text-white"
+                        : "bg-white text-slate-700 border border-slate-200 hover:border-slate-900"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Clean Minimal Archive Button */}
-        <div className="mt-12 sm:mt-14 text-center">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-slate-900 hover:bg-[#ea580c] text-white text-xs font-mono font-bold rounded-none shadow-sm transition group uppercase"
-          >
-            <span>Open Complete 31 Projects Archive</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
+          {/* Right Column (8 Cols): 3 Photographic Project Cards (Matching Reference Image) */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+              {filteredProjects.slice(0, 3).map((proj) => (
+                <div
+                  key={proj.id}
+                  onClick={() => setActiveProject(proj)}
+                  className="group cursor-pointer relative aspect-[3/4] sm:aspect-[4/5] w-full bg-slate-950 border border-slate-300 rounded-none overflow-hidden shadow-xs hover:border-slate-900 transition-all duration-500 flex flex-col justify-end"
+                >
+                  <Image
+                    src={proj.image}
+                    alt={proj.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover rounded-none transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* Deep Dark Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/35 to-transparent" />
+
+                  {/* Caption Overlay (Matching User's Reference Screenshot) */}
+                  <div className="relative p-4 sm:p-5 z-10 text-white w-full">
+                    {/* White Tag Pill at Bottom-Left */}
+                    <span className="inline-block px-2.5 py-1 bg-white text-slate-900 text-[10px] font-mono font-bold uppercase tracking-wider mb-2 rounded-none shadow-xs">
+                      {proj.categoryTag}
+                    </span>
+
+                    {/* Title with Arrow */}
+                    <div className="flex items-end justify-between gap-2">
+                      <h3 className="text-sm sm:text-base font-bold text-white tracking-tight leading-snug">
+                        {proj.title}
+                      </h3>
+                      <span className="shrink-0 text-white group-hover:text-[#ea580c] group-hover:translate-x-1 transition-all mb-0.5">
+                        <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -223,11 +244,11 @@ export const ProjectsSection: React.FC = () => {
                 fill
                 className="object-cover rounded-none"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
 
               <div className="absolute bottom-5 left-6 right-6">
-                <span className="px-2 py-0.5 bg-[#ea580c] text-[10px] font-mono font-bold uppercase tracking-wider text-white inline-block mb-2 rounded-none">
-                  [ {activeProject.categoryTag} ] • {activeProject.client}
+                <span className="px-2.5 py-1 bg-white text-slate-900 text-[10px] font-mono font-bold uppercase tracking-wider inline-block mb-2 rounded-none shadow-xs">
+                  {activeProject.categoryTag} • {activeProject.client}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
                   {activeProject.title}
@@ -245,18 +266,26 @@ export const ProjectsSection: React.FC = () => {
             </div>
 
             <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 bg-slate-50 border border-slate-200 text-xs font-mono rounded-none">
+              <div className="grid grid-cols-2 gap-4 pb-6 border-b border-slate-200 font-mono text-xs">
                 <div>
-                  <span className="text-slate-400 block">AUTHORITY</span>
-                  <span className="font-bold text-slate-900 mt-0.5 block">{activeProject.client}</span>
+                  <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">
+                    CLIENT AUTHORITY
+                  </span>
+                  <span className="text-slate-900 font-bold block">{activeProject.client}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block">LOCATION</span>
-                  <span className="font-bold text-slate-900 mt-0.5 block">{activeProject.location}</span>
+                  <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">
+                    CORRIDOR LOCATION
+                  </span>
+                  <span className="text-slate-900 font-bold block">{activeProject.location}</span>
                 </div>
-                <div className="col-span-2 sm:col-span-1">
-                  <span className="text-slate-400 block">TOLERANCE</span>
-                  <span className="font-bold text-[#ea580c] mt-0.5 block">{activeProject.benchmark}</span>
+                <div className="col-span-2">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">
+                    CALIBRATION STANDARD
+                  </span>
+                  <span className="text-[#ea580c] font-bold block">
+                    {activeProject.benchmark}
+                  </span>
                 </div>
               </div>
 
@@ -265,12 +294,12 @@ export const ProjectsSection: React.FC = () => {
                   Delivered Engineering Data Assets
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {activeProject.deliverables.map((item, i) => (
+                  {activeProject.deliverables.map((item, idx) => (
                     <div
-                      key={i}
-                      className="flex items-start gap-2 p-2.5 bg-slate-50 border border-slate-200 text-xs text-slate-700 rounded-none"
+                      key={idx}
+                      className="p-3 bg-slate-50 border border-slate-200 text-xs font-medium text-slate-800 flex items-start gap-2 rounded-none"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-[#ea580c] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" />
                       <span>{item}</span>
                     </div>
                   ))}
