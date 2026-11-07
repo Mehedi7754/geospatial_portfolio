@@ -4,21 +4,22 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  Compass,
+  Plane,
+  Layers,
+  Waves,
+  Database,
+  Activity,
   ArrowRight,
   ArrowUpRight,
   CheckCircle2,
   X,
-  Compass,
-  Layers,
-  Activity,
-  Plane,
-  Database,
-  Waves,
 } from "lucide-react";
 
 interface Discipline {
   id: string;
-  badge: string;
+  icon: React.ComponentType<{ className?: string }>;
+  num: string;
   title: string;
   subtitle: string;
   description: string;
@@ -29,74 +30,12 @@ interface Discipline {
 
 const disciplines: Discipline[] = [
   {
-    id: "remote-sensing",
-    badge: "REMOTE SENSING",
-    title: "Satellite Remote Sensing",
-    subtitle: "Multi-temporal NDVI vegetation & regional land cover analysis",
-    description:
-      "Satellite imagery analysis, multi-temporal NDVI vegetation health mapping, and regional land cover change monitoring for agricultural and environmental planning.",
-    image: "/assets/showcase/satellite-remote-sensing.png",
-    deliverables: [
-      "Multi-temporal NDVI vegetation health maps",
-      "Surface water body index & flood extent mapping",
-      "Urban sprawl & land use land cover (LULC) classification",
-      "High-resolution multispectral band processing",
-    ],
-    techStack: ["Sentinel-2 / Landsat-8", "ArcGIS Spatial Analyst", "Google Earth Engine"],
-  },
-  {
-    id: "site-layout",
-    badge: "SITE STAKING",
-    title: "Construction Site Layout",
-    subtitle: "Sub-millimeter pier, axis & highway corridor setting-out",
-    description:
-      "Exact field marking for bridge piers, building columns, highway alignments, and right-of-way boundaries adhering to strict engineering tolerances.",
-    image: "/construction-site.png",
-    deliverables: [
-      "Building axis and foundation centerlines with sub-mm tolerances",
-      "Elevated viaduct pier locations for expressway projects",
-      "Highway horizontal & vertical curve geometry setting",
-      "As-built structural deviation and settlement logs",
-    ],
-    techStack: ["1-Second Total Station", "Digital Barcode Level", "AutoCAD Civil 3D"],
-  },
-  {
-    id: "geospatial-consultancy",
-    badge: "ADVISORY",
-    title: "Geospatial Consultancy",
-    subtitle: "Enterprise GIS strategy, tender documentation & spatial advisory",
-    description:
-      "Strategic geospatial advisory for government ministries, foreign EPC contractors, feasibility study formulation, and national compliance audits.",
-    image: "/assets/showcase/feasibility-cad-engineering.png",
-    deliverables: [
-      "Tender Technical Specifications & Terms-of-Reference (TOR)",
-      "Geodetic control network accuracy validation reports",
-      "Cadastral land acquisition schedule verification",
-      "Multi-agency GIS data harmonization & metadata standards",
-    ],
-    techStack: ["AutoCAD Civil 3D", "ArcGIS Enterprise", "Survey of Bangladesh Baselines"],
-  },
-  {
-    id: "gis-mapping",
-    badge: "SPATIAL DATABASE",
-    title: "GIS Mapping & Databases",
-    subtitle: "PostgreSQL/PostGIS geodatabases & interactive web portals",
-    description:
-      "Custom GIS development, relational PostGIS database architectures, and interactive web mapping portals for municipalities and utility networks.",
-    image: "/inner/gis-analyst.webp",
-    deliverables: [
-      "PostgreSQL/PostGIS relational geodatabases",
-      "Multi-criteria spatial suitability models",
-      "Interactive web GIS dashboards (Leaflet/Mapbox)",
-      "Digitized utility networks and municipal assets",
-    ],
-    techStack: ["ArcGIS Pro", "QGIS Desktop", "PostgreSQL / PostGIS", "Python"],
-  },
-  {
     id: "topographic",
-    badge: "DIGITAL SURVEY",
-    title: "Topographic & Engineering Survey",
-    subtitle: "Sub-centimeter contour mapping, DEM/DSM & TBM baselines",
+    icon: Compass,
+    num: "01",
+    title: "Topographic & Geodetic Baseline",
+    subtitle:
+      "Sub-centimeter contour mapping, DEM/DSM elevation models, and TBM baselines tied to Survey of Bangladesh datum.",
     description:
       "Sub-centimeter terrain, elevation, contour, and site feature mapping for bridges, highways, and national infrastructure tied to Survey of Bangladesh datum.",
     image: "/assets/showcase/total-station-instrument.png",
@@ -110,11 +49,13 @@ const disciplines: Discipline[] = [
   },
   {
     id: "uav-mapping",
-    badge: "DRONE SURVEY",
+    icon: Plane,
+    num: "02",
     title: "UAV Aerial Photogrammetry",
-    subtitle: "Sub-3cm GSD orthomosaics, 3D mesh & volumetric cut/fill",
+    subtitle:
+      "Sub-3cm GSD true orthomosaics, dense 3D point clouds, and volumetric cut/fill earthwork computations.",
     description:
-      "High-resolution drone orthomosaics, 3D terrain reconstruction, dense point clouds, and volumetric earthwork computations for industrial zones.",
+      "High-resolution drone orthomosaics, 3D terrain reconstruction, dense point clouds, and volumetric earthwork computations for industrial economic zones.",
     image: "/assets/showcase/drone-uav-field-operation.png",
     deliverables: [
       "Sub-3cm GSD true orthomosaic digital maps",
@@ -125,26 +66,30 @@ const disciplines: Discipline[] = [
     techStack: ["DJI Phantom 4 RTK", "DJI Mavic 3 Enterprise", "Pix4D / Metashape"],
   },
   {
-    id: "cadastral",
-    badge: "CADASTRAL",
-    title: "Mouza Sheet Demarcation",
-    subtitle: "CS/RS/BS cadastral map geo-rectification & title boundary staking",
+    id: "site-layout",
+    icon: Layers,
+    num: "03",
+    title: "Construction Site Setting-Out",
+    subtitle:
+      "Sub-millimeter pier centerline staking, elevated viaduct geometry, and expressway corridor right-of-way.",
     description:
-      "High-precision geo-referencing of British-era CS, RS, and modern BS mouza maps tied to national geodetic control networks for dispute-free boundary demarcation.",
-    image: "/assets/showcase/spatial-data-analytics.png",
+      "Exact field marking for bridge piers, building columns, highway alignments, and right-of-way boundaries adhering to strict engineering tolerances.",
+    image: "/construction-site.png",
     deliverables: [
-      "Digitized & geo-rectified CS/RS/BS mouza sheets",
-      "Land acquisition plot demarcation overlays",
-      "Right-of-Way (RoW) boundary pillar coordinates",
-      "Official cadastral area calculation certificates",
+      "Building axis and foundation centerlines with sub-mm tolerances",
+      "Elevated viaduct pier locations for expressway projects",
+      "Highway horizontal & vertical curve geometry setting",
+      "As-built structural deviation and settlement logs",
     ],
-    techStack: ["Survey of Bangladesh Datum", "ArcGIS Pro", "Dual-Frequency RTK GNSS"],
+    techStack: ["1-Second Total Station", "Digital Barcode Level", "AutoCAD Civil 3D"],
   },
   {
     id: "bathymetry",
-    badge: "HYDROGRAPHY",
-    title: "Bathymetric Hydro Survey",
-    subtitle: "Dual-frequency acoustic depth sounding & riverbed morphology",
+    icon: Waves,
+    num: "04",
+    title: "Bathymetric Hydro Sounding",
+    subtitle:
+      "Dual-frequency acoustic depth sounding, underwater riverbed morphology, and HEC-RAS hydraulic models.",
     description:
       "Underwater riverbed acoustic depth profiling, cross-section sounding, and hydrodynamic modeling for flood mitigation and dredging plans.",
     image: "/assets/showcase/river-bathymetry-sounding.jpg",
@@ -156,6 +101,42 @@ const disciplines: Discipline[] = [
     ],
     techStack: ["Dual-Frequency Echo Sounder", "Hydrographic GPS Beacon", "HYPACK"],
   },
+  {
+    id: "gis-mapping",
+    icon: Database,
+    num: "05",
+    title: "Enterprise GIS & Databases",
+    subtitle:
+      "Relational PostgreSQL/PostGIS spatial databases, interactive web portals, and digitized utility networks.",
+    description:
+      "Custom GIS development, relational PostGIS database architectures, and interactive web mapping portals for municipalities and utility networks.",
+    image: "/inner/gis-analyst.webp",
+    deliverables: [
+      "PostgreSQL/PostGIS relational geodatabases",
+      "Multi-criteria spatial suitability models",
+      "Interactive web GIS dashboards (Leaflet/Mapbox)",
+      "Digitized utility networks and municipal assets",
+    ],
+    techStack: ["ArcGIS Pro", "QGIS Desktop", "PostgreSQL / PostGIS", "Python"],
+  },
+  {
+    id: "remote-sensing",
+    icon: Activity,
+    num: "06",
+    title: "Satellite Remote Sensing",
+    subtitle:
+      "Multi-temporal NDVI vegetation health, flood inundation tracking, and regional land cover classification.",
+    description:
+      "Satellite imagery analysis, multi-temporal NDVI vegetation health mapping, and regional land cover change monitoring for agricultural and environmental planning.",
+    image: "/assets/showcase/satellite-remote-sensing.png",
+    deliverables: [
+      "Multi-temporal NDVI vegetation health maps",
+      "Surface water body index & flood extent mapping",
+      "Urban sprawl & land use land cover (LULC) classification",
+      "High-resolution multispectral band processing",
+    ],
+    techStack: ["Sentinel-2 / Landsat-8", "ArcGIS Spatial Analyst", "Google Earth Engine"],
+  },
 ];
 
 export const ServicesSection: React.FC = () => {
@@ -164,70 +145,52 @@ export const ServicesSection: React.FC = () => {
   return (
     <section id="services" className="py-20 lg:py-28 bg-white overflow-hidden">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Minimal Portfolio Header (Matching Dribbble Style) */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16 pb-6 border-b border-slate-100">
-          <div>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
-              CORE CAPABILITIES • 08 DISCIPLINES
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
-              Engineering &amp; Survey Disciplines
-            </h2>
-          </div>
-
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#ea580c] hover:text-[#c2410c] transition group self-start sm:self-end"
-          >
-            <span>Explore Associated Project Deliverables (31)</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
+        {/* TROMA Style Minimal Centered Section Header (NO Box Container) */}
+        <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
+            Our Services
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight leading-tight mb-3">
+            Precision Engineering Capabilities
+          </h2>
+          <p className="text-sm sm:text-base text-slate-500 leading-relaxed max-w-xl mx-auto">
+            High-precision geodetic instrumentation and enterprise spatial intelligence calibrated to Survey of Bangladesh datum.
+          </p>
         </div>
 
-        {/* 8-Card Visual Portfolio Grid (Image-First, Minimal Link Design) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
-          {disciplines.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => setModalDiscipline(item)}
-              className="group cursor-pointer flex flex-col justify-between bg-white rounded-2xl p-3 sm:p-3.5 border border-slate-100 hover:border-orange-200 hover:shadow-xl hover:shadow-orange-500/5 transition-all duration-300"
-            >
-              <div>
-                {/* Visual Image Block with Badge */}
-                <div className="relative aspect-[16/10] sm:aspect-[4/3] rounded-xl overflow-hidden bg-slate-950 mb-3.5">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-
-                  {/* Corner Badge */}
-                  <div className="absolute top-2.5 right-2.5 z-10">
-                    <span className="px-2.5 py-1 rounded-md bg-slate-900/85 backdrop-blur-md text-[9px] font-mono font-bold uppercase tracking-wider text-white border border-white/10 shadow-sm">
-                      {item.badge}
-                    </span>
-                  </div>
+        {/* TROMA 6-Item Minimalist Service Grid (Pure Typography & Icons, ZERO Box Containers) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 sm:gap-y-16">
+          {disciplines.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.id}
+                onClick={() => setModalDiscipline(item)}
+                className="group cursor-pointer flex flex-col items-start"
+              >
+                {/* Coral Soft Icon (Exactly like TROMA's square icons) */}
+                <div className="w-14 h-14 rounded-2xl bg-orange-50 text-[#ea580c] group-hover:bg-[#ea580c] group-hover:text-white transition-all duration-300 flex items-center justify-center mb-5 shadow-xs">
+                  <Icon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
                 </div>
 
-                {/* Typography Block */}
-                <h3 className="text-base font-black text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-1.5">
+                {/* Service Title */}
+                <h3 className="text-lg sm:text-xl font-black text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-2">
                   {item.title}
                 </h3>
-                <p className="text-xs text-slate-500 leading-relaxed line-clamp-2 mb-3">
+
+                {/* Service Subtitle */}
+                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-4">
                   {item.subtitle}
                 </p>
-              </div>
 
-              {/* Minimal Link Footer */}
-              <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-700 group-hover:text-[#ea580c] transition-colors">
-                <span>View Details</span>
-                <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                {/* Minimal Text Link (No Button Box) */}
+                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors mt-auto">
+                  <span>Explore Deliverables</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </span>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -246,7 +209,7 @@ export const ServicesSection: React.FC = () => {
 
               <div className="absolute bottom-4 left-6 right-6">
                 <span className="px-2.5 py-1 rounded-full bg-[#ea580c] text-[10px] font-bold text-white uppercase tracking-wider mb-2 inline-block">
-                  {modalDiscipline.badge}
+                  Discipline {modalDiscipline.num}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
                   {modalDiscipline.title}

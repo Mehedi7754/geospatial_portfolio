@@ -3,15 +3,15 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Compass, Award, ShieldCheck } from "lucide-react";
+import { ArrowRight, Compass, Award } from "lucide-react";
 
 export const AboutSection: React.FC = () => {
   return (
     <section id="about" className="py-20 lg:py-28 bg-white overflow-hidden">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial 2-Column Split (Image + Typography, NO gray boxed section containers) */}
+        {/* TROMA Editorial 2-Column Split (Image + Typography, ZERO Box Containers) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16 sm:mb-20">
-          {/* Left Column (5 Cols): High-Res Authentic Collaborative Photo */}
+          {/* Left Column (5 Cols): Clean Photo directly on canvas */}
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden aspect-[4/3] sm:aspect-square bg-slate-900 shadow-xl group">
               <Image
@@ -23,7 +23,7 @@ export const AboutSection: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
-              <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-white/95 backdrop-blur-md shadow-lg flex items-center gap-3.5">
+              <div className="absolute bottom-5 left-5 right-5 p-3.5 rounded-2xl bg-white/95 backdrop-blur-md shadow-md flex items-center gap-3">
                 <div className="p-2.5 rounded-xl bg-[#ea580c] text-white shrink-0">
                   <Compass className="w-5 h-5" />
                 </div>
@@ -39,12 +39,11 @@ export const AboutSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column (7 Cols): Editorial Text */}
+          {/* Right Column (7 Cols): Typography directly on canvas */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/70 text-[#ea580c] text-[11px] font-bold tracking-wider uppercase mb-5 w-max">
-              <Award className="w-3.5 h-3.5 text-[#ea580c]" />
-              <span>1st Class Accredited Consultancy</span>
-            </div>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#ea580c] block mb-3">
+              1st Class Accredited Consultancy
+            </span>
 
             <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight leading-[1.12] mb-6">
               Leading Geospatial Agency For{" "}
@@ -83,8 +82,8 @@ export const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        {/* 4 Floating Stats (TROMA Minimal Style - Clean White Bar with Bold Orange Counters) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 p-6 sm:p-10 rounded-3xl bg-[#fafafa] border border-slate-200/80 shadow-xs">
+        {/* 4 Floating Stats (TROMA Style - Sitting Directly on White Canvas, NO Box Container) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-10 border-y border-slate-100">
           <div>
             <span className="text-3xl sm:text-5xl font-black text-[#ea580c] tracking-tight block">
               12+
@@ -93,7 +92,7 @@ export const AboutSection: React.FC = () => {
               Years Experience
             </strong>
             <span className="text-xs text-slate-500 block mt-0.5">
-              National engineering surveys
+              National infrastructure surveys
             </span>
           </div>
 

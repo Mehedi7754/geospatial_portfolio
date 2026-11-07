@@ -23,11 +23,11 @@ const showcaseProjects: ShowcaseProject[] = [
     id: "expressway",
     num: "01",
     category: "Infrastructure Alignment",
-    title: "Dhaka–Ashulia Elevated Expressway Geodetic Control",
+    title: "Dhaka–Ashulia Elevated Expressway",
     image: "/inner/bridge-aerial.webp",
     client: "Bangladesh Bridge Authority (BBA)",
     location: "Dhaka-Ashulia Corridor",
-    benchmark: "Sub-millimeter Pier Axis Tolerance",
+    benchmark: "Sub-mm Pier Axis Tolerance",
     summary:
       "Millimeter geodetic corridor control establishment, elevated viaduct pier centerline setting-out, and right-of-way topographic modeling for Bangladesh Bridge Authority.",
     deliverables: [
@@ -56,26 +56,8 @@ const showcaseProjects: ShowcaseProject[] = [
     ],
   },
   {
-    id: "sylhet-flood",
-    num: "03",
-    category: "Hydrographic Sounding",
-    title: "Surma–Kushiyara Basin Riverbed Bathymetry",
-    image: "/assets/showcase/river-bathymetry-sounding.jpg",
-    client: "Bangladesh Water Development Board (BWDB)",
-    location: "Surma-Kushiyara Delta Basin",
-    benchmark: "Acoustic Depth Sounding (SOB / PWD Datum)",
-    summary:
-      "Riverbed acoustic depth profiling, underwater morphology analysis, and hydraulic cross-section surveys supporting flood mitigation and riverbank protection works.",
-    deliverables: [
-      "Acoustic riverbed depth contour maps",
-      "HEC-RAS 1D/2D hydraulic hydrodynamic model cross-sections",
-      "Embankment scour vulnerability assessment sheets",
-      "Dredging volume estimations & river channel logs",
-    ],
-  },
-  {
     id: "chittagong-ez",
-    num: "04",
+    num: "03",
     category: "UAV Photogrammetry",
     title: "Chittagong Economic Zone 3D Mesh & Earthwork",
     image: "/inner/drone-fields.webp",
@@ -91,19 +73,73 @@ const showcaseProjects: ShowcaseProject[] = [
       "Masterplan plot demarcation and title boundary baselines",
     ],
   },
+  {
+    id: "sylhet-flood",
+    num: "04",
+    category: "Hydrographic Sounding",
+    title: "Surma–Kushiyara Basin Riverbed Bathymetry",
+    image: "/assets/showcase/river-bathymetry-sounding.jpg",
+    client: "Bangladesh Water Development Board (BWDB)",
+    location: "Surma-Kushiyara Delta Basin",
+    benchmark: "Acoustic Depth Sounding (SOB Datum)",
+    summary:
+      "Riverbed acoustic depth profiling, underwater morphology analysis, and hydraulic cross-section surveys supporting flood mitigation and riverbank protection works.",
+    deliverables: [
+      "Acoustic riverbed depth contour maps",
+      "HEC-RAS 1D/2D hydraulic hydrodynamic model cross-sections",
+      "Embankment scour vulnerability assessment sheets",
+      "Dredging volume estimations & river channel logs",
+    ],
+  },
+  {
+    id: "geodetic-control",
+    num: "05",
+    category: "Topographic Geodetics",
+    title: "Nationwide Geodetic Ground Control Network",
+    image: "/assets/showcase/total-station-instrument.png",
+    client: "Survey of Bangladesh (SOB) Datum",
+    location: "All 64 Districts",
+    benchmark: "1st Class Baseline Calibration",
+    summary:
+      "Establishment of high-precision RTK GNSS baselines and permanent ground control points (GCPs) tied to the official national datum across all divisions of Bangladesh.",
+    deliverables: [
+      "Permanent Ground Control Monument Coordinates (PBM)",
+      "Differential GPS static baseline post-processing logs",
+      "Survey of Bangladesh datum transformation matrices",
+      "Cadastral overlay control benchmarks",
+    ],
+  },
+  {
+    id: "bpdb-gis",
+    num: "06",
+    category: "Spatial Asset Database",
+    title: "BPDB Distribution Asset GIS & Mapping",
+    image: "/inner/gis-analyst.webp",
+    client: "Power Development Board (BPDB)",
+    location: "Chittagong & Sylhet Zones",
+    benchmark: "PostGIS Enterprise Geodatabase",
+    summary:
+      "High-accuracy geospatial asset mapping and network topology modeling for electrical substations, distribution feeders, and customer meters in an enterprise GIS.",
+    deliverables: [
+      "PostgreSQL/PostGIS electrical feeder database",
+      "High-resolution mobile GIS field audit logs",
+      "Interactive asset inspection web portal",
+      "Transformer load density spatial heatmaps",
+    ],
+  },
 ];
 
 export const ProjectsSection: React.FC = () => {
   const [activeProject, setActiveProject] = useState<ShowcaseProject | null>(null);
 
   return (
-    <section id="portfolio" className="py-20 lg:py-28 bg-white">
+    <section id="portfolio" className="py-20 lg:py-28 bg-white overflow-hidden">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Minimal Portfolio Header (TROMA / BuildGo Style) */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16 pb-6 border-b border-slate-100">
+        {/* TROMA Style Minimal Header (Left Title + Right Coral Button, NO Box Container) */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
-              PORTFOLIO • RECENT CASE STUDIES
+            <span className="text-xs font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
+              Recent Work
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight">
               Check Some Of Our Recent Work
@@ -112,94 +148,67 @@ export const ProjectsSection: React.FC = () => {
 
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-[#ea580c] text-white text-xs font-bold rounded-full transition shadow-md self-start sm:self-end group"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold rounded-full shadow-lg shadow-orange-500/25 transition transform hover:-translate-y-0.5 self-start sm:self-end shrink-0"
           >
-            <span>View All 31 Projects Archive</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <span>View All 31 Projects</span>
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
-        {/* Link-Type Portfolio Showcase (Large, Image-First Asymmetric Grid) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        {/* TROMA Style 6-Image Clean Gallery Grid (ZERO Box Containers, Pure Images & Typography) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 sm:gap-y-12">
           {showcaseProjects.map((proj) => (
             <div
               key={proj.id}
               onClick={() => setActiveProject(proj)}
-              className="group cursor-pointer flex flex-col justify-between"
+              className="group cursor-pointer flex flex-col"
             >
-              <div>
-                {/* Visual Image Block with Responsive Aspect Ratio */}
-                <div className="relative aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-950 shadow-md group-hover:shadow-2xl transition-all duration-300 mb-5">
-                  <Image
-                    src={proj.image}
-                    alt={proj.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+              {/* Image Block: Direct on canvas with smooth rounded-2xl corners, NO box container */}
+              <div className="relative aspect-[16/11] rounded-2xl overflow-hidden bg-slate-900 shadow-sm group-hover:shadow-xl transition-all duration-500 mb-4">
+                <Image
+                  src={proj.image}
+                  alt={proj.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  {/* Badges on Image */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-white text-xs z-10">
-                    <span className="px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-[10px] font-mono tracking-wider uppercase font-bold">
-                      {proj.num} • {proj.category}
-                    </span>
-                    <span className="px-2.5 py-1 rounded-full bg-[#ea580c] text-[10px] font-bold shadow-md">
-                      {proj.benchmark}
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-4 left-4 right-4 text-white z-10 flex items-center justify-between">
-                    <span className="text-xs text-slate-300 font-medium">
-                      {proj.location}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-white group-hover:text-[#ea580c] transition-colors">
-                      <span>Inspect Dossier</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </span>
-                  </div>
+                {/* Floating category pill */}
+                <div className="absolute top-3 left-3 z-10">
+                  <span className="px-2.5 py-1 rounded-md bg-slate-900/85 backdrop-blur-md text-[9px] font-mono font-bold uppercase tracking-wider text-white border border-white/10 shadow-sm">
+                    {proj.category}
+                  </span>
                 </div>
 
-                {/* Typography Link Block */}
-                <span className="text-xs font-bold uppercase tracking-wider text-[#ea580c] block mb-1">
-                  {proj.client}
-                </span>
-                <h3 className="text-xl sm:text-2xl font-black text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-tight mb-2">
-                  {proj.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed line-clamp-2">
-                  {proj.summary}
-                </p>
+                {/* Hover arrow badge */}
+                <div className="absolute bottom-3 right-3 z-10 w-8 h-8 rounded-full bg-white text-[#ea580c] flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300 shadow-md">
+                  <ArrowUpRight className="w-4 h-4" />
+                </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-700 group-hover:text-[#ea580c] transition-colors">
-                <span className="font-mono text-slate-400">Standard: Survey of Bangladesh Datum</span>
-                <span className="flex items-center gap-1">
-                  <span>View Project Case Study</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </div>
+              {/* Title & Metadata directly below image */}
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#ea580c] block mb-1">
+                {proj.client}
+              </span>
+              <h3 className="text-base sm:text-lg font-black text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-1">
+                {proj.title}
+              </h3>
+              <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+                {proj.summary}
+              </p>
             </div>
           ))}
         </div>
 
-        {/* Minimal Agency Link Banner to Sub-Page (No Box Container Look) */}
-        <div className="mt-16 sm:mt-20 p-8 sm:p-12 rounded-3xl bg-slate-50 border border-slate-200/80 text-[#0f172a] flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xs relative overflow-hidden">
-          <div className="relative z-10 max-w-xl">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#ea580c] block mb-1.5">
-              31 NATIONWIDE INFRASTRUCTURE DELIVERABLES
-            </span>
-            <h3 className="text-xl sm:text-3xl font-black tracking-tight leading-tight text-[#0f172a]">
-              Looking for our complete government &amp; private project catalog?
-            </h3>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Explore our searchable directory of all 31 verified engineering surveys across all 64 districts.
-            </p>
-          </div>
-
+        {/* Minimal Text Link to Complete Archive (NO Giant Box Container) */}
+        <div className="mt-14 sm:mt-16 pt-8 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs sm:text-sm text-slate-600">
+          <p>
+            Looking for our complete catalog of <strong className="text-slate-900 font-bold">31 verified infrastructure deliverables</strong> across all 64 districts in Bangladesh?
+          </p>
           <Link
             href="/projects"
-            className="relative z-10 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold rounded-full shadow-lg shadow-orange-500/25 transition transform hover:-translate-y-0.5 self-start md:self-center shrink-0"
+            className="inline-flex items-center gap-1.5 font-bold text-[#ea580c] hover:text-[#c2410c] transition shrink-0"
           >
             <span>Browse Complete 31 Projects Directory</span>
             <ArrowRight className="w-4 h-4" />

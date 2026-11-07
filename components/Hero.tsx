@@ -244,43 +244,46 @@ export const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* 3 Seamless Link Highlights Below (No Box Containers) */}
+        {/* 3 Seamless Link Highlights Below (Matching TROMA's 3 items below hero, NO Box Containers) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 pt-8 border-t border-slate-100">
-          <div className="group">
+          <Link href="/#services" className="group block">
             <span className="text-[11px] font-mono text-[#ea580c] block mb-1">
               [ 01 ] GEODETIC POSITIONING
             </span>
-            <h3 className="text-sm sm:text-base font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-1">
-              Sub-Centimeter RTK GNSS
+            <h3 className="text-sm sm:text-base font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-1 flex items-center justify-between">
+              <span>Sub-Centimeter RTK GNSS</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </h3>
             <p className="text-xs text-slate-500 leading-relaxed">
               Tied to Survey of Bangladesh (SOB) geodetic datum with 8 units of CHCNAV i83 receivers.
             </p>
-          </div>
+          </Link>
 
-          <div className="group">
+          <Link href="/#services" className="group block">
             <span className="text-[11px] font-mono text-[#ea580c] block mb-1">
               [ 02 ] AERIAL PHOTOGRAMMETRY
             </span>
-            <h3 className="text-sm sm:text-base font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-1">
-              High-Precision UAV Drone Fleet
+            <h3 className="text-sm sm:text-base font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-1 flex items-center justify-between">
+              <span>High-Precision UAV Drone Fleet</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </h3>
             <p className="text-xs text-slate-500 leading-relaxed">
               Sub-3cm GSD true orthomosaics, dense 3D point clouds, and volumetric cut/fill earthwork.
             </p>
-          </div>
+          </Link>
 
-          <div className="group">
+          <Link href="/#services" className="group block">
             <span className="text-[11px] font-mono text-[#ea580c] block mb-1">
               [ 03 ] SPATIAL INTELLIGENCE
             </span>
-            <h3 className="text-sm sm:text-base font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-1">
-              Enterprise GIS &amp; PostGIS Databases
+            <h3 className="text-sm sm:text-base font-bold text-[#0f172a] group-hover:text-[#ea580c] transition-colors leading-snug mb-1 flex items-center justify-between">
+              <span>Enterprise GIS &amp; PostGIS Databases</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </h3>
             <p className="text-xs text-slate-500 leading-relaxed">
               Relational PostGIS databases, 10,000+ national GCPs, and multi-temporal satellite NDVI.
             </p>
-          </div>
+          </Link>
         </div>
       </div>
     </section>
