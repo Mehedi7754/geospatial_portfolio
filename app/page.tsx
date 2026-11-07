@@ -6,7 +6,6 @@ import { Hero } from "@/components/Hero";
 import { AboutSection } from "@/components/AboutSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
-import { EquipmentSection } from "@/components/EquipmentSection";
 import { ExpertNetworkSection } from "@/components/ExpertNetworkSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
@@ -18,7 +17,7 @@ export default function HomePage() {
       {/* Sticky Modern Business Portfolio Navbar */}
       <Navbar />
 
-      {/* Main Single-Page Portfolio Flow (Matching Dribbble Reference Design) */}
+      {/* Main Single-Page Portfolio Flow (Matching Dribbble Reference Design 1:1) */}
       <main className="w-full max-w-full overflow-x-hidden">
         {/* 1. Hero with Organic Circular Photo Frame & 3 Floating Feature Cards */}
         <Hero />
@@ -29,16 +28,13 @@ export default function HomePage() {
         {/* 3. Our Services (Clean 6-Card Grid with Coral Outlined/Solid Icons) */}
         <ServicesSection />
 
-        {/* 4. Check Some Of Our Recent Work (4 Showcase Cards + Inline 31 Projects Directory) */}
+        {/* 4. Check Some Of Our Recent Work (4 Showcase Cards + 31 Project Directory Modal) */}
         <ProjectsSection />
 
-        {/* 5. Calibrated Field Fleet & Computing Workstations */}
-        <EquipmentSection />
-
-        {/* 6. What Our Partners Say (Featured Testimonial & Authority Logos) */}
+        {/* 5. What Our Partners Say (Featured Testimonial & Authority Logos) */}
         <ExpertNetworkSection />
 
-        {/* 7. Proposal RFQ Inquiries & Dhaka Operations Desk */}
+        {/* 6. Proposal RFQ Inquiries & Dhaka Operations Desk */}
         <ContactSection />
       </main>
 

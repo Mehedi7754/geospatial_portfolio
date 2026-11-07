@@ -54,13 +54,13 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="#fleet" className="hover:text-[#ea580c] transition">
-                  Calibrated Fleet
+                <Link href="#trust" className="hover:text-[#ea580c] transition">
+                  Client Reviews
                 </Link>
               </li>
               <li>
-                <Link href="#trust" className="hover:text-[#ea580c] transition">
-                  Client Endorsements
+                <Link href="#contact" className="hover:text-[#ea580c] transition">
+                  Get In Touch
                 </Link>
               </li>
             </ul>

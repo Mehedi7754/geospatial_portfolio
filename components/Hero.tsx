@@ -96,7 +96,7 @@ export const Hero: React.FC = () => {
             </p>
 
             {/* CTAs (Matching Coral Pill Button from Reference) */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-8">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <Link
                 href="#portfolio"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold rounded-full shadow-lg shadow-orange-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center"
@@ -112,26 +112,6 @@ export const Hero: React.FC = () => {
                 <span>Request Proposal</span>
                 <ArrowUpRight className="w-4 h-4 text-slate-500" />
               </Link>
-            </div>
-
-            {/* Quick Trust Highlights */}
-            <div className="pt-5 border-t border-slate-100 grid grid-cols-2 gap-3 text-xs">
-              <div className="flex items-center gap-2 text-slate-700">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span className="font-semibold text-xs">Sub-Centimeter RTK</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-700">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span className="font-semibold text-xs">31 Verified Projects</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-700">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span className="font-semibold text-xs">All 64 Districts</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-700">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span className="font-semibold text-xs">UAV Photogrammetry</span>
-              </div>
             </div>
           </div>
 

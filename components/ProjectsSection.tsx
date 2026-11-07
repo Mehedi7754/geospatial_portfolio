@@ -188,10 +188,10 @@ export const ProjectsSection: React.FC = () => {
 
             <button
               type="button"
-              onClick={() => setShowDirectory(!showDirectory)}
+              onClick={() => setShowDirectory(true)}
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-full shadow-lg shadow-orange-500/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0 self-start sm:self-end"
             >
-              <span>{showDirectory ? "Hide Project Archive" : "View All 31 Projects"}</span>
+              <span>View All 31 Projects</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -245,66 +245,77 @@ export const ProjectsSection: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* 2. Interactive Searchable 31-Project Directory Drawer */}
-          {showDirectory && (
-            <div className="mt-12 pt-8 border-t border-slate-200/80 animate-in fade-in duration-300">
-              <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg">
-                {/* Top Bar: Title & Search Bar */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 pb-6 border-b border-slate-100">
-                  <div>
-                    <span className="text-[10.5px] font-bold uppercase tracking-wider text-[#ea580c] block mb-1">
-                      OFFICIAL GOVERNMENT &amp; ENTERPRISE PROJECT ARCHIVE
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-black text-[#0f172a] tracking-tight">
-                      Completed &amp; Ongoing Project Directory (31 Projects)
-                    </h3>
-                  </div>
+      {/* 2. Interactive Searchable 31-Project Directory Modal */}
+      {showDirectory && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-xs animate-in fade-in duration-200">
+          <div className="relative w-full max-w-4xl bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl max-h-[90vh] flex flex-col">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowDirectory(false)}
+              className="absolute top-5 right-5 p-2 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-900 transition z-10"
+              aria-label="Close directory"
+            >
+              <X className="w-5 h-5" />
+            </button>
 
-                  <div className="relative w-full md:w-80">
-                    <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                    <input
-                      type="text"
-                      placeholder="Search by project or client..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full pl-9 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-full text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#ea580c] focus:bg-white transition"
-                    />
-                    {searchQuery && (
-                      <button
-                        onClick={() => setSearchQuery("")}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
-                      >
-                        <X className="w-3.5 h-3.5" />
-                      </button>
-                    )}
-                  </div>
-                </div>
+            {/* Top Bar: Title & Search Bar */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 pb-6 border-b border-slate-100 pr-10">
+              <div>
+                <span className="text-[10.5px] font-bold uppercase tracking-wider text-[#ea580c] block mb-1">
+                  OFFICIAL GOVERNMENT &amp; ENTERPRISE PROJECT ARCHIVE
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black text-[#0f172a] tracking-tight">
+                  Completed &amp; Ongoing Project Directory (31 Projects)
+                </h3>
+              </div>
 
-                {/* Filter Tabs */}
-                <div className="py-4 border-b border-slate-100 flex flex-wrap items-center gap-1.5">
-                  <span className="text-xs text-slate-400 mr-2 font-medium">Filter:</span>
-                  {categories.map((cat) => (
-                    <button
-                      key={cat.value}
-                      type="button"
-                      onClick={() => setActiveCategory(cat.value)}
-                      className={`text-xs px-3 py-1 rounded-full font-medium transition-all ${
-                        activeCategory === cat.value
-                          ? "bg-[#0f172a] text-white shadow-xs"
-                          : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
-                      }`}
-                    >
-                      {cat.label}
-                    </button>
-                  ))}
-                  <span className="text-xs text-slate-400 ml-auto font-mono hidden sm:inline">
-                    {filteredProjects.length} records
-                  </span>
-                </div>
+              <div className="relative w-full md:w-72">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Search project, client, district..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-full text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#ea580c] focus:bg-white transition"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
+              </div>
+            </div>
 
-                {/* Clean Professional Project Rows with Visual Preview */}
-                <div className="max-h-[640px] overflow-y-auto divide-y divide-slate-100 pr-1">
+            {/* Filter Tabs */}
+            <div className="py-3 border-b border-slate-100 flex flex-wrap items-center gap-1.5">
+              <span className="text-xs text-slate-400 mr-2 font-medium">Filter:</span>
+              {categories.map((cat) => (
+                <button
+                  key={cat.value}
+                  type="button"
+                  onClick={() => setActiveCategory(cat.value)}
+                  className={`text-xs px-3 py-1 rounded-full font-medium transition-all ${
+                    activeCategory === cat.value
+                      ? "bg-[#ea580c] text-white shadow-xs"
+                      : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+              <span className="text-xs text-slate-400 ml-auto font-mono hidden sm:inline">
+                {filteredProjects.length} records
+              </span>
+            </div>
+
+            {/* Clean Professional Project Rows with Visual Preview */}
+            <div className="overflow-y-auto divide-y divide-slate-100 pr-1 flex-1">
                   {filteredProjects.map((proj) => {
                     const isExpanded = expandedProjectId === proj.id;
                     const projectImage = projectVisuals[proj.id] || "/assets/showcase/badc-irrigation-gis-project.jpg";
@@ -434,8 +445,6 @@ export const ProjectsSection: React.FC = () => {
               </div>
             </div>
           )}
-        </div>
-      </section>
 
       {/* 3. Technical Project Dossier Modal with Image Header */}
       {modalProject && (

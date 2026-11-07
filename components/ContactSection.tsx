@@ -40,75 +40,47 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-white border-b border-slate-200/80">
+    <section id="contact" className="py-20 lg:py-28 bg-white border-b border-slate-100">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Banner / Call to Action */}
-        <div className="relative rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 p-8 sm:p-12 lg:p-16 mb-16 shadow-2xl">
-          <div className="absolute inset-0 bg-construction-grid-dark opacity-40 pointer-events-none" />
-
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-            <div className="max-w-2xl">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#ea580c] block mb-2">
-                Enterprise Mobilization &amp; Tender Inquiries
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-                Ready to engineer your next corridor or industrial zone?
-              </h2>
-              <p className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed">
-                Connect with our principal geodetic surveyor and technical team for formal quotations,
-                terms-of-reference (TOR) consultations, and rapid mobilization.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center gap-4 self-start lg:self-center">
-              <a
-                href="#rfq-form"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs sm:text-sm font-bold rounded-full shadow-lg shadow-orange-500/30 transition transform hover:-translate-y-0.5"
-              >
-                <span>Request Formal Proposal</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-
-              <a
-                href="tel:+8801713907779"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold rounded-full border border-white/20 transition backdrop-blur-md"
-              >
-                <Phone className="w-4 h-4 text-orange-400" />
-                <span>+880 1713 90 777 9</span>
-              </a>
-            </div>
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/70 text-[#ea580c] text-[11px] font-bold tracking-wider uppercase mb-3.5">
+            <Building2 className="w-3.5 h-3.5 text-[#ea580c]" />
+            <span>Connect With Us</span>
           </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0f172a] tracking-tight leading-tight mb-3">
+            Start Your Next Project
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-xl mx-auto">
+            Connect with our principal geodetic surveyor and technical team for formal quotations, terms-of-reference (TOR), and rapid mobilization across all 64 districts.
+          </p>
         </div>
 
         {/* 2-Column Grid: Office Credentials + Interactive RFQ Form */}
-        <div id="rfq-form" className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
           {/* Left Column (5 Cols): Office Headquarters & Direct Desk */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/70 text-[#ea580c] text-[11px] font-bold tracking-wider uppercase mb-3">
-                <Building2 className="w-3.5 h-3.5 text-[#ea580c]" />
-                <span>Headquarters &amp; Field Station</span>
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-[#0f172a] tracking-tight leading-snug mb-4">
-                Reach our Dhaka operations centre.
+              <h3 className="text-2xl font-black text-[#0f172a] tracking-tight leading-snug mb-3">
+                Dhaka Operations Centre
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
                 Our main field instrumentation facility, GIS workstations, and drone hangar are based in
-                Dhaka with dispatch capability to all 64 districts.
+                Dhaka with dispatch capability to any district in Bangladesh.
               </p>
 
               {/* Direct Info Cards */}
-              <div className="space-y-4 text-xs sm:text-sm">
+              <div className="space-y-3 text-xs sm:text-sm">
                 <a
                   href="tel:+8801713907779"
-                  className="p-4 rounded-2xl bg-white border border-slate-200/80 hover:border-orange-300 transition flex items-center gap-4 group shadow-2xs"
+                  className="p-4 rounded-2xl bg-[#fafafa] border border-slate-200/80 hover:border-orange-300 transition flex items-center gap-4 group"
                 >
                   <div className="p-3 rounded-xl bg-orange-50 text-[#ea580c] group-hover:bg-[#ea580c] group-hover:text-white transition">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-[10px] font-bold uppercase text-slate-400 block">
-                      Direct Hotline
+                      Direct Hotline (24/7 Dispatch)
                     </span>
                     <span className="font-bold text-slate-900 group-hover:text-[#ea580c] transition">
                       +880 1713 90 777 9
@@ -118,14 +90,14 @@ export const ContactSection: React.FC = () => {
 
                 <a
                   href="mailto:md.geospatialworks@gmail.com"
-                  className="p-4 rounded-2xl bg-white border border-slate-200/80 hover:border-orange-300 transition flex items-center gap-4 group shadow-2xs"
+                  className="p-4 rounded-2xl bg-[#fafafa] border border-slate-200/80 hover:border-orange-300 transition flex items-center gap-4 group"
                 >
                   <div className="p-3 rounded-xl bg-orange-50 text-[#ea580c] group-hover:bg-[#ea580c] group-hover:text-white transition">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-[10px] font-bold uppercase text-slate-400 block">
-                      Official Inquiries
+                      Official RFP / Tender Inquiries
                     </span>
                     <span className="font-bold text-slate-900 group-hover:text-[#ea580c] transition">
                       md.geospatialworks@gmail.com
@@ -133,7 +105,7 @@ export const ContactSection: React.FC = () => {
                   </div>
                 </a>
 
-                <div className="p-4 rounded-2xl bg-white border border-slate-200/80 flex items-start gap-4 shadow-2xs">
+                <div className="p-4 rounded-2xl bg-[#fafafa] border border-slate-200/80 flex items-start gap-4">
                   <div className="p-3 rounded-xl bg-orange-50 text-[#ea580c] flex-shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
@@ -142,21 +114,7 @@ export const ContactSection: React.FC = () => {
                       Corporate Office
                     </span>
                     <span className="font-bold text-slate-900 block leading-snug">
-                      Plot 14, Road 02, Aram Housing, 40ft, Bosila, Mohammadpur, Dhaka-1207, Bangladesh
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-white border border-slate-200/80 flex items-center gap-4 shadow-2xs">
-                  <div className="p-3 rounded-xl bg-orange-50 text-[#ea580c] flex-shrink-0">
-                    <Clock className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold uppercase text-slate-400 block">
-                      Operating Hours
-                    </span>
-                    <span className="font-bold text-slate-900">
-                      Sunday – Thursday: 9:00 AM – 6:00 PM (Emergency Dispatch 24/7)
+                      Plot 14, Road 02, Aram Housing, 40ft, Bosila, Mohammadpur, Dhaka-1207
                     </span>
                   </div>
                 </div>
@@ -174,17 +132,16 @@ export const ContactSection: React.FC = () => {
           </div>
 
           {/* Right Column (7 Cols): Modern RFQ & Proposal Builder */}
-          <div className="lg:col-span-7 bg-slate-50 border border-slate-200/80 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xs">
+          <div className="lg:col-span-7 bg-[#fafafa] border border-slate-200/80 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xs">
             <div className="mb-6 pb-6 border-b border-slate-200">
               <span className="text-xs font-bold uppercase tracking-wider text-[#ea580c] block mb-1">
                 Project Quotation &amp; Feasibility
               </span>
-              <h4 className="text-xl sm:text-2xl font-bold text-[#0f172a] tracking-tight">
-                Request a formal technical proposal.
-              </h4>
-              <p className="text-xs text-slate-600 mt-1">
-                Submit project specifications to receive our verified scope, equipment fleet mobilization
-                schedule, and estimated delivery timeline.
+              <h3 className="text-xl sm:text-2xl font-black text-[#0f172a] tracking-tight">
+                Request a Formal Proposal
+              </h3>
+              <p className="mt-1 text-slate-500 text-xs sm:text-sm">
+                Submit project details for TOR reviews, baseline specifications, and formal budget estimations within 24 hours.
               </p>
             </div>
 

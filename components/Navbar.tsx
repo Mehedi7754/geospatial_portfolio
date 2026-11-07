@@ -53,28 +53,28 @@ export const Navbar: React.FC = () => {
         >
           <Link
             href="#home"
-            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
             Home
           </Link>
 
           <Link
             href="#about"
-            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
             About
           </Link>
 
           <Link
             href="#services"
-            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
             Services
           </Link>
 
           <Link
             href="#portfolio"
-            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors flex items-center gap-1.5"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors flex items-center gap-1.5"
           >
             <span>Portfolio</span>
             <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-100 text-[#ea580c]">
@@ -83,22 +83,15 @@ export const Navbar: React.FC = () => {
           </Link>
 
           <Link
-            href="#fleet"
-            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
-          >
-            Fleet
-          </Link>
-
-          <Link
             href="#trust"
-            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
-            Partners
+            Reviews
           </Link>
 
           <Link
             href="#contact"
-            className="px-3 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
+            className="px-3.5 py-1.5 rounded-full hover:text-[#ea580c] hover:bg-orange-50/60 transition-colors"
           >
             Contact
           </Link>
@@ -166,22 +159,15 @@ export const Navbar: React.FC = () => {
             >
               <span>Recent Work &amp; Portfolio</span>
               <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-[#ea580c]">
-                31 Projects
+                31
               </span>
-            </Link>
-            <Link
-              href="#fleet"
-              onClick={closeMobile}
-              className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
-            >
-              Calibrated Fleet
             </Link>
             <Link
               href="#trust"
               onClick={closeMobile}
               className="px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-[#ea580c]"
             >
-              Client Endorsements
+              Client Reviews
             </Link>
             <Link
               href="#contact"
